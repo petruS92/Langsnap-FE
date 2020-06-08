@@ -1,0 +1,15 @@
+.sentence {
+  border: 2px solid green;
+}
+
+.static {
+  border: 2px solid red;
+}
+
+.translation {
+  border: 2px solid blue;
+}
+
+.capture {
+  border: 2px solid yellow;
+}
