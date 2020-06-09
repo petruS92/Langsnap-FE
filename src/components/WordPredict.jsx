@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DropDown from "./DropDown";
 import * as api from "../utils/api";
 
 class WordPredict extends Component {
@@ -61,6 +62,7 @@ class WordPredict extends Component {
           style={{ display: "none" }}
         ></canvas>
         <p className="sentence">Your word is going to be {englishWord}</p>
+        <DropDown />
         <p className="static">{staticEnglishWord}</p>
         <button onClick={this.handleClick} className="capture">
           Capture me!
