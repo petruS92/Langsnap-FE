@@ -1,13 +1,23 @@
 import React from "react";
 
-const DropDown = () => {
+const DropDown = (props) => {
+  const handleSelectedLanguage = (event) => {
+    const { value } = event.target;
+    props.changeLanguage(value);
+  };
+
   return (
     <>
       <p>Language: </p>
-      <select>
-        <option>German</option>
-        <option>French</option>
-        <option>Spanish</option>
+      <select onChange={handleSelectedLanguage}>
+        <option default value="">
+          Please select from below...
+        </option>
+        <option default value="de">
+          German
+        </option>
+        <option value="fr">French</option>
+        <option value="es">Spanish</option>
       </select>
     </>
   );

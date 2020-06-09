@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import SignUpThankYou from "./SignUpThankYou";
+import * as api from "../utils/api";
+import Loading from "./Loading";
 
 class SignUp extends Component {
   state = {
@@ -6,7 +9,12 @@ class SignUp extends Component {
     email: "",
     password: "",
     userDidSignUp: false,
+    isLoading: true,
   };
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
 
   handleInputSignUpForm = (event) => {
     const { name, value } = event.target;
@@ -14,15 +22,21 @@ class SignUp extends Component {
   };
 
   handleSignUpSubmit = (event) => {
+    event.preventDefault();
     const { name, email, password } = this.state;
-    // api.createUser();
+    api.createUser(name, email, password);
     console.log(name, email, password);
-    this.setState({ userDidSignUp: true });
   };
 
   render() {
-    const { userDidSignUp } = this.state;
-    if (userDidSignUp) return <h4>Thank you for signing up</h4>;
+    const { userDidSignUp, isLoading } = this.state;
+    if (isLoading) return <Loading />;
+    if (userDidSignUp)
+      return (
+        <h4>
+          <SignUpThankYou />
+        </h4>
+      );
     return (
       <section>
         <h4>Sign up!</h4>
@@ -61,7 +75,7 @@ class SignUp extends Component {
             onChange={this.handleInputSignUpForm}
             required
           />
-          <button type="">Register</button>
+          <button type="submit">Register</button>
         </form>
       </section>
     );

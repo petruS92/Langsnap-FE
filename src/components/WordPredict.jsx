@@ -7,6 +7,7 @@ class WordPredict extends Component {
     englishWord: "",
     staticEnglishWord: "",
     translatedWord: "",
+    translationLanguage: "",
   };
 
   componentDidMount() {
@@ -39,13 +40,22 @@ class WordPredict extends Component {
   };
 
   handleClick = (event) => {
-    const { englishWord } = this.state;
+    const { englishWord, translationLanguage } = this.state;
 
-    api.seeTranslation(englishWord, "de").then((translatedWord) => {
-      this.setState({
-        translatedWord: translatedWord,
-        staticEnglishWord: englishWord,
+    api
+      .seeTranslation(englishWord, translationLanguage)
+      .then((translatedWord) => {
+        this.setState({
+          translatedWord: translatedWord,
+          staticEnglishWord: englishWord,
+          translationLanguage: translationLanguage,
+        });
       });
+  };
+
+  changeLanguage = (translationLanguage) => {
+    this.setState({
+      translationLanguage: translationLanguage,
     });
   };
 
@@ -62,11 +72,13 @@ class WordPredict extends Component {
           style={{ display: "none" }}
         ></canvas>
         <p className="sentence">Your word is going to be {englishWord}</p>
-        <DropDown />
+        <DropDown changeLanguage={this.changeLanguage} />
         <p className="static">{staticEnglishWord}</p>
-        <button onClick={this.handleClick} className="capture">
-          Capture me!
-        </button>
+        {this.state.translationLanguage !== "" && (
+          <button onClick={this.handleClick} className="capture">
+            Capture me!
+          </button>
+        )}
         <p className="translation">{translatedWord}</p>
       </div>
     );
