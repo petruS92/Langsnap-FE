@@ -32,3 +32,8 @@ export const createUser = (name, email, password) => {
       console.dir(err);
     });
 };
+
+// export const logUserIn = () => {
+//   return axios
+//     .
+// }
