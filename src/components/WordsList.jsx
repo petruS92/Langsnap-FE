@@ -1,25 +1,27 @@
 import React from "react";
+import * as wordsFunctions from "../utils/wordsListFunctions";
 
 const WordsList = (props) => {
   const {
     words: { German, French, Spanish },
     isLoggedIn,
   } = props;
-  console.log(German);
+
   if (!isLoggedIn) return <h4>Please login</h4>;
+
   return (
     <section>
       <h3>Words List</h3>
-      <h4>German</h4>
-      <ul>
-        {German.map((wordObject, index) => {
-          return (
-            <li key={index}>{`${Object.keys(wordObject)} - ${Object.values(
-              wordObject
-            )}`}</li>
-          );
-        })}
-      </ul>
+      <button>German</button>
+      {German.map((wordObject, index) => {
+        return (
+          <li key={index}>{`${Object.keys(
+            wordObject
+          )} - ${wordsFunctions.capitaliseGermanWord(
+            Object.values(wordObject)
+          )}`}</li>
+        );
+      })}
       <h4>French</h4>
       <ul>
         {French.map((wordObject, index) => {
@@ -46,5 +48,16 @@ const WordsList = (props) => {
 
 export default WordsList;
 
-// maybe three seperate lists
-// "see more" feature, only shows 5 words until click on button
+// German button, onClick, display german words
+// Spanish button, onClick, display spanish words
+// French button, onClick, display french words
+
+/* <ul>
+  {German.map((wordObject, index) => {
+    return (
+      <li key={index}>{`${Object.keys(wordObject)} - ${Object.values(
+        wordObject
+      )}`}</li>
+    );
+  })}
+</ul> */
