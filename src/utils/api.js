@@ -26,14 +26,23 @@ export const createUser = (name, email, password) => {
     .then(({ data: { token } }) => {
       console.log(token);
       console.log("created User triggered");
-      // return message;
+      // return token;
     })
     .catch((err) => {
       console.dir(err);
     });
 };
 
-// export const logUserIn = () => {
-//   return axios
-//     .
-// }
+export const getUserInfo = () => {
+  return axios
+    .post(`${baseURL}/auth`, {
+      email: "postmanPat1@gmail.com",
+      password: "1234567",
+    })
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((err) => {
+      console.dir(err);
+    });
+};

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
+import * as api from "../utils/api";
 
 class Login extends Component {
   state = {
@@ -16,7 +17,9 @@ class Login extends Component {
 
   handleLogInSubmit = (event) => {
     event.preventDefault();
-    this.props.loggingIn();
+    api.getUserInfo().then((info) => {
+      this.props.loggingIn(info);
+    });
     this.setState({ email: "", password: "", returnToHomePage: true });
   };
 
@@ -50,9 +53,7 @@ class Login extends Component {
           onChange={this.handleInputLogin}
           required
         />
-        {/* <Link to="/"> */}
         <button type="submit">Log in</button>
-        {/* </Link> */}
       </form>
     );
   }

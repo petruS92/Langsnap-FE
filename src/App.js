@@ -8,9 +8,13 @@ import setAuthToken from "./utils/authentication";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import MyAccount from "./components/MyAccounts.jsx";
+import * as wordsFunctions from "./utils/wordsListFunctions";
 
 class App extends Component {
   state = {
+    email: "",
+    name: "",
+    words: "",
     token: null,
     isLoggedIn: false,
     isLoading: true,
@@ -23,7 +27,9 @@ class App extends Component {
     }
   }
 
-  loggingIn = () => {
+  loggingIn = (info) => {
+    console.log(info);
+    wordsFunctions.selectWords(info);
     this.setState({ isLoggedIn: true });
   };
   loggingOut = () => {

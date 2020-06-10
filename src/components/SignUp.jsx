@@ -26,6 +26,7 @@ class SignUp extends Component {
     const { name, email, password } = this.state;
     api.createUser(name, email, password);
     console.log(name, email, password);
+    this.setState({ name: "", email: "", password: "", userDidSignUp: true });
   };
 
   render() {
@@ -33,13 +34,13 @@ class SignUp extends Component {
     if (isLoading) return <Loading />;
     if (userDidSignUp)
       return (
-        <h4>
+        <h5>
           <SignUpThankYou />
-        </h4>
+        </h5>
       );
     return (
       <section>
-        <h4>Sign up!</h4>
+        <h5>Sign up!</h5>
         <p>
           Register your details to keep a track of your progress and gain access
           to our exciting game!
