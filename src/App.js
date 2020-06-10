@@ -28,10 +28,11 @@ class App extends Component {
   }
 
   loggingIn = (info) => {
-    console.log(info);
-    wordsFunctions.selectWords(info);
-    this.setState({ isLoggedIn: true });
+    const arrayOfWords = wordsFunctions.selectWords(info);
+    console.log(arrayOfWords);
+    this.setState({ isLoggedIn: true, words: arrayOfWords });
   };
+
   loggingOut = () => {
     this.setState({ isLoggedIn: false, token: null });
   };

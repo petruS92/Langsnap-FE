@@ -2,27 +2,16 @@ export const selectWords = (info) => {
   const {
     user: { words },
   } = info;
-  console.log(words);
+  let languagesObject = { German: [], French: [], Spanish: [] };
+
+  Object.entries(words).forEach(([key, pairObject]) => {
+    const languages = Object.keys(pairObject);
+    languagesObject[languages].push(pairObject[languages]);
+  });
+
+  return languagesObject;
 };
 /* 
-
-function transform(words) {
-  let languagesObject = {German: [], French: [], Spanish: []};
-
-
-  Object.entries(words).map(([key, pairObject])=>{
-
-  const languages = Object.keys(pairObject)
-
-
-  languagesObject[languages].push(pairObject[languages])
-
-  })
-
-  return languagesObject
-
-}
-
 
 
 
