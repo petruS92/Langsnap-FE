@@ -16,8 +16,9 @@ class Login extends Component {
   };
 
   handleLogInSubmit = (event) => {
+    const { email, password } = this.state;
     event.preventDefault();
-    api.getUserInfo().then((info) => {
+    api.getUserInfo(email, password).then((info) => {
       this.props.loggingIn(info);
     });
     this.setState({ email: "", password: "", returnToHomePage: true });
