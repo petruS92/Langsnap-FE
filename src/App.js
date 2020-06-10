@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import Logout from "./components/Logout";
 import MyAccount from "./components/MyAccounts.jsx";
 import * as wordsFunctions from "./utils/wordsListFunctions";
+import WordsList from "./components/WordsList.jsx";
 
 class App extends Component {
   state = {
@@ -38,7 +39,7 @@ class App extends Component {
   };
 
   render() {
-    const { isLoggedIn } = this.state;
+    const { isLoggedIn, words } = this.state;
     return (
       <>
         <NavBar isLoggedIn={isLoggedIn} />
@@ -54,6 +55,7 @@ class App extends Component {
             loggingIn={this.loggingIn}
           />
           <MyAccount path="/myaccount" />
+          <WordsList path="/wordslist" words={words} isLoggedIn={isLoggedIn} />
         </Router>
       </>
     );

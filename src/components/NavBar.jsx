@@ -11,6 +11,7 @@ const NavBar = (props) => {
         {!isLoggedIn && <Link to="/signup">Sign up</Link>}
         {isLoggedIn && <Link to="/myaccount">My Account</Link>}
         {isLoggedIn && <Link to="/game">Test yourself!</Link>}
+        {isLoggedIn && <Link to="/wordslist">My Words</Link>}
       </li>
     </nav>
   );
