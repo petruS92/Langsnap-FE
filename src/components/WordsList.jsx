@@ -17,7 +17,7 @@ class WordsList extends React.Component {
     const {
       words: { German, French, Spanish },
     } = this.props;
-    console.log(value);
+
     if (value === "German")
       this.setState({
         selectedDisplayLanguage: value,
@@ -62,17 +62,3 @@ class WordsList extends React.Component {
 }
 
 export default WordsList;
-
-// German button, onClick, display german words
-// Spanish button, onClick, display spanish words
-// French button, onClick, display french words
-
-/* <ul>
-  {German.map((wordObject, index) => {
-    return (
-      <li key={index}>{`${Object.keys(wordObject)} - ${Object.values(
-        wordObject
-      )}`}</li>
-    );
-  })}
-</ul> */
