@@ -1,22 +1,24 @@
 export const selectWords = (words) => {
   let languagesObject = { German: [], French: [], Spanish: [] };
-
   Object.entries(words).forEach(([key, pairObject]) => {
     const languages = Object.keys(pairObject);
     languagesObject[languages].push(pairObject[languages]);
   });
-
   return languagesObject;
 };
 
 export const capitaliseGermanWord = (germanTranslation) => {
-  let [germanWord] = germanTranslation;
+  if (germanTranslation.length === 1) {
+    let [germanWord] = germanTranslation;
 
-  let [germanArticle, germanNoun] = germanWord.split(" ");
+    let [germanArticle, germanNoun] = germanWord.split(" ");
 
-  let correctedGermanWord =
-    germanArticle + " " + (germanNoun[0].toUpperCase() + germanNoun.slice(1));
-  return correctedGermanWord;
+    let correctedGermanWord =
+      germanArticle + " " + (germanNoun[0].toUpperCase() + germanNoun.slice(1));
+    return correctedGermanWord;
+  } else {
+    return "";
+  }
 };
 
 export const filterDuplicatesOut = (englishWord, words) => {
@@ -25,9 +27,7 @@ export const filterDuplicatesOut = (englishWord, words) => {
   objArr.forEach((object) => {
     keysArr.push(Object.keys(object));
   });
-  console.log(typeof englishWord);
   let flatKeysArr = keysArr.flat();
-  console.log(typeof flatKeysArr);
   if (!flatKeysArr.includes(englishWord)) {
     return true;
   } else {

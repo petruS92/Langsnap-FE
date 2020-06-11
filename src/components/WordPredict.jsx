@@ -43,7 +43,7 @@ class WordPredict extends Component {
   handleClick = (event) => {
     const { englishWord, translationLanguage } = this.state;
     const { token, words, addNewWordToState } = this.props;
-
+    console.log(words);
     api
       .seeTranslation(englishWord, translationLanguage)
       .then((translatedWord) => {
