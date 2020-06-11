@@ -27,13 +27,10 @@ export const filterDuplicatesOut = (englishWord, words) => {
   });
   console.log(typeof englishWord);
   let flatKeysArr = keysArr.flat();
-  // let wordKey = Object.keys(englishWord)[0];
   console.log(typeof flatKeysArr);
   if (!flatKeysArr.includes(englishWord)) {
-    console.log("True");
     return true;
   } else {
-    console.log("False");
     return false;
   }
 };
