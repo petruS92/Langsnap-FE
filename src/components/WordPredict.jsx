@@ -52,7 +52,6 @@ class WordPredict extends Component {
           staticEnglishWord: englishWord,
           translationLanguage: translationLanguage,
         });
-        console.log(token);
         if (token) {
           const noDuplicates = wordsListFunctions.filterDuplicatesOut(
             translatedWord,
@@ -62,11 +61,9 @@ class WordPredict extends Component {
             api
               .updateDatabase(translationLanguage, translatedWord, englishWord)
               .then((updatedWords) => {
-                console.log(updatedWords);
                 addNewWordToState(updatedWords);
               });
           }
-          // console.log(noDuplicates);
         }
       });
   };

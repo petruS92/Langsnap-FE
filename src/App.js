@@ -29,7 +29,6 @@ class App extends Component {
   }
 
   addNewWordToState = (updatedWords) => {
-    console.log(updatedWords);
     const arrayUpdatedWords = wordsFunctions.selectWords(updatedWords);
     this.setState({ words: arrayUpdatedWords });
   };

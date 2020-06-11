@@ -33,7 +33,6 @@ class WordsList extends React.Component {
         selectedDisplayLanguage: value,
         selectedDisplayWords: Spanish,
       });
-    console.log(this.state);
   };
 
   render() {

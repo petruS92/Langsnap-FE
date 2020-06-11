@@ -25,7 +25,6 @@ class SignUp extends Component {
     event.preventDefault();
     const { name, email, password } = this.state;
     api.createUser(name, email, password);
-    console.log(name, email, password);
     this.setState({ name: "", email: "", password: "", userDidSignUp: true });
   };
 

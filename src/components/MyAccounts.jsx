@@ -9,7 +9,7 @@ const MyAccounts = (props) => {
       <br />
       <p>Email: {email}</p>
       <br />
-      <p>CHART GOES HERE</p>
+      <p>Chart goes here</p>
     </>
   );
 };
