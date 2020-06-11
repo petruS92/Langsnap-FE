@@ -29,9 +29,18 @@ class App extends Component {
   }
 
   loggingIn = (info) => {
-    const { token } = info;
+    const {
+      token,
+      user: { email, name },
+    } = info;
     const arrayOfWords = wordsFunctions.selectWords(info);
-    this.setState({ isLoggedIn: true, words: arrayOfWords, token: token });
+    this.setState({
+      isLoggedIn: true,
+      words: arrayOfWords,
+      token: token,
+      name: name,
+      email: email,
+    });
   };
 
   loggingOut = () => {
@@ -39,7 +48,7 @@ class App extends Component {
   };
 
   render() {
-    const { isLoggedIn, words } = this.state;
+    const { isLoggedIn, words, email, name, token } = this.state;
     return (
       <>
         <NavBar isLoggedIn={isLoggedIn} />
@@ -54,7 +63,12 @@ class App extends Component {
             isLoggedIn={isLoggedIn}
             loggingIn={this.loggingIn}
           />
-          <MyAccount path="/myaccount" />
+          <MyAccount
+            path="/myaccount"
+            email={email}
+            name={name}
+            token={token}
+          />
           <WordsList path="/wordslist" words={words} isLoggedIn={isLoggedIn} />
         </Router>
       </>
