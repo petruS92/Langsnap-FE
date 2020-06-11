@@ -22,11 +22,18 @@ export const updateDatabase = (
   translatedWord,
   englishWord
 ) => {
-  return axios.post(`${baseURL}/user/words`, {
-    language: translationLanguage,
-    englishWord: englishWord,
-    translatedWord: translatedWord,
-  });
+  return axios
+    .post(`${baseURL}/user/words`, {
+      language: translationLanguage,
+      englishWord: englishWord,
+      translatedWord: translatedWord,
+    })
+    .then((response) => {
+      const {
+        data: { wordsList },
+      } = response;
+      return wordsList;
+    });
 };
 
 export const createUser = (name, email, password) => {

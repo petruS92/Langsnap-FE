@@ -42,7 +42,7 @@ class WordPredict extends Component {
 
   handleClick = (event) => {
     const { englishWord, translationLanguage } = this.state;
-    const { token, words } = this.props;
+    const { token, words, addNewWordToState } = this.props;
 
     api
       .seeTranslation(englishWord, translationLanguage)
@@ -54,17 +54,19 @@ class WordPredict extends Component {
         });
         console.log(token);
         if (token) {
-          // wordsListFunctions.filterDuplicatesOut(
-          //   translatedWord,
-          //   words
-          //   // translationLanguage,
-          //   // englishWord
-          // );
-
-          console.log(
-            wordsListFunctions.filterDuplicatesOut(translatedWord, words)
+          const noDuplicates = wordsListFunctions.filterDuplicatesOut(
+            translatedWord,
+            words
           );
-          // api.updateDatabase(translationLanguage, translatedWord, englishWord)
+          if (noDuplicates) {
+            api
+              .updateDatabase(translationLanguage, translatedWord, englishWord)
+              .then((updatedWords) => {
+                console.log(updatedWords);
+                addNewWordToState(updatedWords);
+              });
+          }
+          // console.log(noDuplicates);
         }
       });
   };

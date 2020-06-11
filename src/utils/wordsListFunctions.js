@@ -1,9 +1,9 @@
 // import * as api from "../utils/api";
 
-export const selectWords = (info) => {
-  const {
-    user: { words },
-  } = info;
+export const selectWords = (words) => {
+  // const {
+  //   user: { words },
+  // } = info;
   let languagesObject = { German: [], French: [], Spanish: [] };
 
   Object.entries(words).forEach(([key, pairObject]) => {

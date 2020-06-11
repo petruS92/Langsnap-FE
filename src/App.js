@@ -28,17 +28,18 @@ class App extends Component {
     }
   }
 
-  addNewWordToState = () => {
-    // this.setState({ words: translatedWord})
-    // console.log(this.state.words);
+  addNewWordToState = (updatedWords) => {
+    console.log(updatedWords);
+    const arrayUpdatedWords = wordsFunctions.selectWords(updatedWords);
+    this.setState({ words: arrayUpdatedWords });
   };
 
   loggingIn = (info) => {
     const {
       token,
-      user: { email, name },
+      user: { email, name, words },
     } = info;
-    const arrayOfWords = wordsFunctions.selectWords(info);
+    const arrayOfWords = wordsFunctions.selectWords(words);
     this.setState({
       isLoggedIn: true,
       words: arrayOfWords,
