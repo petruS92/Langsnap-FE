@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DropDown from "./DropDown";
 import * as api from "../utils/api";
+import * as wordsListFunctions from "../utils/wordsListFunctions";
 
 class WordPredict extends Component {
   state = {
@@ -41,6 +42,7 @@ class WordPredict extends Component {
 
   handleClick = (event) => {
     const { englishWord, translationLanguage } = this.state;
+    const { token, words } = this.props;
 
     api
       .seeTranslation(englishWord, translationLanguage)
@@ -50,6 +52,20 @@ class WordPredict extends Component {
           staticEnglishWord: englishWord,
           translationLanguage: translationLanguage,
         });
+        console.log(token);
+        if (token) {
+          // wordsListFunctions.filterDuplicatesOut(
+          //   translatedWord,
+          //   words
+          //   // translationLanguage,
+          //   // englishWord
+          // );
+
+          console.log(
+            wordsListFunctions.filterDuplicatesOut(translatedWord, words)
+          );
+          // api.updateDatabase(translationLanguage, translatedWord, englishWord)
+        }
       });
   };
 

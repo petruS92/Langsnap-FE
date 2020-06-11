@@ -1,16 +1,16 @@
 import React from "react";
-import * as wordsFunctions from "../utils/wordsListFunctions";
+// import * as wordsFunctions from "../utils/wordsListFunctions";
 
 const LanguageList = (props) => {
   const { selectedDisplayLanguage, selectedDisplayWords } = props;
 
-  const germanWordsFilter = (word) => {
-    if (selectedDisplayLanguage === "German") {
-      return wordsFunctions.capitaliseGermanWord(word);
-    } else {
-      return word;
-    }
-  };
+  // const germanWordsFilter = (word) => {
+  //   if (selectedDisplayLanguage === "German") {
+  //     return wordsFunctions.capitaliseGermanWord(word);
+  //   } else {
+  //     return word;
+  //   }
+  // };
 
   return (
     <div>
@@ -18,9 +18,11 @@ const LanguageList = (props) => {
       <ul>
         {selectedDisplayWords.map((wordObject, index) => {
           return (
-            <li key={index}>{`${Object.keys(wordObject)} - ${germanWordsFilter(
+            <li key={index}>{`${Object.keys(wordObject)} - ${
+              // germanWordsFilter(
               Object.values(wordObject)
-            )}`}</li>
+              // )
+            }`}</li>
           );
         })}
       </ul>

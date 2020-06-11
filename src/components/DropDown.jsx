@@ -13,11 +13,11 @@ const DropDown = (props) => {
         <option default value="">
           Please select from below...
         </option>
-        <option default value="de">
+        <option default value="German">
           German
         </option>
-        <option value="fr">French</option>
-        <option value="es">Spanish</option>
+        <option value="French">French</option>
+        <option value="Spanish">Spanish</option>
       </select>
     </>
   );

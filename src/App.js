@@ -15,7 +15,7 @@ class App extends Component {
   state = {
     email: "",
     name: "",
-    words: "",
+    words: null,
     token: null,
     isLoggedIn: false,
     isLoading: true,
@@ -27,6 +27,11 @@ class App extends Component {
       setAuthToken(this.state.token);
     }
   }
+
+  addNewWordToState = () => {
+    // this.setState({ words: translatedWord})
+    // console.log(this.state.words);
+  };
 
   loggingIn = (info) => {
     const {
@@ -56,7 +61,12 @@ class App extends Component {
           <Logout isLoggedIn={isLoggedIn} loggingOut={this.loggingOut} />
         )}
         <Router>
-          <WordPredict path="/" />
+          <WordPredict
+            path="/"
+            addNewWordToState={this.addNewWordToState}
+            token={token}
+            words={words}
+          />
           <SignUp path="/signup" />
           <Login
             path="/login"

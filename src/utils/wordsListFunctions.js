@@ -1,3 +1,5 @@
+// import * as api from "../utils/api";
+
 export const selectWords = (info) => {
   const {
     user: { words },
@@ -20,4 +22,24 @@ export const capitaliseGermanWord = (germanTranslation) => {
   let correctedGermanWord =
     germanArticle + " " + (germanNoun[0].toUpperCase() + germanNoun.slice(1));
   return correctedGermanWord;
+};
+
+export const filterDuplicatesOut = (
+  translatedWord,
+  words
+  // translationLanguage,
+  // englishWord
+) => {
+  let objArr = Object.values(words).flat();
+  let keysArr = [];
+  objArr.forEach((object) => {
+    keysArr.push(Object.keys(object));
+  });
+  let flatKeysArr = keysArr.flat();
+  let wordKey = Object.keys(translatedWord)[0];
+  if (!flatKeysArr.includes(wordKey)) {
+    return true;
+  } else {
+    return false;
+  }
 };
