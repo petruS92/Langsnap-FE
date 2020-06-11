@@ -54,7 +54,7 @@ class WordPredict extends Component {
         });
         if (token) {
           const noDuplicates = wordsListFunctions.filterDuplicatesOut(
-            translatedWord,
+            /*translatedWord*/ englishWord,
             words
           );
           if (noDuplicates) {

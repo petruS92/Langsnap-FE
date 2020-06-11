@@ -19,17 +19,21 @@ export const capitaliseGermanWord = (germanTranslation) => {
   return correctedGermanWord;
 };
 
-export const filterDuplicatesOut = (translatedWord, words) => {
+export const filterDuplicatesOut = (englishWord, words) => {
   let objArr = Object.values(words).flat();
   let keysArr = [];
   objArr.forEach((object) => {
     keysArr.push(Object.keys(object));
   });
+  console.log(typeof englishWord);
   let flatKeysArr = keysArr.flat();
-  let wordKey = Object.keys(translatedWord)[0];
-  if (!flatKeysArr.includes(wordKey)) {
+  // let wordKey = Object.keys(englishWord)[0];
+  console.log(typeof flatKeysArr);
+  if (!flatKeysArr.includes(englishWord)) {
+    console.log("True");
     return true;
   } else {
+    console.log("False");
     return false;
   }
 };
