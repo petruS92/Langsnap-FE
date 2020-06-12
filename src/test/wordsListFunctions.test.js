@@ -133,27 +133,30 @@ describe("Tests for the selectWords function", () => {
 // });
 
 describe("Tests for the filterDuplicatesOut function", () => {
-  test("It returns true if the english word is not found in the words array and false if the word is present in the array", () => {
+  test("It returns false if the english word is not found in the words array and true if the word is present in the array", () => {
     const inputWords = {
       French: [
         {
-          cheese: "la fromage",
+          "the cheese": "la fromage",
         },
         {
-          cat: "le chat",
+          "the cat": "le chat",
         },
         {
-          car: "la voiture",
+          "the car": "la voiture",
         },
       ],
       German: [
         {
-          cat: "die katze",
+          "the cat": "die Katze",
+        },
+        {
+          "the car": "das Auto",
         },
       ],
       Spanish: [
         {
-          car: "el coche",
+          "the car": "el coche",
         },
       ],
     };
