@@ -157,12 +157,12 @@ describe("Tests for the filterDuplicatesOut function", () => {
         },
       ],
     };
-    expect(wordsListFunctions.filterDuplicatesOut("suit", inputWords)).toBe(
-      true
-    );
-    expect(wordsListFunctions.filterDuplicatesOut("cheese", inputWords)).toBe(
-      false
-    );
+    expect(
+      wordsListFunctions.filterDuplicatesOut("Spanish", "suit", inputWords)
+    ).toBe(false);
+    expect(
+      wordsListFunctions.filterDuplicatesOut("French", "cheese", inputWords)
+    ).toBe(true);
   });
 });
 

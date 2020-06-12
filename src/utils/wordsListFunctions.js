@@ -1,4 +1,7 @@
 export const selectWords = (words) => {
+  if (!words) {
+    return [];
+  }
   let languagesObject = { German: [], French: [], Spanish: [] };
   Object.entries(words).forEach(([key, pairObject]) => {
     const languages = Object.keys(pairObject);
@@ -19,20 +22,21 @@ export const selectWords = (words) => {
 //   }
 // };
 
-export const filterDuplicatesOut = (englishWord, words) => {
-  let objArr = Object.values(words).flat();
-  let keysArr = [];
-  objArr.forEach((object) => {
-    keysArr.push(Object.keys(object));
-  });
-  let flatKeysArr = keysArr.flat();
-  if (!flatKeysArr.includes(englishWord)) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
 export const correctWord = (word) => {
   return "the " + word.replace(/[^A-Z0-9]+/gi, "");
+};
+
+export const filterDuplicatesOut = (
+  translationLanguage,
+  englishWord,
+  words
+) => {
+  let translationWords = words[translationLanguage];
+  let bool = false;
+  for (let prop in translationWords) {
+    if (`${Object.keys(translationWords[prop])}` === correctWord(englishWord)) {
+      bool = true;
+    }
+  }
+  return bool;
 };

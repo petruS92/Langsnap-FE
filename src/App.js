@@ -46,6 +46,7 @@ class App extends Component {
       user: { email, name, words },
     } = info;
     const arrayOfWords = wordsFunctions.selectWords(words);
+
     this.setState({
       isLoggedIn: true,
       words: arrayOfWords,

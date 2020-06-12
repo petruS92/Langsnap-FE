@@ -22,8 +22,6 @@ class ObjectTranslation extends Component {
     const video = document.getElementById("video") || defaultCanvas;
     const canvas = document.getElementById("canvas") || defaultCanvas;
     const context = canvas.getContext("2d");
-    /* use the navigate property from reach router to send to a different page; you could throw
-      an error to reload the page using the state of the  */
 
     const videoStream = await navigator.mediaDevices.getUserMedia({
       audio: false,
@@ -61,14 +59,13 @@ class ObjectTranslation extends Component {
           isClicked: false,
         });
         if (token) {
-          const noDuplicates = wordsListFunctions.filterDuplicatesOut(
+          const Duplicates = wordsListFunctions.filterDuplicatesOut(
+            translationLanguage,
             englishWord,
             words
           );
-          console.log(englishWord);
-          console.log(words);
-          console.log(noDuplicates);
-          if (noDuplicates) {
+
+          if (!Duplicates) {
             api
               .updateDatabase(translationLanguage, translatedWord, englishWord)
               .then((updatedWords) => {

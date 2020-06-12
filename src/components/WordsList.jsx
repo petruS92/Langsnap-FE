@@ -39,7 +39,7 @@ class WordsList extends React.Component {
   };
 
   render() {
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, words } = this.props;
     const {
       selectedDisplayLanguage,
       selectedDisplayWords,
@@ -47,16 +47,29 @@ class WordsList extends React.Component {
     } = this.state;
     if (!isLoggedIn) return <h4>Please log in</h4>;
     if (isLoading) return <Loading />;
+    // const noWords = German.length === 0;
     return (
       <section>
         <h3>Words List</h3>
-        <button onClick={this.handleLanguageClick} value="German">
+        <button
+          onClick={this.handleLanguageClick}
+          value="German"
+          disabled={words.German === undefined || words.German.length === 0}
+        >
           German
         </button>
-        <button onClick={this.handleLanguageClick} value="French">
+        <button
+          onClick={this.handleLanguageClick}
+          value="French"
+          disabled={words.French === undefined || words.French.length === 0}
+        >
           French
         </button>
-        <button onClick={this.handleLanguageClick} value="Spanish">
+        <button
+          onClick={this.handleLanguageClick}
+          value="Spanish"
+          disabled={words.Spanish === undefined || words.Spanish.length === 0}
+        >
           Spanish
         </button>
         <LanguageList
