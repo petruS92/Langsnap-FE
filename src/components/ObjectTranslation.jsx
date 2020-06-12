@@ -18,10 +18,12 @@ class ObjectTranslation extends Component {
 
   visualDetection = async () => {
     const mobileNetModel = await window.mobilenet.load();
-    const video = document.getElementById("video");
     const defaultCanvas = document.getElementById("defaultCanvas");
+    const video = document.getElementById("video") || defaultCanvas;
     const canvas = document.getElementById("canvas") || defaultCanvas;
     const context = canvas.getContext("2d");
+    /* use the navigate property from reach router to send to a different page; you could throw
+      an error to reload the page using the state of the  */
 
     const videoStream = await navigator.mediaDevices.getUserMedia({
       audio: false,
@@ -30,16 +32,18 @@ class ObjectTranslation extends Component {
       },
     });
     video.srcObject = videoStream;
-
     const aiDetection = async () => {
       context.drawImage(video, 0, 0, 500, 500);
       const classification = await mobileNetModel.classify(canvas);
-      this.setState({ englishWord: classification[0].className.split(",")[0] });
+      this.setState({
+        englishWord: classification[0].className.split(",")[0],
+      });
 
       setTimeout(() => {
         requestAnimationFrame(aiDetection);
       }, 500);
     };
+
     aiDetection();
   };
 
@@ -61,6 +65,9 @@ class ObjectTranslation extends Component {
             englishWord,
             words
           );
+          console.log(englishWord);
+          console.log(words);
+          console.log(noDuplicates);
           if (noDuplicates) {
             api
               .updateDatabase(translationLanguage, translatedWord, englishWord)

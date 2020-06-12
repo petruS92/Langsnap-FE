@@ -23,10 +23,11 @@ export const updateDatabase = (
   translatedWord,
   englishWord
 ) => {
+  const correctedWord = wordsListFunctions.correctWord(englishWord);
   return axios
     .post(`${baseURL}/user/words`, {
       language: translationLanguage,
-      englishWord: englishWord,
+      englishWord: correctedWord,
       translatedWord: translatedWord,
     })
     .then((response) => {

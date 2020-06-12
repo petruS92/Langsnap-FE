@@ -7,17 +7,17 @@ export const selectWords = (words) => {
   return languagesObject;
 };
 
-export const capitaliseGermanWord = (germanTranslation) => {
-  if (germanTranslation.length === 1) {
-    let [germanWord] = germanTranslation;
-    let [germanArticle, germanNoun] = germanWord.split(" ");
-    let correctedGermanWord =
-      germanArticle + " " + (germanNoun[0].toUpperCase() + germanNoun.slice(1));
-    return correctedGermanWord;
-  } else {
-    return "";
-  }
-};
+// export const capitaliseGermanWord = (germanTranslation) => {
+//   if (germanTranslation.length === 1) {
+//     let [germanWord] = germanTranslation;
+//     let [germanArticle, germanNoun] = germanWord.split(" ");
+//     let correctedGermanWord =
+//       germanArticle + " " + (germanNoun[0].toUpperCase() + germanNoun.slice(1));
+//     return correctedGermanWord;
+//   } else {
+//     return "";
+//   }
+// };
 
 export const filterDuplicatesOut = (englishWord, words) => {
   let objArr = Object.values(words).flat();
