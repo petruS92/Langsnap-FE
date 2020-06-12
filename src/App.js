@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import WordPredict from "./components/WordPredict.jsx";
+import ObjectTranslation from "./components/ObjectTranslation.jsx";
 import { Router } from "@reach/router";
 import "./App.css";
 import SignUp from "./components/SignUp";
@@ -18,6 +18,7 @@ class App extends Component {
     words: null,
     token: null,
     isLoggedIn: false,
+    isLoggedOut: false,
     isLoading: true,
   };
 
@@ -49,11 +50,17 @@ class App extends Component {
   };
 
   loggingOut = () => {
-    this.setState({ isLoggedIn: false, token: null, email: "", name: "" });
+    this.setState({
+      isLoggedIn: false,
+      token: null,
+      email: "",
+      name: "",
+      isLoggedOut: true,
+    });
   };
 
   render() {
-    const { isLoggedIn, words, email, name, token } = this.state;
+    const { isLoggedIn, words, email, name, token, isLoggedOut } = this.state;
     return (
       <>
         <NavBar isLoggedIn={isLoggedIn} />
@@ -61,7 +68,7 @@ class App extends Component {
           <Logout isLoggedIn={isLoggedIn} loggingOut={this.loggingOut} />
         )}
         <Router>
-          <WordPredict
+          <ObjectTranslation
             path="/"
             addNewWordToState={this.addNewWordToState}
             token={token}
@@ -71,6 +78,7 @@ class App extends Component {
           <Login
             path="/login"
             isLoggedIn={isLoggedIn}
+            isLoggedOut={isLoggedOut}
             loggingIn={this.loggingIn}
           />
           <MyAccount

@@ -1,12 +1,12 @@
 import React from "react";
-// import * as wordsFunctions from "../utils/wordsListFunctions";
+// import * as wordsListFunctions from "../utils/wordsListFunctions";
 
 const LanguageList = (props) => {
   const { selectedDisplayLanguage, selectedDisplayWords } = props;
-
+  // Take out the comments until the translator can accept the English article;
   // const germanWordsFilter = (word) => {
   //   if (selectedDisplayLanguage === "German") {
-  //     return wordsFunctions.capitaliseGermanWord(word);
+  //     return wordsListFunctions.capitaliseGermanWord(word);
   //   } else {
   //     return word;
   //   }

@@ -13,11 +13,9 @@ class WordsList extends React.Component {
     const {
       target: { value },
     } = event;
-
     const {
       words: { German, French, Spanish },
     } = this.props;
-
     if (value === "German")
       this.setState({
         selectedDisplayLanguage: value,

@@ -1,14 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import * as api from "../utils/api";
+import Loading from "./Loading";
 
 class Login extends Component {
   state = {
     email: "",
     password: "",
-    isLoading: true,
     returnToHomePage: false,
+    isLoading: true,
   };
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
+  componentDidUpdate(previousProps, previousState) {
+    const userLoggedOut = previousProps.isLoggedOut !== this.props.isLoggedOut;
+    if (userLoggedOut) {
+      this.setState({ returnToHomePage: false });
+    }
+  }
 
   handleInputLogin = (event) => {
     const { name, value } = event.target;
@@ -18,20 +30,27 @@ class Login extends Component {
   handleLogInSubmit = (event) => {
     const { email, password } = this.state;
     event.preventDefault();
-    api.getUserInfo(email, password).then((info) => {
+    this.setState({ isLoading: true });
+    api.loginUser(email, password).then((info) => {
       this.props.loggingIn(info);
     });
-    this.setState({ email: "", password: "", returnToHomePage: true });
+    this.setState({
+      email: "",
+      password: "",
+      returnToHomePage: true,
+      isLoading: false,
+    });
   };
 
   render() {
-    const { email, password, returnToHomePage } = this.state;
+    const { email, password, returnToHomePage, isLoading } = this.state;
     if (returnToHomePage)
       return (
         <Link to="/">
           <p>Go to homepage</p>
         </Link>
       );
+    if (isLoading) return <Loading />;
     return (
       <form onSubmit={this.handleLogInSubmit}>
         <label htmlFor="email">Email</label>

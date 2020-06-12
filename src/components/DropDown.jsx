@@ -2,7 +2,9 @@ import React from "react";
 
 const DropDown = (props) => {
   const handleSelectedLanguage = (event) => {
-    const { value } = event.target;
+    const {
+      target: { value },
+    } = event;
     props.changeLanguage(value);
   };
 

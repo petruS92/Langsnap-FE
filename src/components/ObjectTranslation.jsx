@@ -3,7 +3,7 @@ import DropDown from "./DropDown";
 import * as api from "../utils/api";
 import * as wordsListFunctions from "../utils/wordsListFunctions";
 
-class WordPredict extends Component {
+class ObjectTranslation extends Component {
   state = {
     englishWord: "",
     staticEnglishWord: "",
@@ -32,8 +32,8 @@ class WordPredict extends Component {
 
     const aiDetection = async () => {
       context.drawImage(video, 0, 0, 500, 500);
-      const predictions = await mobileNetModel.classify(canvas);
-      this.setState({ englishWord: predictions[0].className.split(",")[0] });
+      const classification = await mobileNetModel.classify(canvas);
+      this.setState({ englishWord: classification[0].className.split(",")[0] });
 
       setTimeout(() => {
         requestAnimationFrame(aiDetection);
@@ -45,9 +45,8 @@ class WordPredict extends Component {
   handleClick = (event) => {
     const { englishWord, translationLanguage } = this.state;
     const { token, words, addNewWordToState } = this.props;
-    console.log(words);
     api
-      .seeTranslation(englishWord, translationLanguage)
+      .fetchTranslation(englishWord, translationLanguage)
       .then((translatedWord) => {
         this.setState({
           translatedWord: translatedWord,
@@ -101,4 +100,4 @@ class WordPredict extends Component {
   }
 }
 
-export default WordPredict;
+export default ObjectTranslation;

@@ -10,9 +10,7 @@ export const selectWords = (words) => {
 export const capitaliseGermanWord = (germanTranslation) => {
   if (germanTranslation.length === 1) {
     let [germanWord] = germanTranslation;
-
     let [germanArticle, germanNoun] = germanWord.split(" ");
-
     let correctedGermanWord =
       germanArticle + " " + (germanNoun[0].toUpperCase() + germanNoun.slice(1));
     return correctedGermanWord;

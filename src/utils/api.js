@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseURL = "https://langsnap-be.herokuapp.com/api";
 
-export const seeTranslation = (englishWord, translationLanguage) => {
+export const fetchTranslation = (englishWord, translationLanguage) => {
   return axios
     .post(`${baseURL}/translate`, {
       word: englishWord,
@@ -32,6 +32,9 @@ export const updateDatabase = (
         data: { wordsList },
       } = response;
       return wordsList;
+    })
+    .catch((err) => {
+      console.dir(err);
     });
 };
 
@@ -47,7 +50,7 @@ export const createUser = (name, email, password) => {
     });
 };
 
-export const getUserInfo = (email, password) => {
+export const loginUser = (email, password) => {
   return axios
     .post(`${baseURL}/auth`, {
       email: email,
