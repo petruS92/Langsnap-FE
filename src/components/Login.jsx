@@ -44,7 +44,8 @@ class Login extends Component {
 
   render() {
     const { email, password, returnToHomePage, isLoading } = this.state;
-    if (returnToHomePage)
+    const { isLoggedIn } = this.props;
+    if (returnToHomePage && isLoggedIn)
       return (
         <Link to="/">
           <p>Go to homepage</p>
