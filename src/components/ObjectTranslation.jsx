@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DropDown from "./DropDown";
 import * as api from "../utils/api";
 import * as wordsListFunctions from "../utils/wordsListFunctions";
+import AssociatedWords from "./AssociatedWords";
 
 class ObjectTranslation extends Component {
   state = {
@@ -88,7 +89,9 @@ class ObjectTranslation extends Component {
       staticEnglishWord,
       translatedWord,
       isClicked,
+      translationLanguage,
     } = this.state;
+    const { isLoggedIn } = this.props;
     return (
       <div>
         <video id="video" autoPlay muted playsInline></video>
@@ -107,10 +110,17 @@ class ObjectTranslation extends Component {
             className="capture"
             disabled={isClicked === true}
           >
-            Capture me!
+            Translate!
           </button>
         )}
         <p className="translation">{translatedWord}</p>
+        {!isLoggedIn && <p>Sign up or log in to unlock more translations!</p>}
+        {translatedWord && (
+          <AssociatedWords
+            translatedWord={translatedWord}
+            translationLanguage={translationLanguage}
+          />
+        )}
       </div>
     );
   }

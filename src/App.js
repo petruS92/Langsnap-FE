@@ -87,6 +87,7 @@ class App extends Component {
           <ObjectTranslation
             path="/"
             addNewWordToState={this.addNewWordToState}
+            isLoggedIn={isLoggedIn}
             token={token}
             words={words}
           />

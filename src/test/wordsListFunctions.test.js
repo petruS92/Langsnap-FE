@@ -116,22 +116,6 @@ describe("Tests for the selectWords function", () => {
   });
 });
 
-// describe("Tests for the capitaliseGermanWord function", () => {
-//   test("It capitalises the German noun without changing the article and returns a string", () => {
-//     expect(wordsListFunctions.capitaliseGermanWord(["die katze"])).toBe(
-//       "die Katze"
-//     );
-//   });
-//   test("It return an empty string if mistakenly passed two words", () => {
-//     expect(
-//       wordsListFunctions.capitaliseGermanWord(["die katze", "die katze"])
-//     ).toBe("");
-//   });
-//   test("It returns an empty string if passed an empty array", () => {
-//     expect(wordsListFunctions.capitaliseGermanWord([])).toBe("");
-//   });
-// });
-
 describe("Tests for the filterDuplicatesOut function", () => {
   test("It returns false if the english word is not found in the words array and true if the word is present in the array", () => {
     const inputWords = {
