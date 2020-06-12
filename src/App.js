@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ObjectTranslation from "./components/ObjectTranslation.jsx";
+import ObjectTranslation from "./components/ObjectTranslation";
 import { Router } from "@reach/router";
 import "./App.css";
 import SignUp from "./components/SignUp";
@@ -7,9 +7,10 @@ import NavBar from "./components/NavBar";
 import setAuthToken from "./utils/authentication";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
-import MyAccount from "./components/MyAccounts.jsx";
+import MyAccount from "./components/MyAccounts";
 import * as wordsFunctions from "./utils/wordsListFunctions";
-import WordsList from "./components/WordsList.jsx";
+import WordsList from "./components/WordsList";
+import Loading from "./components/Loading";
 
 class App extends Component {
   state = {
@@ -22,10 +23,15 @@ class App extends Component {
     isLoading: true,
   };
 
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
   componentDidUpdate(previousProps, previousState) {
+    const { token } = this.state;
     const tokenReceived = this.state.token !== previousState.token;
     if (tokenReceived) {
-      setAuthToken(this.state.token);
+      setAuthToken(token);
     }
   }
 
@@ -60,7 +66,16 @@ class App extends Component {
   };
 
   render() {
-    const { isLoggedIn, words, email, name, token, isLoggedOut } = this.state;
+    const {
+      isLoggedIn,
+      words,
+      email,
+      name,
+      token,
+      isLoggedOut,
+      isLoading,
+    } = this.state;
+    if (isLoading) return <Loading />;
     return (
       <>
         <NavBar isLoggedIn={isLoggedIn} />

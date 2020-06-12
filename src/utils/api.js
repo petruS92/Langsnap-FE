@@ -1,11 +1,13 @@
 import axios from "axios";
+import * as wordsListFunctions from "../utils/wordsListFunctions";
 
 const baseURL = "https://langsnap-be.herokuapp.com/api";
 
 export const fetchTranslation = (englishWord, translationLanguage) => {
+  const correctedWord = wordsListFunctions.correctWord(englishWord);
   return axios
     .post(`${baseURL}/translate`, {
-      word: englishWord,
+      word: correctedWord,
       langpair: `en|${translationLanguage}`,
     })
     .then(({ data: { message } }) => {

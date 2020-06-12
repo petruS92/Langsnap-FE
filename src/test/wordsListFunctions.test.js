@@ -116,21 +116,21 @@ describe("Tests for the selectWords function", () => {
   });
 });
 
-describe("Tests for the capitaliseGermanWord function", () => {
-  test("It capitalises the German noun without changing the article and returns a string", () => {
-    expect(wordsListFunctions.capitaliseGermanWord(["die katze"])).toBe(
-      "die Katze"
-    );
-  });
-  test("It return an empty string if mistakenly passed two words", () => {
-    expect(
-      wordsListFunctions.capitaliseGermanWord(["die katze", "die katze"])
-    ).toBe("");
-  });
-  test("It returns an empty string if passed an empty array", () => {
-    expect(wordsListFunctions.capitaliseGermanWord([])).toBe("");
-  });
-});
+// describe("Tests for the capitaliseGermanWord function", () => {
+//   test("It capitalises the German noun without changing the article and returns a string", () => {
+//     expect(wordsListFunctions.capitaliseGermanWord(["die katze"])).toBe(
+//       "die Katze"
+//     );
+//   });
+//   test("It return an empty string if mistakenly passed two words", () => {
+//     expect(
+//       wordsListFunctions.capitaliseGermanWord(["die katze", "die katze"])
+//     ).toBe("");
+//   });
+//   test("It returns an empty string if passed an empty array", () => {
+//     expect(wordsListFunctions.capitaliseGermanWord([])).toBe("");
+//   });
+// });
 
 describe("Tests for the filterDuplicatesOut function", () => {
   test("It returns true if the english word is not found in the words array and false if the word is present in the array", () => {
@@ -163,5 +163,23 @@ describe("Tests for the filterDuplicatesOut function", () => {
     expect(wordsListFunctions.filterDuplicatesOut("cheese", inputWords)).toBe(
       false
     );
+  });
+});
+
+describe("Tests for the correctWord function", () => {
+  test("It appends the English article 'the' with a space after it to a given word", () => {
+    const input = "car";
+    const output = "the car";
+    expect(wordsListFunctions.correctWord(input)).toBe(output);
+  });
+  test("It removes spaces from within a given word", () => {
+    const input = "lab coat";
+    const output = "the labcoat";
+    expect(wordsListFunctions.correctWord(input)).toBe(output);
+  });
+  test("It removes hyphons or special characters from within a given word", () => {
+    const input = "lab-coat";
+    const output = "the labcoat";
+    expect(wordsListFunctions.correctWord(input)).toBe(output);
   });
 });

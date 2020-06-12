@@ -1,4 +1,5 @@
 import React from "react";
+import Loading from "./Loading";
 
 import LanguageList from "../components/LanguageList";
 
@@ -8,6 +9,10 @@ class WordsList extends React.Component {
     selectedDisplayWords: [],
     isLoading: true,
   };
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
 
   handleLanguageClick = (event) => {
     const {
@@ -35,8 +40,13 @@ class WordsList extends React.Component {
 
   render() {
     const { isLoggedIn } = this.props;
-    const { selectedDisplayLanguage, selectedDisplayWords } = this.state;
+    const {
+      selectedDisplayLanguage,
+      selectedDisplayWords,
+      isLoading,
+    } = this.state;
     if (!isLoggedIn) return <h4>Please log in</h4>;
+    if (isLoading) return <Loading />;
     return (
       <section>
         <h3>Words List</h3>

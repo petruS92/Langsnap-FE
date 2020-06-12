@@ -32,3 +32,7 @@ export const filterDuplicatesOut = (englishWord, words) => {
     return false;
   }
 };
+
+export const correctWord = (word) => {
+  return "the " + word.replace(/[^A-Z0-9]+/gi, "");
+};

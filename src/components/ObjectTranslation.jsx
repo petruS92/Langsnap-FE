@@ -9,6 +9,7 @@ class ObjectTranslation extends Component {
     staticEnglishWord: "",
     translatedWord: "",
     translationLanguage: "",
+    isClicked: false,
   };
 
   componentDidMount() {
@@ -45,6 +46,7 @@ class ObjectTranslation extends Component {
   handleClick = (event) => {
     const { englishWord, translationLanguage } = this.state;
     const { token, words, addNewWordToState } = this.props;
+    this.setState({ isClicked: true });
     api
       .fetchTranslation(englishWord, translationLanguage)
       .then((translatedWord) => {
@@ -52,6 +54,7 @@ class ObjectTranslation extends Component {
           translatedWord: translatedWord,
           staticEnglishWord: englishWord,
           translationLanguage: translationLanguage,
+          isClicked: false,
         });
         if (token) {
           const noDuplicates = wordsListFunctions.filterDuplicatesOut(
@@ -76,7 +79,12 @@ class ObjectTranslation extends Component {
   };
 
   render() {
-    const { englishWord, staticEnglishWord, translatedWord } = this.state;
+    const {
+      englishWord,
+      staticEnglishWord,
+      translatedWord,
+      isClicked,
+    } = this.state;
     return (
       <div>
         <video id="video" autoPlay muted playsInline></video>
@@ -90,7 +98,11 @@ class ObjectTranslation extends Component {
         <DropDown changeLanguage={this.changeLanguage} />
         <p className="static">{staticEnglishWord}</p>
         {this.state.translationLanguage !== "" && (
-          <button onClick={this.handleClick} className="capture">
+          <button
+            onClick={this.handleClick}
+            className="capture"
+            disabled={isClicked === true}
+          >
             Capture me!
           </button>
         )}
