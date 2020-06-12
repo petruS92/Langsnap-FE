@@ -18,7 +18,8 @@ class WordPredict extends Component {
   visualDetection = async () => {
     const mobileNetModel = await window.mobilenet.load();
     const video = document.getElementById("video");
-    const canvas = document.getElementById("canvas");
+    const defaultCanvas = document.getElementById("defaultCanvas");
+    const canvas = document.getElementById("canvas") || defaultCanvas;
     const context = canvas.getContext("2d");
 
     const videoStream = await navigator.mediaDevices.getUserMedia({
@@ -31,11 +32,12 @@ class WordPredict extends Component {
 
     const aiDetection = async () => {
       context.drawImage(video, 0, 0, 500, 500);
-
       const predictions = await mobileNetModel.classify(canvas);
       this.setState({ englishWord: predictions[0].className.split(",")[0] });
 
-      requestAnimationFrame(aiDetection);
+      setTimeout(() => {
+        requestAnimationFrame(aiDetection);
+      }, 500);
     };
     aiDetection();
   };
@@ -78,7 +80,6 @@ class WordPredict extends Component {
     const { englishWord, staticEnglishWord, translatedWord } = this.state;
     return (
       <div>
-        <h4>This is the WordPredict Component</h4>
         <video id="video" autoPlay muted playsInline></video>
         <canvas
           id="canvas"
