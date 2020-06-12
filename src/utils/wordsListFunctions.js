@@ -2,7 +2,7 @@ export const selectWords = (words) => {
   if (!words) {
     return [];
   }
-  let languagesObject = { German: [], French: [], Spanish: [] };
+  const languagesObject = { German: [], French: [], Spanish: [] };
   Object.entries(words).forEach(([key, pairObject]) => {
     const languages = Object.keys(pairObject);
     languagesObject[languages].push(pairObject[languages]);
@@ -31,7 +31,7 @@ export const filterDuplicatesOut = (
   englishWord,
   words
 ) => {
-  let translationWords = words[translationLanguage];
+  const translationWords = words[translationLanguage];
   let bool = false;
   for (let prop in translationWords) {
     if (`${Object.keys(translationWords[prop])}` === correctWord(englishWord)) {

@@ -36,7 +36,7 @@ class AssociatedWords extends React.Component {
     if (isLoading) return <Loading />;
     return (
       <section>
-        <div>AssociatedWords</div>
+        <h4>AssociatedWords</h4>
         <p>
           If you want to learn more about words in {translationLanguage} related
           to '{translatedWord}' in {translationLanguage} to help you form
