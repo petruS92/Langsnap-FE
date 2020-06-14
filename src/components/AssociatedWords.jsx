@@ -76,7 +76,7 @@ class AssociatedWords extends React.Component {
             Click to learn more words in {translationLanguage}
           </button>
         )}
-        {!moreAssociatedWords && (
+        {!moreAssociatedWords && associatedPairWords && (
           <ul>
             <h4>
               Now keep translating words to find more {translationLanguage}{" "}
