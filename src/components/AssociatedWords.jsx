@@ -7,7 +7,7 @@ class AssociatedWords extends React.Component {
   state = {
     isLoading: true,
     moreAssociatedWords: true,
-    translatedAssociatedWords: "",
+    associatedPairWords: [],
     staticEnglishWord: this.props.staticEnglishWord,
   };
 
@@ -25,24 +25,28 @@ class AssociatedWords extends React.Component {
   handleAssociatedWords = () => {
     const { staticEnglishWord, translationLanguage } = this.props;
     this.setState({ isLoading: true });
+    let englishAssociatedWords = "";
+    let translatedAssociatedWords = "";
     api
       .fetchAssociatedWords(staticEnglishWord)
       .then((associatedWords) => {
-        console.log(associatedWords);
-        const englishAssociatedWords = wordsListFunctions.orderAssociatedWords(
+        englishAssociatedWords = wordsListFunctions.orderAssociatedWords(
           associatedWords
         );
-
-        const translatedWords = englishAssociatedWords.map((englishWord) => {
-          return api.fetchTranslation(englishWord, translationLanguage);
-        });
-
-        return Promise.all(translatedWords);
+        return Promise.all(
+          englishAssociatedWords.map((englishWord) => {
+            return api.fetchTranslation(englishWord, translationLanguage);
+          })
+        );
       })
-      .then((translatedAssociatedWords) => {
-        console.log(translatedAssociatedWords);
+      .then((translatedWords) => {
+        translatedAssociatedWords = translatedWords;
+        const pairedWords = wordsListFunctions.pairAssociatedWords(
+          englishAssociatedWords,
+          translatedAssociatedWords
+        );
+        console.log(pairedWords);
         this.setState({
-          translatedAssociatedWords: translatedAssociatedWords,
           moreAssociatedWords: false,
           isLoading: false,
         });

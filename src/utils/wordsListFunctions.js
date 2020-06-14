@@ -34,3 +34,11 @@ export const orderAssociatedWords = (associationsList) => {
     .flat()
     .map((wordObject) => wordObject.item.toLowerCase());
 };
+
+export const pairAssociatedWords = (englishWords, translatedWords) => {
+  let newArr = [];
+  englishWords.forEach((word, index) =>
+    newArr.push({ [englishWords[index]]: translatedWords[index] })
+  );
+  return newArr;
+};

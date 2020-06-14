@@ -209,3 +209,22 @@ describe("Tests for the orderAssociatedWords function", () => {
     expect(wordsListFunctions.orderAssociatedWords(input)).toEqual(output);
   });
 });
+describe("Tests for the pairAssociatedWords function", () => {
+  test("It returns an empty array when passed an empty array", () => {
+    const input = [];
+    const output = [];
+    expect(wordsListFunctions.pairAssociatedWords(input)).toEqual(output);
+  });
+  test("It creates an array of object, with the key of the english word and the value of the translated word, from two given arrays", () => {
+    const englishWords = ["house", "car", "suit"];
+    const translatedWords = ["das Haus", "das Auto", "der Anzug"];
+    const output = [
+      { house: "das Haus" },
+      { car: "das Auto" },
+      { suit: "der Anzug" },
+    ];
+    expect(
+      wordsListFunctions.pairAssociatedWords(englishWords, translatedWords)
+    ).toEqual(output);
+  });
+});
