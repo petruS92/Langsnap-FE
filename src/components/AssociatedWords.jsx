@@ -3,9 +3,10 @@ import Loading from "./Loading";
 
 class AssociatedWords extends React.Component {
   state = {
-    translatedAssociatedWords: "",
-    moreAssociatedWords: true,
     isLoading: true,
+    moreAssociatedWords: true,
+    translatedAssociatedWords: "",
+    staticEnglishWord: this.props.staticEnglishWord,
   };
 
   componentDidMount() {
@@ -18,6 +19,15 @@ class AssociatedWords extends React.Component {
       console.log("change words");
     }
   }
+  // componentDidUpdate(previousProps, previousState) {
+  //   if (previousProps.staticEnglishWord !== this.props.staticEnglishWord) {
+  //     this.setState({
+  //       moreAssociatedWords: true,
+  //       staticEnglishWord: this.props.staticEnglishWord,
+  //     });
+  //     console.log("change words");
+  //   }
+  // }
 
   handleAssociatedWords = () => {
     /*
@@ -31,9 +41,14 @@ class AssociatedWords extends React.Component {
   };
 
   render() {
-    const { translatedWord, translationLanguage } = this.props;
+    const {
+      translatedWord,
+      translationLanguage,
+      staticEnglishWord,
+    } = this.props;
     const { moreAssociatedWords, isLoading } = this.state;
     if (isLoading) return <Loading />;
+    console.log(staticEnglishWord, translatedWord, translationLanguage);
     return (
       <section>
         <h4>AssociatedWords</h4>
@@ -48,9 +63,9 @@ class AssociatedWords extends React.Component {
           </button>
         )}
         {!moreAssociatedWords && (
-          <button>
+          <p>
             Now keep translating words to find more words{translationLanguage}
-          </button>
+          </p>
         )}
       </section>
     );

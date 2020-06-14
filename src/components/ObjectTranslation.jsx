@@ -46,7 +46,7 @@ class ObjectTranslation extends Component {
     aiDetection();
   };
 
-  handleClick = (event) => {
+  handleClickTranslate = (event) => {
     const { englishWord, translationLanguage } = this.state;
     const { token, words, addNewWordToState } = this.props;
     this.setState({ isClicked: true });
@@ -106,7 +106,7 @@ class ObjectTranslation extends Component {
         <p className="static">{staticEnglishWord}</p>
         {this.state.translationLanguage !== "" && (
           <button
-            onClick={this.handleClick}
+            onClick={this.handleClickTranslate}
             className="capture"
             disabled={isClicked === true}
           >
@@ -117,6 +117,7 @@ class ObjectTranslation extends Component {
         {!isLoggedIn && <p>Sign up or log in to unlock more translations!</p>}
         {translatedWord && (
           <AssociatedWords
+            staticEnglishWord={staticEnglishWord}
             translatedWord={translatedWord}
             translationLanguage={translationLanguage}
           />
