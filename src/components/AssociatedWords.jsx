@@ -6,8 +6,8 @@ import * as wordsListFunctions from "../utils/wordsListFunctions";
 class AssociatedWords extends React.Component {
   state = {
     isLoading: true,
-    moreAssociatedWords: true,
     associatedPairWords: [],
+    moreAssociatedWords: true,
     staticEnglishWord: this.props.staticEnglishWord,
   };
 
@@ -47,6 +47,7 @@ class AssociatedWords extends React.Component {
         );
         console.log(pairedWords);
         this.setState({
+          associatedPairWords: pairedWords,
           moreAssociatedWords: false,
           isLoading: false,
         });
@@ -59,7 +60,7 @@ class AssociatedWords extends React.Component {
       translationLanguage,
       staticEnglishWord,
     } = this.props;
-    const { moreAssociatedWords, isLoading } = this.state;
+    const { associatedPairWords, moreAssociatedWords, isLoading } = this.state;
     if (isLoading) return <Loading />;
     console.log(staticEnglishWord, translatedWord, translationLanguage);
     return (
@@ -76,9 +77,19 @@ class AssociatedWords extends React.Component {
           </button>
         )}
         {!moreAssociatedWords && (
-          <p>
-            Now keep translating words to find more {translationLanguage} words!
-          </p>
+          <ul>
+            <h4>
+              Now keep translating words to find more {translationLanguage}{" "}
+              words!
+            </h4>
+            {associatedPairWords.map((pairObject, index) => {
+              return (
+                <li key={index}>
+                  {`${Object.keys(pairObject)} - ${Object.values(pairObject)}`}
+                </li>
+              );
+            })}
+          </ul>
         )}
       </section>
     );
