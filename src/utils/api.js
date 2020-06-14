@@ -17,6 +17,31 @@ export const fetchTranslation = (englishWord, translationLanguage) => {
       console.dir(err);
     });
 };
+export const fetchAssociatedWords = (staticEnglishWord) => {
+  // console.log("fetchAssociatedWords triggered with", staticEnglishWord);
+  const associations = ["verb", "adverb", "adjective"];
+  const associatedWordsRequests = associations.map((association) => {
+    return axios
+      .post(`${baseURL}/associations`, {
+        text: staticEnglishWord,
+        lang: "en",
+        filter: association,
+      })
+      .then(
+        ({
+          data: {
+            message: { wordsArray },
+          },
+        }) => {
+          return wordsArray;
+        }
+      )
+      .catch((err) => {
+        console.dir(err);
+      });
+  });
+  return Promise.all(associatedWordsRequests);
+};
 
 export const updateDatabase = (
   translationLanguage,

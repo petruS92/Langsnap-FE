@@ -28,3 +28,9 @@ export const filterDuplicatesOut = (
   }
   return bool;
 };
+
+export const orderAssociatedWords = (associationsList) => {
+  return associationsList
+    .flat()
+    .map((wordObject) => wordObject.item.toLowerCase());
+};

@@ -170,3 +170,42 @@ describe("Tests for the correctWord function", () => {
     expect(wordsListFunctions.correctWord(input)).toBe(output);
   });
 });
+
+describe("Tests for the orderAssociatedWords function", () => {
+  test("It returns an empty array when passed an empty array", () => {
+    const input = [];
+    const output = [];
+    expect(wordsListFunctions.orderAssociatedWords(input)).toEqual(output);
+  });
+  test("It removes the associated words from the array and transforms them to lower case words", () => {
+    const input = [
+      [
+        { item: "Better", weight: 93, pos: "verb" },
+        { item: "File", weight: 44, pos: "verb" },
+        { item: "Allege", weight: 27, pos: "verb" },
+      ],
+      [
+        { item: "Admirably", weight: 53, pos: "adverb" },
+        { item: "Perfectly", weight: 33, pos: "adverb" },
+        { item: "Whenever", weight: 89, pos: "adverb" },
+      ],
+      [
+        { item: "Suited", weight: 13, pos: "adjective" },
+        { item: "Tailored", weight: 23, pos: "adjective" },
+        { item: "Fancy", weight: 58, pos: "adjective" },
+      ],
+    ];
+    const output = [
+      "better",
+      "file",
+      "allege",
+      "admirably",
+      "perfectly",
+      "whenever",
+      "suited",
+      "tailored",
+      "fancy",
+    ];
+    expect(wordsListFunctions.orderAssociatedWords(input)).toEqual(output);
+  });
+});

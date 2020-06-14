@@ -1,5 +1,6 @@
 import React from "react";
 import Loading from "./Loading";
+import * as api from "../utils/api";
 
 class AssociatedWords extends React.Component {
   state = {
@@ -16,20 +17,16 @@ class AssociatedWords extends React.Component {
   componentDidUpdate(previousProps, previousState) {
     if (previousProps.translatedWord !== this.props.translatedWord) {
       this.setState({ moreAssociatedWords: true });
-      console.log("change words");
+      console.log("changed translatedWord");
     }
   }
-  // componentDidUpdate(previousProps, previousState) {
-  //   if (previousProps.staticEnglishWord !== this.props.staticEnglishWord) {
-  //     this.setState({
-  //       moreAssociatedWords: true,
-  //       staticEnglishWord: this.props.staticEnglishWord,
-  //     });
-  //     console.log("change words");
-  //   }
-  // }
 
   handleAssociatedWords = () => {
+    const { staticEnglishWord } = this.props;
+    this.setState({ isLoading: true });
+    api.fetchAssociatedWords(staticEnglishWord).then((associatedWords) => {
+      console.log(associatedWords);
+    });
     /*
     add api calls to get the associated words
     and translate them here
@@ -37,6 +34,7 @@ class AssociatedWords extends React.Component {
     this.setState({
       translatedAssociatedWords: "",
       moreAssociatedWords: false,
+      isLoading: false,
     });
   };
 
@@ -64,7 +62,7 @@ class AssociatedWords extends React.Component {
         )}
         {!moreAssociatedWords && (
           <p>
-            Now keep translating words to find more words{translationLanguage}
+            Now keep translating words to find more {translationLanguage} words!
           </p>
         )}
       </section>
