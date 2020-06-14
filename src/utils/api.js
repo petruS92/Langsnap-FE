@@ -4,10 +4,9 @@ import * as wordsListFunctions from "../utils/wordsListFunctions";
 const baseURL = "https://langsnap-be.herokuapp.com/api";
 
 export const fetchTranslation = (englishWord, translationLanguage) => {
-  const correctedWord = wordsListFunctions.correctWord(englishWord);
   return axios
     .post(`${baseURL}/translate`, {
-      word: correctedWord,
+      word: englishWord,
       langpair: `en|${translationLanguage}`,
     })
     .then(({ data: { message } }) => {
@@ -18,7 +17,6 @@ export const fetchTranslation = (englishWord, translationLanguage) => {
     });
 };
 export const fetchAssociatedWords = (staticEnglishWord) => {
-  // console.log("fetchAssociatedWords triggered with", staticEnglishWord);
   const associations = ["verb", "adverb", "adjective"];
   const associatedWordsRequests = associations.map((association) => {
     return axios

@@ -50,8 +50,9 @@ class ObjectTranslation extends Component {
     const { englishWord, translationLanguage } = this.state;
     const { token, words, addNewWordToState } = this.props;
     this.setState({ isClicked: true });
+    const correctedWord = wordsListFunctions.correctWord(englishWord);
     api
-      .fetchTranslation(englishWord, translationLanguage)
+      .fetchTranslation(correctedWord, translationLanguage)
       .then((translatedWord) => {
         this.setState({
           translatedWord: translatedWord,
@@ -115,7 +116,7 @@ class ObjectTranslation extends Component {
         )}
         <p className="translation">{translatedWord}</p>
         {!isLoggedIn && <p>Sign up or log in to unlock more translations!</p>}
-        {translatedWord && (
+        {isLoggedIn && translatedWord && (
           <AssociatedWords
             staticEnglishWord={staticEnglishWord}
             translatedWord={translatedWord}

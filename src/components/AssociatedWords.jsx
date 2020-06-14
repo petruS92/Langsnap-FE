@@ -1,6 +1,7 @@
 import React from "react";
 import Loading from "./Loading";
 import * as api from "../utils/api";
+import * as wordsListFunctions from "../utils/wordsListFunctions";
 
 class AssociatedWords extends React.Component {
   state = {
@@ -22,20 +23,30 @@ class AssociatedWords extends React.Component {
   }
 
   handleAssociatedWords = () => {
-    const { staticEnglishWord } = this.props;
+    const { staticEnglishWord, translationLanguage } = this.props;
     this.setState({ isLoading: true });
-    api.fetchAssociatedWords(staticEnglishWord).then((associatedWords) => {
-      console.log(associatedWords);
-    });
-    /*
-    add api calls to get the associated words
-    and translate them here
-    */
-    this.setState({
-      translatedAssociatedWords: "",
-      moreAssociatedWords: false,
-      isLoading: false,
-    });
+    api
+      .fetchAssociatedWords(staticEnglishWord)
+      .then((associatedWords) => {
+        console.log(associatedWords);
+        const englishAssociatedWords = wordsListFunctions.orderAssociatedWords(
+          associatedWords
+        );
+
+        const translatedWords = englishAssociatedWords.map((englishWord) => {
+          return api.fetchTranslation(englishWord, translationLanguage);
+        });
+
+        return Promise.all(translatedWords);
+      })
+      .then((translatedAssociatedWords) => {
+        console.log(translatedAssociatedWords);
+        this.setState({
+          translatedAssociatedWords: translatedAssociatedWords,
+          moreAssociatedWords: false,
+          isLoading: false,
+        });
+      });
   };
 
   render() {
