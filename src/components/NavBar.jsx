@@ -4,6 +4,7 @@ import Logout from "./Logout";
 
 const NavBar = (props) => {
   const { isLoggedIn, loggingOut } = props;
+
   return (
     <section className="navContainer">
       <nav className="nav" role="navigation">
