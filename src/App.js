@@ -6,7 +6,6 @@ import SignUp from "./components/SignUp";
 import NavBar from "./components/NavBar";
 import setAuthToken from "./utils/authentication";
 import Login from "./components/Login";
-import Logout from "./components/Logout";
 import MyAccount from "./components/MyAccounts";
 import * as wordsFunctions from "./utils/wordsListFunctions";
 import WordsList from "./components/WordsList";
@@ -80,11 +79,9 @@ class App extends Component {
     } = this.state;
     if (isLoading) return <Loading />;
     return (
-      <>
-        <NavBar isLoggedIn={isLoggedIn} />
-        {isLoggedIn && (
-          <Logout isLoggedIn={isLoggedIn} loggingOut={this.loggingOut} />
-        )}
+      <section className="appHomeContainer">
+        <NavBar isLoggedIn={isLoggedIn} loggingOut={this.loggingOut} />
+
         <Router>
           <ObjectTranslation
             path="/"
@@ -115,7 +112,7 @@ class App extends Component {
           />
           <ErrorDisplay isLoggedIn={isLoggedIn} default />
         </Router>
-      </>
+      </section>
     );
   }
 }

@@ -10,16 +10,19 @@ const DropDown = (props) => {
 
   return (
     <>
-      <p>Language: </p>
-      <select onChange={handleSelectedLanguage}>
-        <option default value="">
-          Please select from below...
+      <select onChange={handleSelectedLanguage} className="dropDownContainer">
+        <option default value="" className="dropDownContainer">
+          Choose language...
         </option>
-        <option default value="German">
+        <option default value="German" className="dropDownContainer">
           German
         </option>
-        <option value="French">French</option>
-        <option value="Spanish">Spanish</option>
+        <option value="French" className="dropDownContainer">
+          French
+        </option>
+        <option value="Spanish" className="dropDownContainer">
+          Spanish
+        </option>
       </select>
     </>
   );

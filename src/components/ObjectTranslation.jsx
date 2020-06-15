@@ -109,30 +109,39 @@ class ObjectTranslation extends Component {
     const { isLoggedIn } = this.props;
     if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
     return (
-      <div>
-        <video id="video" autoPlay muted playsInline></video>
-        <canvas
-          id="canvas"
-          width="500"
-          height="500"
-          style={{ display: "none" }}
-        ></canvas>
-        {isLoading ? (
-          <Loading />
-        ) : (
-          <>
-            <p className="sentence">Your word is going to be {englishWord}</p>
-            <DropDown changeLanguage={this.changeLanguage} />
+      <>
+        <div className="objectTranslationContainer">
+          <div className="videoCanvas">
+            {" "}
+            <video id="video" autoPlay muted playsInline></video>
+            <canvas
+              id="canvas"
+              width="300"
+              height="300"
+              style={{ display: "none" }}
+            ></canvas>
+            <p className="sentence">{englishWord}</p>
+          </div>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <>
+              <div className="translateButtonContainer">
+                <DropDown changeLanguage={this.changeLanguage} />
+                <button
+                  onClick={this.handleClickTranslate}
+                  className="capture"
+                  disabled={isClicked === true}
+                >
+                  Translate!
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+        <section className="associatedWords">
+          <div className="wrapContainer">
             <p className="static">{staticEnglishWord}</p>
-            {this.state.translationLanguage !== "" && (
-              <button
-                onClick={this.handleClickTranslate}
-                className="capture"
-                disabled={isClicked === true}
-              >
-                Translate!
-              </button>
-            )}
             <p className="translation">{translatedWord}</p>
             {!isLoggedIn && (
               <p>Sign up or log in to unlock more translations!</p>
@@ -144,9 +153,9 @@ class ObjectTranslation extends Component {
                 translationLanguage={translationLanguage}
               />
             )}
-          </>
-        )}
-      </div>
+          </div>
+        </section>
+      </>
     );
   }
 }
