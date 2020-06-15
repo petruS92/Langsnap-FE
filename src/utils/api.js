@@ -11,9 +11,6 @@ export const fetchTranslation = (englishWord, translationLanguage) => {
     })
     .then(({ data: { message } }) => {
       return message;
-    })
-    .catch((err) => {
-      console.dir(err);
     });
 };
 export const fetchAssociatedWords = (staticEnglishWord) => {
@@ -33,12 +30,18 @@ export const fetchAssociatedWords = (staticEnglishWord) => {
         }) => {
           return wordsArray;
         }
-      )
-      .catch((err) => {
-        console.dir(err);
-      });
+      );
   });
   return Promise.all(associatedWordsRequests);
+};
+
+export const fetchGameWords = (body) => {
+  return axios
+    .post("https://langsnap-be.herokuapp.com/api/associations/game", body)
+    .then(({ data: { message } }) => {
+      const { wordsArray } = message;
+      return wordsArray;
+    });
 };
 
 export const updateDatabase = (
@@ -58,22 +61,15 @@ export const updateDatabase = (
         data: { wordsList },
       } = response;
       return wordsList;
-    })
-    .catch((err) => {
-      console.dir(err);
     });
 };
 
 export const createUser = (name, email, password) => {
-  return axios
-    .post(`${baseURL}/user`, {
-      name: name,
-      email: email,
-      password: password,
-    })
-    .catch((err) => {
-      console.dir(err);
-    });
+  return axios.post(`${baseURL}/user`, {
+    name: name,
+    email: email,
+    password: password,
+  });
 };
 
 export const loginUser = (email, password) => {
@@ -84,8 +80,5 @@ export const loginUser = (email, password) => {
     })
     .then(({ data }) => {
       return data;
-    })
-    .catch((err) => {
-      console.dir(err);
     });
 };

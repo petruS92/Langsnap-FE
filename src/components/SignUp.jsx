@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import SignUpThankYou from "./SignUpThankYou";
 import * as api from "../utils/api";
 import Loading from "./Loading";
+import ErrorDisplay from "./ErrorDisplay";
+import { Link } from "@reach/router";
 
 class SignUp extends Component {
   state = {
@@ -9,12 +11,17 @@ class SignUp extends Component {
     email: "",
     password: "",
     userDidSignUp: false,
+    errorMessage: "",
     isLoading: true,
   };
 
   componentDidMount() {
     this.setState({ isLoading: false });
   }
+
+  handleReSignUp = () => {
+    this.setState({ errorMessage: "" });
+  };
 
   handleInputSignUpForm = (event) => {
     const { name, value } = event.target;
@@ -24,12 +31,41 @@ class SignUp extends Component {
   handleSignUpSubmit = (event) => {
     event.preventDefault();
     const { name, email, password } = this.state;
-    api.createUser(name, email, password);
-    this.setState({ name: "", email: "", password: "", userDidSignUp: true });
+    api
+      .createUser(name, email, password)
+      .then(() => {
+        this.setState({
+          name: "",
+          email: "",
+          password: "",
+          userDidSignUp: true,
+        });
+      })
+      .catch((error) => {
+        const {
+          response: {
+            data: { message },
+          },
+        } = error;
+        if (message === "The email address is badly formatted.") {
+          this.setState({ errorMessage: message });
+        } else {
+          this.setState({ errorMessage: message });
+        }
+      });
   };
 
   render() {
-    const { userDidSignUp, isLoading } = this.state;
+    const { userDidSignUp, isLoading, errorMessage } = this.state;
+    if (errorMessage)
+      return (
+        <>
+          <ErrorDisplay errorMessage={errorMessage} />
+          <Link to="/signup">
+            <button onClick={this.handleReSignUp}>Try again</button>
+          </Link>
+        </>
+      );
     if (isLoading) return <Loading />;
     if (userDidSignUp)
       return (

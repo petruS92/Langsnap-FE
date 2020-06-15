@@ -15,27 +15,32 @@ class WordsList extends React.Component {
   }
 
   handleLanguageClick = (event) => {
+    this.setState({ isLoading: true });
     const {
       target: { value },
     } = event;
     const {
       words: { German, French, Spanish },
     } = this.props;
-    if (value === "German")
+    if (value === "German") {
       this.setState({
         selectedDisplayLanguage: value,
         selectedDisplayWords: German,
+        isLoading: false,
       });
-    else if (value === "French")
+    } else if (value === "French") {
       this.setState({
         selectedDisplayLanguage: value,
         selectedDisplayWords: French,
+        isLoading: false,
       });
-    else if (value === "Spanish")
+    } else if (value === "Spanish") {
       this.setState({
         selectedDisplayLanguage: value,
         selectedDisplayWords: Spanish,
+        isLoading: false,
       });
+    }
   };
 
   render() {
@@ -47,7 +52,6 @@ class WordsList extends React.Component {
     } = this.state;
     if (!isLoggedIn) return <h4>Please log in</h4>;
     if (isLoading) return <Loading />;
-    // const noWords = German.length === 0;
     return (
       <section>
         <h3>Words List</h3>

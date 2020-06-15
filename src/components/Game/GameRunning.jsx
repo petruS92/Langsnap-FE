@@ -1,4 +1,5 @@
 import React from "react";
+import Loading from "../Loading";
 
 export default function GameRunning({
   isLoading,
@@ -9,12 +10,11 @@ export default function GameRunning({
   openAlert,
   alertMessage,
 }) {
-  const Loading = <>Loading...</>;
   return (
     <div>
       <p>{transWord}</p>
       {isLoading ? (
-        Loading
+        <Loading />
       ) : (
         <>
           {openAlert && <h3>{alertMessage}</h3>}

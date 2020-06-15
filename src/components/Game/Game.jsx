@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import axios from "axios";
+
 import GameStartComponent from "./GameStartComponent";
 import GameRunning from "./GameRunning";
+import * as api from "../../utils/api";
+import ErrorDisplay from "../ErrorDisplay";
 
 export default class Game extends Component {
   state = {
     language: "German",
     associatedWords: [],
     word: "",
+    errorMessage: "",
     transWord: "",
     wordIndex: null,
     isLoading: false,
@@ -16,50 +19,13 @@ export default class Game extends Component {
     alertMessage: null,
   };
 
-  render() {
-    const { name } = this.props;
-    const {
-      word,
-      associatedWords,
-      transWord,
-      isLoading,
-      isStarted,
-      language,
-      openAlert,
-      alertMessage,
-    } = this.state;
-    const { words } = this.props;
-
-    const enoughWordsToPlay = words[language].length >= 2;
-
-    return (
-      <div>
-        {isStarted ? (
-          <GameRunning
-            isLoading={isLoading}
-            transWord={transWord}
-            associatedWords={associatedWords}
-            word={word}
-            playGame={this.playGame}
-            resetIsStarted={this.changeIsStarted}
-            openAlert={openAlert}
-            alertMessage={alertMessage}
-          />
-        ) : (
-          <GameStartComponent
-            name={name}
-            language={language}
-            handleSelectedLanguage={this.handleSelectedLanguage}
-            handleStart={this.changeIsStarted}
-            enoughWordsToPlay={enoughWordsToPlay}
-          />
-        )}
-      </div>
-    );
-  }
-
   componentDidMount = () => {
-    this.getWord();
+    const { words } = this.props;
+    if (words) {
+      this.getWord();
+    } else {
+      this.setState({ isLoading: true });
+    }
   };
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -127,16 +93,26 @@ export default class Game extends Component {
       text: word,
       lang: "en",
     };
-    axios
-      .post("https://langsnap-be.herokuapp.com/api/associations/game", body)
-      .then(({ data: { message } }) => {
-        const { wordsArray } = message;
+    api
+      .fetchGameWords(body)
+      .then((wordsArray) => {
+        console.log(wordsArray);
         this.setState((currentState) => {
           return {
             associatedWords: [...wordsArray],
             isLoading: !currentState.isLoading,
           };
         });
+      })
+      .catch((error) => {
+        const {
+          response: {
+            data: {
+              availableRoutes: { message },
+            },
+          },
+        } = error;
+        this.setState({ errorMessage: message });
       });
   };
 
@@ -165,6 +141,49 @@ export default class Game extends Component {
       return { isStarted: !currentState.isStarted };
     });
   };
+
+  render() {
+    const { name } = this.props;
+    const {
+      word,
+      associatedWords,
+      transWord,
+      isLoading,
+      isStarted,
+      language,
+      openAlert,
+      alertMessage,
+      errorMessage,
+    } = this.state;
+    const { words, isLoggedIn } = this.props;
+    if (isLoggedIn === false) return <h4>Please login</h4>;
+    const enoughWordsToPlay = words[language].length >= 2;
+    if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
+    return (
+      <div>
+        {isStarted ? (
+          <GameRunning
+            isLoading={isLoading}
+            transWord={transWord}
+            associatedWords={associatedWords}
+            word={word}
+            playGame={this.playGame}
+            resetIsStarted={this.changeIsStarted}
+            openAlert={openAlert}
+            alertMessage={alertMessage}
+          />
+        ) : (
+          <GameStartComponent
+            name={name}
+            language={language}
+            handleSelectedLanguage={this.handleSelectedLanguage}
+            handleStart={this.changeIsStarted}
+            enoughWordsToPlay={enoughWordsToPlay}
+          />
+        )}
+      </div>
+    );
+  }
 }
 
 // displaying same word twice..

@@ -2,10 +2,12 @@ import React from "react";
 import Loading from "./Loading";
 import * as api from "../utils/api";
 import * as wordsListFunctions from "../utils/wordsListFunctions";
+import ErrorDisplay from "./ErrorDisplay";
 
 class AssociatedWords extends React.Component {
   state = {
     isLoading: true,
+    errorMessage: "",
     associatedPairWords: [],
     moreAssociatedWords: true,
     staticEnglishWord: this.props.staticEnglishWord,
@@ -51,6 +53,16 @@ class AssociatedWords extends React.Component {
           moreAssociatedWords: false,
           isLoading: false,
         });
+      })
+      .catch((error) => {
+        const {
+          response: {
+            data: {
+              availableRoutes: { message },
+            },
+          },
+        } = error;
+        this.setState({ errorMessage: message });
       });
   };
 
@@ -60,9 +72,14 @@ class AssociatedWords extends React.Component {
       translationLanguage,
       staticEnglishWord,
     } = this.props;
-    const { associatedPairWords, moreAssociatedWords, isLoading } = this.state;
-    if (isLoading) return <Loading />;
-    console.log(staticEnglishWord, translatedWord, translationLanguage);
+    const {
+      associatedPairWords,
+      moreAssociatedWords,
+      isLoading,
+      errorMessage,
+    } = this.state;
+    if (isLoading && !errorMessage) return <Loading />;
+    if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
     return (
       <section>
         <h4>AssociatedWords</h4>

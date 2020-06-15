@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import * as api from "../utils/api";
 import Loading from "./Loading";
+import ErrorDisplay from "./ErrorDisplay";
 
 class Login extends Component {
   state = {
     email: "",
+    errorMessage: "",
     password: "",
     returnToHomePage: false,
     isLoading: true,
@@ -22,6 +24,10 @@ class Login extends Component {
     }
   }
 
+  handleClickReLogin = () => {
+    this.setState({ errorMessage: "" });
+  };
+
   handleInputLogin = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -31,9 +37,19 @@ class Login extends Component {
     const { email, password } = this.state;
     event.preventDefault();
     this.setState({ isLoading: true });
-    api.loginUser(email, password).then((info) => {
-      this.props.loggingIn(info);
-    });
+    api
+      .loginUser(email, password)
+      .then((info) => {
+        this.props.loggingIn(info);
+      })
+      .catch((error) => {
+        const {
+          response: {
+            data: { message },
+          },
+        } = error;
+        this.setState({ errorMessage: message });
+      });
     this.setState({
       email: "",
       password: "",
@@ -43,15 +59,28 @@ class Login extends Component {
   };
 
   render() {
-    const { email, password, returnToHomePage, isLoading } = this.state;
+    const {
+      email,
+      password,
+      returnToHomePage,
+      isLoading,
+      errorMessage,
+    } = this.state;
     const { isLoggedIn } = this.props;
+    if (isLoading) return <Loading />;
+    if (errorMessage)
+      return (
+        <section>
+          <ErrorDisplay errorMessage={errorMessage} />
+          <button onClick={this.handleClickReLogin}>Login again</button>
+        </section>
+      );
     if (returnToHomePage && isLoggedIn)
       return (
         <Link to="/">
           <p>Go to homepage</p>
         </Link>
       );
-    if (isLoading) return <Loading />;
     return (
       <form onSubmit={this.handleLogInSubmit}>
         <label htmlFor="email">Email</label>

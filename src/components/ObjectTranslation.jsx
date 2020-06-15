@@ -3,18 +3,23 @@ import DropDown from "./DropDown";
 import * as api from "../utils/api";
 import * as wordsListFunctions from "../utils/wordsListFunctions";
 import AssociatedWords from "./AssociatedWords";
+import Loading from "./Loading";
+import ErrorDisplay from "./ErrorDisplay";
 
 class ObjectTranslation extends Component {
   state = {
+    errorMessage: "",
     englishWord: "",
     staticEnglishWord: "",
     translatedWord: "",
     translationLanguage: "",
     isClicked: false,
+    isLoading: true,
   };
 
-  componentDidMount() {
-    this.visualDetection();
+  async componentDidMount() {
+    await this.visualDetection();
+    this.setState({ isLoading: false });
   }
 
   visualDetection = async () => {
@@ -42,7 +47,6 @@ class ObjectTranslation extends Component {
         requestAnimationFrame(aiDetection);
       }, 500);
     };
-
     aiDetection();
   };
 
@@ -75,6 +79,14 @@ class ObjectTranslation extends Component {
               });
           }
         }
+      })
+      .catch((error) => {
+        const {
+          response: {
+            data: { message },
+          },
+        } = error;
+        this.setState({ errorMessage: message });
       });
   };
 
@@ -91,8 +103,11 @@ class ObjectTranslation extends Component {
       translatedWord,
       isClicked,
       translationLanguage,
+      isLoading,
+      errorMessage,
     } = this.state;
     const { isLoggedIn } = this.props;
+    if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
     return (
       <div>
         <video id="video" autoPlay muted playsInline></video>
@@ -102,26 +117,34 @@ class ObjectTranslation extends Component {
           height="500"
           style={{ display: "none" }}
         ></canvas>
-        <p className="sentence">Your word is going to be {englishWord}</p>
-        <DropDown changeLanguage={this.changeLanguage} />
-        <p className="static">{staticEnglishWord}</p>
-        {this.state.translationLanguage !== "" && (
-          <button
-            onClick={this.handleClickTranslate}
-            className="capture"
-            disabled={isClicked === true}
-          >
-            Translate!
-          </button>
-        )}
-        <p className="translation">{translatedWord}</p>
-        {!isLoggedIn && <p>Sign up or log in to unlock more translations!</p>}
-        {isLoggedIn && translatedWord && (
-          <AssociatedWords
-            staticEnglishWord={staticEnglishWord}
-            translatedWord={translatedWord}
-            translationLanguage={translationLanguage}
-          />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <p className="sentence">Your word is going to be {englishWord}</p>
+            <DropDown changeLanguage={this.changeLanguage} />
+            <p className="static">{staticEnglishWord}</p>
+            {this.state.translationLanguage !== "" && (
+              <button
+                onClick={this.handleClickTranslate}
+                className="capture"
+                disabled={isClicked === true}
+              >
+                Translate!
+              </button>
+            )}
+            <p className="translation">{translatedWord}</p>
+            {!isLoggedIn && (
+              <p>Sign up or log in to unlock more translations!</p>
+            )}
+            {isLoggedIn && translatedWord && (
+              <AssociatedWords
+                staticEnglishWord={staticEnglishWord}
+                translatedWord={translatedWord}
+                translationLanguage={translationLanguage}
+              />
+            )}
+          </>
         )}
       </div>
     );
