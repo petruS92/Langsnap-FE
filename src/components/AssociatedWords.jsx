@@ -67,11 +67,7 @@ class AssociatedWords extends React.Component {
   };
 
   render() {
-    const {
-      translatedWord,
-      translationLanguage,
-      staticEnglishWord,
-    } = this.props;
+    const { translatedWord, translationLanguage } = this.props;
     const {
       associatedPairWords,
       moreAssociatedWords,
