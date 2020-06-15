@@ -11,6 +11,7 @@ import MyAccount from "./components/MyAccounts";
 import * as wordsFunctions from "./utils/wordsListFunctions";
 import WordsList from "./components/WordsList";
 import Loading from "./components/Loading";
+import Game from "./components/Game/Game";
 
 class App extends Component {
   state = {
@@ -105,6 +106,7 @@ class App extends Component {
             token={token}
           />
           <WordsList path="/wordslist" words={words} isLoggedIn={isLoggedIn} />
+          <Game path="/game" words={words} name={name} />
         </Router>
       </>
     );
