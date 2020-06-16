@@ -75,13 +75,21 @@ export default class NavBar extends Component {
           )}
 
           {isLoggedIn && (
-            <Link to="/wordslist" className="navBarItem">
+            <Link
+              to="/wordslist"
+              className="navBarItem"
+              onClick={() => this.closeMenu()}
+            >
               My Words
             </Link>
           )}
 
           {isLoggedIn && (
-            <Link to="/login" onClick={handleLogout}>
+            <Link
+              to="/login"
+              onClick={handleLogout}
+              onClick={() => this.closeMenu()}
+            >
               Log Out
             </Link>
           )}
