@@ -1,10 +1,13 @@
-import React from "react";
+// import React from "react";
+// import { Link } from "@reach/router";
 
-const Logout = (props) => {
-  const handleLogout = (event) => {
-    props.loggingOut();
-  };
-  return <button onClick={handleLogout}>Log Out</button>;
-};
+// const Logout = (props) => {
+//   const handleLogout = (event) => {
+//     props.loggingOut();
+//   };
+//   return (
 
-export default Logout;
+//   );
+// };
+
+// export default Logout;

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import GameStartComponent from "./GameStartComponent";
 import GameRunning from "./GameRunning";
 import * as api from "../../utils/api";
