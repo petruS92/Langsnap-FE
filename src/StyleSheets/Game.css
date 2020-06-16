@@ -67,6 +67,7 @@
 /* ---------------------------------- */
 
 .gameLabelContainer {
+  -webkit-appearance: none;
   min-width: 250;
   background-color: var(--main-bg-color);
   border-radius: 2rem;
@@ -79,6 +80,7 @@
 }
 
 .gameLabel {
+  -webkit-appearance: none;
   border: none;
   background-color: var(--main-bg-color);
   color: var(--secondary-bg-color);
