@@ -11,17 +11,21 @@ class WordsList extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({ isLoading: false });
+    this.setState({
+      isLoading: false,
+    });
   }
 
-  handleLanguageClick = (event) => {
+  handleLanguageChange = (event) => {
     this.setState({ isLoading: true });
     const {
       target: { value },
     } = event;
+
     const {
       words: { German, French, Spanish },
     } = this.props;
+
     if (value === "German") {
       this.setState({
         selectedDisplayLanguage: value,
@@ -53,34 +57,32 @@ class WordsList extends React.Component {
     if (!isLoggedIn) return <h4>Please log in</h4>;
     if (isLoading) return <Loading />;
     return (
-      <section>
-        <h3>Words List</h3>
-        <button
-          onClick={this.handleLanguageClick}
-          value="German"
-          disabled={!words}
-        >
-          German
-        </button>
-        <button
-          onClick={this.handleLanguageClick}
-          value="French"
-          disabled={!words}
-        >
-          French
-        </button>
-        <button
-          onClick={this.handleLanguageClick}
-          value="Spanish"
-          disabled={!words}
-        >
-          Spanish
-        </button>
-        <LanguageList
-          selectedDisplayLanguage={selectedDisplayLanguage}
-          selectedDisplayWords={selectedDisplayWords}
-        />
-      </section>
+      <div className="pageContainer">
+        <div className="titleBackground">
+          <div className="titleContainer">
+            <h3 className="titleHeader">Words</h3>
+          </div>
+        </div>
+        <div className="contentBackground">
+          <section className="contentContainer">
+            <div className="gameLabelContainer">
+              <select
+                onChange={this.handleLanguageChange}
+                className="gameLabel"
+                default={"German"}
+              >
+                {/* <option>Choose language ...</option> */}
+                <option default value="German">
+                  German
+                </option>
+                <option value="French">French</option>
+                <option value="Spanish">Spanish</option>
+              </select>
+            </div>
+            <LanguageList selectedDisplayWords={selectedDisplayWords} />
+          </section>
+        </div>
+      </div>
     );
   }
 }

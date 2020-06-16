@@ -1,17 +1,16 @@
 import React from "react";
 
 const LanguageList = (props) => {
-  const { selectedDisplayLanguage, selectedDisplayWords } = props;
+  const { selectedDisplayWords } = props;
 
   return (
     <div>
-      <h4>{selectedDisplayLanguage}</h4>
-      <ul>
+      <ul className="langList">
         {selectedDisplayWords.map((wordObject, index) => {
           return (
-            <li key={index}>{`${Object.keys(wordObject)} - ${Object.values(
+            <li key={index} className="langListItem">{`${Object.keys(
               wordObject
-            )}`}</li>
+            )} - ${Object.values(wordObject)}`}</li>
           );
         })}
       </ul>
