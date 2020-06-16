@@ -1,0 +1,16 @@
+.accountName {
+  font-size: 8vw;
+  text-align: center;
+  margin-block-start: 0.7em;
+  margin-block-end: 0.3em;
+}
+
+.accountEmail {
+  font-size: 5vw;
+  text-align: center;
+}
+
+.placeholderChart {
+  text-align: center;
+  font-size: 8vw;
+}
