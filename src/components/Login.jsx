@@ -43,6 +43,7 @@ class Login extends Component {
         this.props.loggingIn(info);
       })
       .catch((error) => {
+        console.dir(error);
         const {
           response: {
             data: { message },
@@ -68,13 +69,7 @@ class Login extends Component {
     } = this.state;
     const { isLoggedIn } = this.props;
     if (isLoading) return <Loading />;
-    if (errorMessage)
-      return (
-        <section>
-          <ErrorDisplay errorMessage={errorMessage} />
-          <button onClick={this.handleClickReLogin}>Login again</button>
-        </section>
-      );
+
     if (returnToHomePage && isLoggedIn)
       return (
         <Link to="/">
@@ -85,9 +80,8 @@ class Login extends Component {
       <div className="loginBackground">
         <div className="loginContainer">
           <h3 className="formTitle">langsnap</h3>
-
+          {errorMessage && <ErrorDisplay errorMessage={errorMessage} />}
           <form className="loginForm">
-            {/* /////// */}
             <div className="formInputContainer">
               <label htmlFor="email"></label>
               <p className="formLabel">email</p>

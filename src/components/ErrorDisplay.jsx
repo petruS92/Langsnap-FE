@@ -5,7 +5,11 @@ const ErrorDisplay = (props) => {
     ? `${props.errorMessage}`
     : `${"The requested resource or path was not found."}`;
 
-  return <span>{error}</span>;
+  return (
+    <div className="errorDisplay">
+      <p>{error}</p>
+    </div>
+  );
 };
 
 export default ErrorDisplay;

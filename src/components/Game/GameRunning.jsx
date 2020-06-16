@@ -1,5 +1,6 @@
 import React from "react";
 import Loading from "../Loading";
+import "../../StyleSheets/Game.css";
 
 export default function GameRunning({
   isLoading,
@@ -17,7 +18,7 @@ export default function GameRunning({
         <Loading />
       ) : (
         <>
-          {openAlert && <h3>{alertMessage}</h3>}
+          {openAlert && <h3 className="alertPrimary">{alertMessage}</h3>}
           {associatedWords.map((wordObj) => {
             return (
               <div key={wordObj}>

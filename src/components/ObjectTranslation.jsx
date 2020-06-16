@@ -42,10 +42,9 @@ class ObjectTranslation extends Component {
       this.setState({
         englishWord: classification[0].className.split(",")[0],
       });
-
       setTimeout(() => {
         requestAnimationFrame(aiDetection);
-      }, 500);
+      }, 750);
     };
     aiDetection();
   };

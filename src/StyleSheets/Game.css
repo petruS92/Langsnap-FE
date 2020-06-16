@@ -1,0 +1,133 @@
+/* Login / Signup */
+
+:root {
+  --main-bg-color: rgb(57, 57, 57);
+  --secondary-bg-color: rgb(231, 228, 136);
+  --third-bg-color: rgb(246, 246, 246);
+}
+
+/* Reusable -------- */
+
+.gamePageContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.titleBackground {
+  background-color: var(--secondary-bg-color);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  min-height: 12vh;
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.titleContainer {
+  background-color: var(--third-bg-color);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  min-height: 10vh;
+}
+
+.titleHeader {
+  font-weight: 500;
+  font-size: 3rem;
+  color: var(--main-bg-color);
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  text-align: center;
+  padding-top: 0vh;
+}
+
+.contentBackground {
+  flex: 4;
+  margin: 0.5rem;
+  padding: 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+  background-color: var(--secondary-bg-color);
+}
+
+.contentContainer {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: var(--third-bg-color);
+  min-height: 90vh;
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+}
+
+/* ---------------------------------- */
+
+.gameLabelContainer {
+  min-width: 250;
+  background-color: var(--main-bg-color);
+  border-radius: 2rem;
+  height: 40px;
+  color: var(--secondary-bg-color);
+  text-align: center;
+  font-size: 27px;
+  margin: 1rem;
+  font-family: "Radley", serif;
+}
+
+.gameLabel {
+  border: none;
+  background-color: var(--main-bg-color);
+  color: var(--secondary-bg-color);
+  font-family: "Radley", serif;
+  font-size: 27px;
+}
+
+.gameInputContainer {
+  display: flex;
+  justify-content: center;
+  font-family: "Radley", serif;
+  color: var(--main-bg-color);
+  font-size: 25px;
+  flex: 1;
+  border-radius: 2rem;
+  border: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-top: 2rem;
+}
+
+.startButtonContainer {
+  display: flex;
+}
+
+.startButton {
+  min-width: 250px;
+  background-color: var(--secondary-bg-color);
+  border-radius: 2rem;
+  height: 40px;
+  color: var(--main-bg-color);
+  text-align: center;
+  font-size: 27px;
+  font-family: "Radley", serif;
+  margin: auto;
+  margin-top: 8px;
+  border: none;
+}
+
+.startButton:disabled {
+  opacity: 0.5;
+}
+
+@media only screen and (max-height: 600px) {
+  .formTitle {
+    font-size: 50px;
+    padding-top: 7vh;
+    padding-bottom: 0vh;
+  }
+}
