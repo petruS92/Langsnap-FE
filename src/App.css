@@ -138,6 +138,56 @@ video {
   border-radius: 2rem;
 }
 
+/* Login / Signup */
+
+.loginBackground {
+  background-color: rgb(231, 228, 136);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  min-height: 80vh;
+}
+
+.loginContainer {
+  background-color: rgb(246, 246, 246);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  min-height: 70vh;
+}
+
+.formTitle {
+  font-weight: 500;
+  font-size: 60px;
+  color: rgb(57, 57, 57);
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  text-align: center;
+  padding-top: 90px;
+  padding-bottom: 30px;
+}
+
+.loginForm {
+  background-color: rgb(231, 228, 136);
+  border-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  height: 220px;
+  width: 250px;
+}
+
+.formLabel {
+  width: 250;
+  background-color: rgb(57, 57, 57);
+  border-radius: 2rem;
+  height: 40px;
+  color: rgb(231, 228, 136);
+  text-align: center;
+  font-size: 27px;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
