@@ -1,0 +1,105 @@
+/* Login / Signup */
+
+:root {
+  --main-bg-color: rgb(57, 57, 57);
+  --secondary-bg-color: rgb(231, 228, 136);
+  --third-bg-color: rgb(246, 246, 246);
+}
+
+.loginBackground {
+  background-color: var(--secondary-bg-color);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  min-height: 80vh;
+}
+
+.loginContainer {
+  background-color: var(--third-bg-color);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  min-height: 70vh;
+}
+
+.formTitle {
+  font-weight: 500;
+  font-size: 60px;
+  color: var(--main-bg-color);
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  text-align: center;
+  padding-top: 9vh;
+  padding-bottom: 2vh;
+}
+
+.loginForm {
+  background-color: var(--secondary-bg-color);
+  border-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  height: 220px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.01rem;
+}
+
+.formLabel {
+  width: 250;
+  background-color: var(--main-bg-color);
+  border-radius: 2rem;
+  height: 40px;
+  color: var(--secondary-bg-color);
+  text-align: center;
+  font-size: 27px;
+  margin: 0;
+}
+
+.formInputContainer {
+  width: 250px;
+  height: 100px;
+  margin: 0;
+  border: none;
+  background-color: var(--third-bg-color);
+  border-radius: 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.formInput {
+  text-align: center;
+  background-color: var(--third-bg-color);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.35rem;
+  margin: 0.5rem;
+}
+
+.loginLabel {
+  display: flex;
+}
+
+.loginButton {
+  min-width: 250px;
+  background-color: var(--main-bg-color);
+  border-radius: 2rem;
+  height: 40px;
+  color: var(--secondary-bg-color);
+  text-align: center;
+  font-size: 27px;
+  font-family: "Radley", serif;
+  margin: auto;
+  margin-top: 20px;
+}
+
+@media only screen and (max-height: 600px) {
+  .formTitle {
+    font-size: 50px;
+    padding-top: 7vh;
+    padding-bottom: 0vh;
+  }
+}

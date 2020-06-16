@@ -85,32 +85,49 @@ class Login extends Component {
       <div className="loginBackground">
         <div className="loginContainer">
           <h3 className="formTitle">langsnap</h3>
-          <form onSubmit={this.handleLogInSubmit} className="loginForm">
-            <label htmlFor="email"></label>
-            <p className="formLabel">email</p>
-            <input
-              type="text"
-              name="email"
-              id="signup-email"
-              value={email}
-              placeholder="Enter email..."
-              onChange={this.handleInputLogin}
-              required
-            />
-            <label htmlFor="password"></label>
-            <p className="formLabel">password</p>
-            <input
-              type="password"
-              name="password"
-              id="signup-password"
-              value={password}
-              placeholder="Create a password"
-              onChange={this.handleInputLogin}
-              required
-            />
-            <button type="submit">Log in</button>
+
+          <form className="loginForm">
+            {/* /////// */}
+            <div className="formInputContainer">
+              <label htmlFor="email"></label>
+              <p className="formLabel">email</p>
+              <input
+                type="text"
+                name="email"
+                id="signup-email"
+                value={email}
+                placeholder="Enter email..."
+                onChange={this.handleInputLogin}
+                className="formInput"
+                required
+              />
+            </div>
+
+            <div className="formInputContainer">
+              <label htmlFor="password"></label>
+              <p className="formLabel">password</p>
+              <input
+                type="password"
+                name="password"
+                id="signup-password"
+                value={password}
+                placeholder="Create a password"
+                onChange={this.handleInputLogin}
+                className="formInput"
+                required
+              />
+            </div>
           </form>
         </div>
+        <label className="loginLabel">
+          <button
+            type="submit"
+            onClick={this.handleLogInSubmit}
+            className="loginButton"
+          >
+            Log in
+          </button>
+        </label>
       </div>
     );
   }
