@@ -91,7 +91,7 @@ class App extends Component {
             token={token}
             words={words}
           />
-          <SignUp path="/signup" />
+          <SignUp path="/signup" loggingIn={this.loggingIn} />
           <Login
             path="/login"
             isLoggedIn={isLoggedIn}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import * as api from "../utils/api";
 import Loading from "./Loading";
 import ErrorDisplay from "./ErrorDisplay";
@@ -57,6 +57,7 @@ class Login extends Component {
       returnToHomePage: true,
       isLoading: false,
     });
+    navigate(`/`);
   };
 
   render() {

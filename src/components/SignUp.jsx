@@ -3,7 +3,7 @@ import SignUpThankYou from "./SignUpThankYou";
 import * as api from "../utils/api";
 import Loading from "./Loading";
 import ErrorDisplay from "./ErrorDisplay";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 
 class SignUp extends Component {
   state = {
@@ -33,13 +33,9 @@ class SignUp extends Component {
     const { name, email, password } = this.state;
     api
       .createUser(name, email, password)
-      .then(() => {
-        this.setState({
-          name: "",
-          email: "",
-          password: "",
-          userDidSignUp: true,
-        });
+      .then((info) => {
+        this.props.loggingIn(info);
+        navigate(`/`);
       })
       .catch((error) => {
         const {
@@ -59,46 +55,70 @@ class SignUp extends Component {
     const { userDidSignUp, isLoading, errorMessage } = this.state;
     if (isLoading) return <Loading />;
     return (
-      <section>
-        <h5>Sign up!</h5>
-        {errorMessage && <ErrorDisplay errorMessage={errorMessage} />}
-        <p>
-          Register your details to keep a track of your progress and gain access
-          to our exciting game!
-        </p>
-        <form onSubmit={this.handleSignUpSubmit}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            id="signup-name"
-            value={this.state.name}
-            placeholder="Enter your name"
-            onChange={this.handleInputSignUpForm}
-            required
-          />
-          <label htmlFor="email">E-mail</label>
-          <input
-            type="text"
-            name="email"
-            id="signup-email"
-            value={this.state.email}
-            placeholder="Enter your email"
-            onChange={this.handleInputSignUpForm}
-            required
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="signup-password"
-            value={this.state.password}
-            placeholder="Create a password"
-            onChange={this.handleInputSignUpForm}
-            required
-          />
-          <button type="submit">Register</button>
-        </form>
+      <section className="loginBackground">
+        <div className="loginContainer">
+          <h3 className="signUpFormTitle">langsnap</h3>
+
+          <form className="signUpForm">
+            <div className="formInputContainer">
+              <label htmlFor="name"></label>
+              <p className="formLabel">name</p>
+              <input
+                type="text"
+                name="name"
+                id="signup-name"
+                value={this.state.name}
+                placeholder="Enter your name"
+                onChange={this.handleInputSignUpForm}
+                className="formInput"
+                required
+              />
+            </div>
+
+            <div className="formInputContainer">
+              <label htmlFor="email"></label>
+              <p className="formLabel">email</p>
+              <input
+                type="text"
+                name="email"
+                id="signup-email"
+                value={this.state.email}
+                placeholder="Enter your email"
+                onChange={this.handleInputSignUpForm}
+                className="formInput"
+                required
+              />
+            </div>
+
+            <div className="formInputContainer">
+              <label htmlFor="password"></label>
+              <p className="formLabel">password</p>
+              <input
+                type="password"
+                name="password"
+                id="signup-password"
+                value={this.state.password}
+                placeholder="Create a password"
+                onChange={this.handleInputSignUpForm}
+                className="formInput"
+                required
+              />
+            </div>
+          </form>
+          <p className="loginNotes">
+            Sign up to keep track of your progress and gain access to extra
+            features
+          </p>
+        </div>
+        <label className="loginLabel">
+          <button
+            type="submit"
+            onClick={this.handleSignUpSubmit}
+            className="loginButton"
+          >
+            Sign up
+          </button>
+        </label>
       </section>
     );
   }
