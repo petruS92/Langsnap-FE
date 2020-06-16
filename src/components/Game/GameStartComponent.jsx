@@ -8,7 +8,7 @@ export default function GameStartComponent({
   enoughWordsToPlay,
 }) {
   return (
-    <div className="gamePageContainer">
+    <div className="pageContainer">
       <div className="titleBackground">
         <div className="titleContainer">
           <h3 className="titleHeader">Test</h3>

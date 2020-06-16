@@ -108,7 +108,7 @@ class ObjectTranslation extends Component {
     const { isLoggedIn } = this.props;
     if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
     return (
-      <>
+      <div className="pageContainer">
         <div className="objectTranslationContainer">
           <div className="videoCanvas">
             {" "}
@@ -138,9 +138,9 @@ class ObjectTranslation extends Component {
             </>
           )}
         </div>
-        <section className="associatedWords">
-          <div className="wrapContainer">
-            <p className="static">{staticEnglishWord}</p>
+        <section className="contentBackground">
+          <div className="contentContainer">
+            <p>{staticEnglishWord}</p>
             <p className="translation">{translatedWord}</p>
             {!isLoggedIn && (
               <p>Sign up or log in to unlock more translations!</p>
@@ -154,7 +154,7 @@ class ObjectTranslation extends Component {
             )}
           </div>
         </section>
-      </>
+      </div>
     );
   }
 }

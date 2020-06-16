@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-
 import GameStartComponent from "./GameStartComponent";
 import GameRunning from "./GameRunning";
 import * as api from "../../utils/api";
 import ErrorDisplay from "../ErrorDisplay";
-import "../../StyleSheets/Game.css";
 
 export default class Game extends Component {
   state = {
@@ -55,7 +53,10 @@ export default class Game extends Component {
   getRandomIndex = () => {
     const { words } = this.props;
     const { language } = this.state;
-    const wordsLength = words[language].length;
+    let wordsLength;
+    if (words) {
+      wordsLength = words[language].length;
+    }
     let randomListItem = Math.floor(Math.random() * wordsLength);
     if (randomListItem === this.state.wordIndex) {
       if (randomListItem === wordsLength) {
@@ -74,8 +75,13 @@ export default class Game extends Component {
     const { words } = this.props;
     const { language } = this.state;
     const randomIndex = this.getRandomIndex();
-    const word = `${Object.keys(words[language][randomIndex])}`;
-    const transWord = `${Object.values(words[language][randomIndex])}`;
+
+    let word;
+    let transWord;
+    if (words) {
+      word = `${Object.keys(words[language][randomIndex])}`;
+      transWord = `${Object.values(words[language][randomIndex])}`;
+    }
 
     this.setState((currentState) => {
       return {
@@ -108,11 +114,11 @@ export default class Game extends Component {
         });
       })
       .catch((error) => {
+        console.dir(error);
+
         const {
           response: {
-            data: {
-              availableRoutes: { message },
-            },
+            data: { message },
           },
         } = error;
         this.setState({ errorMessage: message });
@@ -166,9 +172,9 @@ export default class Game extends Component {
     } else {
       enoughWordsToPlay = words[language].length >= 2;
     }
-    if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
     return (
       <div>
+        {errorMessage && <ErrorDisplay errorMessage={errorMessage} />}
         {isStarted ? (
           <GameRunning
             isLoading={isLoading}
