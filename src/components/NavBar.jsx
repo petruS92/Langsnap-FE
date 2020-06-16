@@ -1,5 +1,4 @@
 import { Link } from "@reach/router";
-import Logout from "./Logout";
 import { slide as Menu } from "react-burger-menu";
 import React, { Component } from "react";
 
@@ -92,21 +91,3 @@ export default class NavBar extends Component {
     );
   }
 }
-
-// const NavBar = (props) => {
-//
-//   return (
-//     <section>
-//       <nav className="nav" role="navigation">
-//         <div id="menuToggle">
-//           <input type="checkbox" />
-//           <span></span>
-//           <span></span>
-//           <span></span>
-//           <ul id="menu"></ul>
-//         </div>
-//       </nav>
-//     </section>
-//   );
-// };
-// export default NavBar;
