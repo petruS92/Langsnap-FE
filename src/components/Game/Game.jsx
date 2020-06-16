@@ -160,14 +160,12 @@ export default class Game extends Component {
     } = this.state;
     const { words, isLoggedIn } = this.props;
     if (isLoggedIn === false) return <h4>Please login</h4>;
-
     let enoughWordsToPlay;
     if (!words) {
       enoughWordsToPlay = false;
     } else {
       enoughWordsToPlay = words[language].length >= 2;
     }
-
     if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
     return (
       <div>
