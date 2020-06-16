@@ -3,7 +3,7 @@ import SignUpThankYou from "./SignUpThankYou";
 import * as api from "../utils/api";
 import Loading from "./Loading";
 import ErrorDisplay from "./ErrorDisplay";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 
 class SignUp extends Component {
   state = {
@@ -33,13 +33,9 @@ class SignUp extends Component {
     const { name, email, password } = this.state;
     api
       .createUser(name, email, password)
-      .then(() => {
-        this.setState({
-          name: "",
-          email: "",
-          password: "",
-          userDidSignUp: true,
-        });
+      .then((info) => {
+        this.props.loggingIn(info);
+        navigate(`/`);
       })
       .catch((error) => {
         const {

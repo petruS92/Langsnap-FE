@@ -65,11 +65,15 @@ export const updateDatabase = (
 };
 
 export const createUser = (name, email, password) => {
-  return axios.post(`${baseURL}/user`, {
-    name: name,
-    email: email,
-    password: password,
-  });
+  return axios
+    .post(`${baseURL}/user`, {
+      name: name,
+      email: email,
+      password: password,
+    })
+    .then(({ data }) => {
+      return data;
+    });
 };
 
 export const loginUser = (email, password) => {
