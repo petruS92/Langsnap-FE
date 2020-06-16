@@ -2,11 +2,7 @@ import * as wordsListFunctions from "../utils/wordsListFunctions";
 
 describe("Tests for the selectWords function", () => {
   test("It returns the languagesObject with three language keys with empty array values by default when passed an empty object", () => {
-    expect(wordsListFunctions.selectWords({})).toEqual({
-      German: [],
-      French: [],
-      Spanish: [],
-    });
+    expect(wordsListFunctions.selectWords(null)).toEqual(null);
   });
   test("It converts the words object from the user information into the languagesObject object with three language keys", () => {
     const words = {

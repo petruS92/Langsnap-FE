@@ -1,6 +1,6 @@
 export const selectWords = (words) => {
   if (!words) {
-    return [];
+    return null;
   }
   const languagesObject = { German: [], French: [], Spanish: [] };
   Object.entries(words).forEach(([key, pairObject]) => {

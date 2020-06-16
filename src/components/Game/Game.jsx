@@ -4,6 +4,7 @@ import GameStartComponent from "./GameStartComponent";
 import GameRunning from "./GameRunning";
 import * as api from "../../utils/api";
 import ErrorDisplay from "../ErrorDisplay";
+import "../../StyleSheets/Game.css";
 
 export default class Game extends Component {
   state = {
@@ -21,7 +22,9 @@ export default class Game extends Component {
 
   componentDidMount = () => {
     const { words } = this.props;
+
     if (words) {
+      console.dir(words);
       this.getWord();
     } else {
       this.setState({ isLoading: true });
@@ -45,7 +48,7 @@ export default class Game extends Component {
   onTimeout = () => {
     setTimeout(() => {
       this.getWord();
-    }, 2500);
+    }, 2000);
   };
 
   // Extract to utils?
@@ -157,7 +160,14 @@ export default class Game extends Component {
     } = this.state;
     const { words, isLoggedIn } = this.props;
     if (isLoggedIn === false) return <h4>Please login</h4>;
-    const enoughWordsToPlay = words[language].length >= 2;
+
+    let enoughWordsToPlay;
+    if (!words) {
+      enoughWordsToPlay = false;
+    } else {
+      enoughWordsToPlay = words[language].length >= 2;
+    }
+
     if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
     return (
       <div>

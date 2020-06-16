@@ -4,6 +4,8 @@
   --main-bg-color: rgb(57, 57, 57);
   --secondary-bg-color: rgb(231, 228, 136);
   --third-bg-color: rgb(246, 246, 246);
+  --error-primay: rgb(248, 181, 13);
+  --alert-primary: rgb(43, 97, 254);
 }
 
 .loginBackground {
@@ -126,6 +128,16 @@
   margin: auto;
   text-align: center;
   padding-top: 1.4rem;
+}
+
+.errorDisplay p {
+  color: var(--third-bg-color);
+  border: none;
+  background-color: var(--error-primay);
+  padding: 0.5rem;
+  margin: 1rem;
+  text-align: center;
+  font-weight: 600;
 }
 
 @media only screen and (max-height: 600px) {

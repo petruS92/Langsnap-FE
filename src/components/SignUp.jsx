@@ -53,22 +53,7 @@ class SignUp extends Component {
 
   render() {
     const { userDidSignUp, isLoading, errorMessage } = this.state;
-    if (errorMessage)
-      return (
-        <>
-          <ErrorDisplay errorMessage={errorMessage} />
-          <Link to="/signup">
-            <button onClick={this.handleReSignUp}>Try again</button>
-          </Link>
-        </>
-      );
     if (isLoading) return <Loading />;
-    if (userDidSignUp)
-      return (
-        <h5>
-          <SignUpThankYou />
-        </h5>
-      );
     return (
       <section className="loginBackground">
         <div className="loginContainer">
