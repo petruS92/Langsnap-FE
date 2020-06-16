@@ -19,11 +19,13 @@ export default class NavBar extends Component {
     event.preventDefault();
   }
 
+  handleLogout = (event) => {
+    this.props.loggingOut();
+    this.closeMenu();
+  };
+
   render() {
     const { isLoggedIn, loggingOut } = this.props;
-    const handleLogout = (event) => {
-      loggingOut();
-    };
     return (
       <div className="navContainer">
         <Menu
@@ -40,7 +42,7 @@ export default class NavBar extends Component {
               className="navBarItem"
               onClick={() => this.closeMenu()}
             >
-              Login
+              Log in
             </Link>
           )}
 
@@ -56,11 +58,11 @@ export default class NavBar extends Component {
 
           {isLoggedIn && (
             <Link
-              to="/myaccount"
+              to="/wordslist"
               className="navBarItem"
               onClick={() => this.closeMenu()}
             >
-              My Account
+              Words
             </Link>
           )}
 
@@ -70,27 +72,23 @@ export default class NavBar extends Component {
               className="navBarItem"
               onClick={() => this.closeMenu()}
             >
-              Test yourself!
+              Test Yourself
             </Link>
           )}
 
           {isLoggedIn && (
             <Link
-              to="/wordslist"
+              to="/myaccount"
               className="navBarItem"
               onClick={() => this.closeMenu()}
             >
-              My Words
+              Account
             </Link>
           )}
 
           {isLoggedIn && (
-            <Link
-              to="/login"
-              onClick={handleLogout}
-              onClick={() => this.closeMenu()}
-            >
-              Log Out
+            <Link to="/" onClick={() => this.handleLogout()}>
+              Log out
             </Link>
           )}
         </Menu>

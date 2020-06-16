@@ -3,7 +3,6 @@ import GameStartComponent from "./GameStartComponent";
 import GameRunning from "./GameRunning";
 import * as api from "../../utils/api";
 import ErrorDisplay from "../ErrorDisplay";
-import "../../StyleSheets/Game.css";
 
 export default class Game extends Component {
   state = {
