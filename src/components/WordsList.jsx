@@ -58,21 +58,21 @@ class WordsList extends React.Component {
         <button
           onClick={this.handleLanguageClick}
           value="German"
-          disabled={words.German === undefined || words.German.length === 0}
+          disabled={!words}
         >
           German
         </button>
         <button
           onClick={this.handleLanguageClick}
           value="French"
-          disabled={words.French === undefined || words.French.length === 0}
+          disabled={!words}
         >
           French
         </button>
         <button
           onClick={this.handleLanguageClick}
           value="Spanish"
-          disabled={words.Spanish === undefined || words.Spanish.length === 0}
+          disabled={!words}
         >
           Spanish
         </button>
