@@ -2,6 +2,7 @@ import React from "react";
 import Loading from "./Loading";
 
 import LanguageList from "../components/LanguageList";
+import LoginAlert from "./LoginAlert";
 
 class WordsList extends React.Component {
   state = {
@@ -74,7 +75,7 @@ class WordsList extends React.Component {
       selectedDisplayWords,
       isLoading,
     } = this.state;
-    if (!isLoggedIn) return <h4>Please log in</h4>;
+    if (!isLoggedIn) return <LoginAlert />;
     if (isLoading) return <Loading />;
     return (
       <div className="pageContainer">

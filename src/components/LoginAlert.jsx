@@ -1,7 +1,12 @@
 import React from "react";
+import "../StyleSheets/LoginAlert.css";
 
 const LoginAlert = () => {
-  return <h4>Please login</h4>;
+  return (
+    <section className="loginAlertContainer">
+      <h4 className="loginAlertMessage">Please login</h4>
+    </section>
+  );
 };
 
 export default LoginAlert;

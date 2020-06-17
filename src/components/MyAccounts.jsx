@@ -2,10 +2,11 @@ import React from "react";
 import { Chart } from "react-google-charts";
 import { graphData } from "../utils/graphData";
 import { extractingNumbers } from "../utils/extractingNumbers";
+import LoginAlert from "./LoginAlert";
 
 const MyAccounts = (props) => {
   const { name, email, token, words } = props;
-  if (!token) return <h4>Please log in</h4>;
+  if (!token) return <LoginAlert />;
 
   const data = graphData(words);
   const maxGraphLength = extractingNumbers(data);

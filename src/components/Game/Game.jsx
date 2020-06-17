@@ -4,6 +4,7 @@ import GameRunning from "./GameRunning";
 import * as api from "../../utils/api";
 import ErrorDisplay from "../ErrorDisplay";
 import { getRandomIndex } from "../../utils/getRandomIndex";
+import LoginAlert from "../LoginAlert";
 
 export default class Game extends Component {
   state = {
@@ -147,7 +148,7 @@ export default class Game extends Component {
       errorMessage,
     } = this.state;
     const { words, isLoggedIn } = this.props;
-    if (isLoggedIn === false) return <h4>Please login</h4>;
+    if (isLoggedIn === false) return <LoginAlert />;
     let enoughWordsToPlay;
     if (!words) {
       enoughWordsToPlay = false;
