@@ -53,9 +53,9 @@ class ObjectTranslation extends Component {
     const { englishWord, translationLanguage } = this.state;
     const { token, words, addNewWordToState } = this.props;
     this.setState({ isClicked: true });
-    const correctedWord = wordsListFunctions.correctWord(englishWord);
+
     api
-      .fetchTranslation(correctedWord, translationLanguage)
+      .fetchTranslation(englishWord, translationLanguage)
       .then((translatedWord) => {
         this.setState({
           translatedWord: translatedWord,
@@ -80,6 +80,7 @@ class ObjectTranslation extends Component {
         }
       })
       .catch((error) => {
+        console.dir(error);
         const {
           response: {
             data: { message },
