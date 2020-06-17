@@ -49,10 +49,6 @@ export default class Game extends Component {
     }, 2000);
   };
 
-  // const { words } = ;
-  // const { language } = this.state;
-  // Extract to utils?
-
   callOnce = () => {
     const { words } = this.props;
     const { language, wordIndex } = this.state;

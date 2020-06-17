@@ -31,26 +31,37 @@ class WordsList extends React.Component {
       target: { value },
     } = event;
 
-    const {
-      words: { German, French, Spanish },
-    } = this.props;
-
-    if (value === "German") {
+    const { words } = this.props;
+    if (words !== null) {
+      if (value === "German" && words.German) {
+        this.setState({
+          selectedDisplayLanguage: value,
+          selectedDisplayWords: words.German,
+          isLoading: false,
+        });
+      } else if (value === "French" && words.French) {
+        this.setState({
+          selectedDisplayLanguage: value,
+          selectedDisplayWords: words.French,
+          isLoading: false,
+        });
+      } else if (value === "Spanish" && words.Spanish) {
+        this.setState({
+          selectedDisplayLanguage: value,
+          selectedDisplayWords: words.Spanish,
+          isLoading: false,
+        });
+      } else {
+        this.setState({
+          selectedDisplayLanguage: "",
+          selectedDisplayWords: [],
+          isLoading: false,
+        });
+      }
+    } else {
       this.setState({
-        selectedDisplayLanguage: value,
-        selectedDisplayWords: German,
-        isLoading: false,
-      });
-    } else if (value === "French") {
-      this.setState({
-        selectedDisplayLanguage: value,
-        selectedDisplayWords: French,
-        isLoading: false,
-      });
-    } else if (value === "Spanish") {
-      this.setState({
-        selectedDisplayLanguage: value,
-        selectedDisplayWords: Spanish,
+        selectedDisplayLanguage: "",
+        selectedDisplayWords: [],
         isLoading: false,
       });
     }
@@ -88,7 +99,11 @@ class WordsList extends React.Component {
                 <option value="Spanish">Spanish</option>
               </select>
             </div>
-            <LanguageList selectedDisplayWords={selectedDisplayWords} />
+            {selectedDisplayWords.length > 0 ? (
+              <LanguageList selectedDisplayWords={selectedDisplayWords} />
+            ) : (
+              <p>"Please translate words to view your words."</p>
+            )}
           </section>
         </div>
       </div>

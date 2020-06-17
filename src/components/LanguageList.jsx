@@ -12,7 +12,7 @@ const LanguageList = (props) => {
               wordObject
             )} - ${Object.values(wordObject)}`}</li>
           );
-        })}
+        }) || "Please translate words to view your words."}
       </ul>
     </div>
   );
