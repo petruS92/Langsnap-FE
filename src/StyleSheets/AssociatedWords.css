@@ -6,6 +6,10 @@
   --alert-primary: rgb(43, 97, 254);
 }
 
+.chartContainer {
+  background-color: var(--third-bg-color);
+}
+
 .associatedWordsTitle {
   margin: 1rem;
   text-align: center;

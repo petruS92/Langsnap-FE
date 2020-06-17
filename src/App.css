@@ -159,6 +159,7 @@ video {
   padding-bottom: 0.25rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+
   background-color: var(--third-bg-color);
 }
 
@@ -168,6 +169,7 @@ video {
   font-size: 1.5rem;
   margin-block-start: 0.5rem;
   margin-block-end: 0.5rem;
+
 }
 
 .associatedWords {
