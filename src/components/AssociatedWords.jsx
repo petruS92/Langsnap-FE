@@ -20,7 +20,6 @@ class AssociatedWords extends React.Component {
   componentDidUpdate(previousProps, previousState) {
     if (previousProps.translatedWord !== this.props.translatedWord) {
       this.setState({ moreAssociatedWords: true });
-      console.log("changed translatedWord");
     }
   }
 
