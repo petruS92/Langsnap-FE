@@ -108,6 +108,7 @@ class App extends Component {
             email={email}
             name={name}
             token={token}
+            words={words}
           />
           <WordsList path="/wordslist" words={words} isLoggedIn={isLoggedIn} />
           <Game

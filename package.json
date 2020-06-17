@@ -12,6 +12,7 @@
     "react": "^16.13.1",
     "react-burger-menu": "^2.6.15",
     "react-dom": "^16.13.1",
+    "react-google-charts": "^3.0.15",
     "react-scripts": "3.4.1",
     "tachyons": "^4.12.0"
   },
