@@ -12,6 +12,8 @@ class WordsList extends React.Component {
 
   componentDidMount() {
     this.setState({
+      selectedDisplayLanguage: "German",
+      selectedDisplayWords: this.props.words.German,
       isLoading: false,
     });
   }

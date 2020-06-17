@@ -130,7 +130,7 @@ class ObjectTranslation extends Component {
                 <button
                   onClick={this.handleClickTranslate}
                   className="capture"
-                  disabled={isClicked === true}
+                  disabled={translationLanguage === ""}
                 >
                   Translate!
                 </button>
@@ -140,10 +140,14 @@ class ObjectTranslation extends Component {
         </div>
         <section className="contentBackground">
           <div className="contentContainer">
-            <p>{staticEnglishWord}</p>
-            <p className="translation">{translatedWord}</p>
+            <p className="englishWord">
+              {staticEnglishWord || "Press the button to see a..."}
+            </p>
+            <p className="translation">{translatedWord || "translated word"}</p>
             {!isLoggedIn && (
-              <p>Sign up or log in to unlock more translations!</p>
+              <p className="homeMessage">
+                Sign up or log in to unlock more translations!
+              </p>
             )}
             {isLoggedIn && translatedWord && (
               <AssociatedWords

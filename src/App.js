@@ -7,6 +7,7 @@ import "./StyleSheets/NavBar.css";
 import "./StyleSheets/Game.css";
 import "./StyleSheets/LanguageList.css";
 import "./StyleSheets/MyAccounts.css";
+import "./StyleSheets/AssociatedWords.css";
 import SignUp from "./components/SignUp";
 import NavBar from "./components/NavBar";
 import setAuthToken from "./utils/authentication";
