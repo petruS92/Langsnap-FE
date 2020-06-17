@@ -78,31 +78,42 @@ class AssociatedWords extends React.Component {
     if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
     return (
       <section>
-        <h4>AssociatedWords</h4>
-        <p>
-          If you want to learn more about words in {translationLanguage} related
-          to '{translatedWord}' in {translationLanguage} to help you form
-          sentences, then click the button below!
-        </p>
+        <h4 className="associatedWordsTitle">Associated Words</h4>
+        <div className="associatedMessageBackground">
+          <p className="associatedWordsMessage">
+            Click to learn more words related to '<em>{translatedWord}</em>' and
+            help to form sentences in {translationLanguage}.
+          </p>
+        </div>
+
         {moreAssociatedWords && (
-          <button onClick={this.handleAssociatedWords}>
-            Click to learn more words in {translationLanguage}
-          </button>
+          <label className="associatedButtonContainer">
+            <button
+              onClick={this.handleAssociatedWords}
+              className="associatedWordsButton"
+            >
+              Learn more {translationLanguage} words!
+            </button>
+          </label>
         )}
         {!moreAssociatedWords && associatedPairWords && (
-          <ul>
+          <>
             <h4>
-              Now keep translating words to find more {translationLanguage}{" "}
+              Now keep translating words to find more {translationLanguage}
               words!
             </h4>
-            {associatedPairWords.map((pairObject, index) => {
-              return (
-                <li key={index}>
-                  {`${Object.keys(pairObject)} - ${Object.values(pairObject)}`}
-                </li>
-              );
-            })}
-          </ul>
+            <ul>
+              {associatedPairWords.map((pairObject, index) => {
+                return (
+                  <li key={index}>
+                    {`${Object.keys(pairObject)} - ${Object.values(
+                      pairObject
+                    )}`}
+                  </li>
+                );
+              })}
+            </ul>
+          </>
         )}
       </section>
     );
