@@ -82,7 +82,6 @@ export default class Game extends Component {
       word = `${Object.keys(words[language][randomIndex])}`;
       transWord = `${Object.values(words[language][randomIndex])}`;
     }
-
     this.setState((currentState) => {
       return {
         word: word,
@@ -95,7 +94,6 @@ export default class Game extends Component {
     });
   };
 
-  // Extract to api file in Langsnap React app
   getAssociatedWords = () => {
     const { word } = this.state;
     const body = {

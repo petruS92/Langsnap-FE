@@ -1,6 +1,7 @@
 body {
   font-family: "Radley", serif;
   background-color: rgb(57, 57, 57);
+  -webkit-appearance: none;
 }
 
 .sentence {

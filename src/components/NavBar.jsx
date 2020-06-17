@@ -35,7 +35,6 @@ export default class NavBar extends Component {
           <Link to="/" onClick={() => this.closeMenu()}>
             Home
           </Link>
-
           {!isLoggedIn && (
             <Link
               to="/login"
