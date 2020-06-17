@@ -4,8 +4,6 @@ body {
   -webkit-appearance: none;
 }
 
-
-
 .sentence {
   text-align: center;
   font-size: 1.8rem;
@@ -152,6 +150,10 @@ video {
   padding-bottom: 0.25rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  -webkit-appearance: none;
+  border: none;
+  background-color: var(--third-bg-color);
+  color: var(--main-bg-color);
 }
 
 .associatedWords {
