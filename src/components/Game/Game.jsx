@@ -83,9 +83,11 @@ export default class Game extends Component {
       transWord = `${Object.values(words[language][randomIndex])}`;
     }
 
+    const newWord = word.slice(4, word.length);
+
     this.setState((currentState) => {
       return {
-        word: word,
+        word: newWord,
         transWord: transWord,
         isLoading: !currentState.isLoading,
         wordIndex: randomIndex,
