@@ -154,6 +154,7 @@ video {
   border: none;
   background-color: var(--third-bg-color);
   color: var(--main-bg-color);
+  /*<--------  Must refactor and remove default styling on apple devices..  ----------->*/
 }
 
 .associatedWords {
