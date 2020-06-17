@@ -12,7 +12,7 @@ class WordsList extends React.Component {
 
   componentDidMount() {
     const { isLoggedIn, words } = this.props;
-    if (isLoggedIn) {
+    if (isLoggedIn && words) {
       this.setState({
         selectedDisplayLanguage: "German",
         selectedDisplayWords: words.German,

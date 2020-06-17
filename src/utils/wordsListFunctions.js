@@ -10,20 +10,20 @@ export const selectWords = (words) => {
   return languagesObject;
 };
 
-export const correctWord = (word) => {
-  return "the " + word.replace(/[^A-Z0-9]+/gi, "");
-};
-
 export const filterDuplicatesOut = (
   translationLanguage,
   englishWord,
   words
 ) => {
-  const translationWords = words[translationLanguage];
   let bool = false;
-  for (let prop in translationWords) {
-    if (`${Object.keys(translationWords[prop])}` === correctWord(englishWord)) {
-      bool = true;
+  if (words === null) {
+    bool = false;
+  } else {
+    const translationWords = words[translationLanguage];
+    for (let prop in translationWords) {
+      if (`${Object.keys(translationWords[prop])}` === englishWord) {
+        bool = true;
+      }
     }
   }
   return bool;

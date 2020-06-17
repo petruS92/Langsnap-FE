@@ -49,11 +49,11 @@ export const updateDatabase = (
   translatedWord,
   englishWord
 ) => {
-  const correctedWord = wordsListFunctions.correctWord(englishWord);
+  // const correctedWord = wordsListFunctions.correctWord(englishWord);
   return axios
     .post(`${baseURL}/user/words`, {
       language: translationLanguage,
-      englishWord: correctedWord,
+      englishWord: englishWord,
       translatedWord: translatedWord,
     })
     .then((response) => {
