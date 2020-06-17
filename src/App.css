@@ -4,6 +4,20 @@ body {
   -webkit-appearance: none;
 }
 
+@supports (-webkit-touch-callout: none) {
+  .translation {
+    width: 250;
+    background-color: var(--main-bg-color);
+    border-radius: 2rem;
+    height: 5rem;
+    color: var(--secondary-bg-color);
+    text-align: center;
+    font-size: 7vw;
+    margin: 1rem;
+    padding-top: 0.2rem;
+  }
+}
+
 .sentence {
   text-align: center;
   font-size: 1.8rem;
@@ -26,7 +40,7 @@ body {
   width: 250;
   background-color: var(--main-bg-color);
   border-radius: 2rem;
-  height: 40px;
+  height: 2.5rem;
   color: var(--secondary-bg-color);
   text-align: center;
   font-size: 7vw;
