@@ -3,7 +3,7 @@
   --secondary-bg-color: rgb(231, 228, 136);
   --third-bg-color: rgb(246, 246, 246);
   --error-primay: rgb(248, 181, 13);
-  --alert-primary: rgb(43, 97, 254);
+  --alert-primary: rgb(108, 147, 179);
 }
 
 /* Position and sizing of burger button */
@@ -22,13 +22,15 @@
 
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
-  background: #a90000;
+  background: var(--third-bg-color);
 }
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
   height: 24px;
   width: 24px;
+  text-decoration-color: none;
+  outline-style: none;
 }
 
 /* Color/shape of close button cross */
@@ -53,11 +55,6 @@
   font-size: 1.15em;
 }
 
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-  fill: #373a47;
-}
-
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
@@ -71,10 +68,20 @@
   margin: 0.5rem;
   display: inline-block;
   font-size: 1.5rem;
-  color: white;
+  color: var(--secondary-bg-color);
   text-decoration: none;
+  border: none;
+  text-decoration-color: none;
+  outline-style: none;
 }
 
+.bm-item:hover {
+  color: var(--third-bg-color);
+}
+
+.bm-item:active {
+  color: var(--third-bg-color);
+}
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(100, 150, 100, 0.8);

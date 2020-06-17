@@ -11,11 +11,18 @@ class WordsList extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({
-      selectedDisplayLanguage: "German",
-      selectedDisplayWords: this.props.words.German,
-      isLoading: false,
-    });
+    const { isLoggedIn, words } = this.props;
+    if (isLoggedIn) {
+      this.setState({
+        selectedDisplayLanguage: "German",
+        selectedDisplayWords: words.German,
+        isLoading: false,
+      });
+    } else {
+      this.setState({
+        isLoading: false,
+      });
+    }
   }
 
   handleLanguageChange = (event) => {
