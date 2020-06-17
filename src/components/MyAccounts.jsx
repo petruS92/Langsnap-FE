@@ -11,7 +11,6 @@ const MyAccounts = (props) => {
   const data = graphData(words);
   const maxGraphLength = extractingNumbers(data);
 
-  console.log(data);
   const options = {
     title: "Words per languages",
     hAxis: {
