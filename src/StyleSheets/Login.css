@@ -118,7 +118,8 @@
   font-size: 27px;
   font-family: "Radley", serif;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 .loginNotes {
   color: var(--main-bg-color);
