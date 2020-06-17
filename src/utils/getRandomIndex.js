@@ -3,6 +3,9 @@ exports.getRandomIndex = (words, language, wordIndex) => {
   if (words) {
     wordsLength = words[language].length;
   }
+
+  if (wordsLength === 0) return null;
+  
   let randomListItem = Math.floor(Math.random() * wordsLength);
   if (randomListItem === wordIndex) {
     if (randomListItem === wordsLength) {
