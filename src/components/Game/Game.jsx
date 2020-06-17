@@ -3,6 +3,7 @@ import GameStartComponent from "./GameStartComponent";
 import GameRunning from "./GameRunning";
 import * as api from "../../utils/api";
 import ErrorDisplay from "../ErrorDisplay";
+import { getRandomIndex } from "../../utils/getRandomIndex";
 
 export default class Game extends Component {
   state = {
@@ -20,7 +21,6 @@ export default class Game extends Component {
 
   componentDidMount = () => {
     const { words } = this.props;
-
     if (words) {
       console.dir(words);
       this.getWord();
@@ -49,32 +49,20 @@ export default class Game extends Component {
     }, 2000);
   };
 
+  // const { words } = ;
+  // const { language } = this.state;
   // Extract to utils?
-  getRandomIndex = () => {
+
+  callOnce = () => {
     const { words } = this.props;
-    const { language } = this.state;
-    let wordsLength;
-    if (words) {
-      wordsLength = words[language].length;
-    }
-    let randomListItem = Math.floor(Math.random() * wordsLength);
-    if (randomListItem === this.state.wordIndex) {
-      if (randomListItem === wordsLength) {
-        randomListItem--;
-      } else {
-        randomListItem++;
-      }
-    }
-    if (wordsLength <= 1) {
-      randomListItem = 0;
-    }
-    return randomListItem;
+    const { language, wordIndex } = this.state;
+    getRandomIndex(words, language, wordIndex);
   };
 
   getWord = () => {
     const { words } = this.props;
-    const { language } = this.state;
-    const randomIndex = this.getRandomIndex();
+    const { language, wordIndex } = this.state;
+    const randomIndex = getRandomIndex(words, language, wordIndex);
     let word;
     let transWord;
     if (words) {
