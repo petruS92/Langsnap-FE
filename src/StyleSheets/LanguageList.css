@@ -1,3 +1,17 @@
+:root {
+  --main-bg-color: rgb(57, 57, 57);
+  --secondary-bg-color: rgb(231, 228, 136);
+  --third-bg-color: rgb(246, 246, 246);
+}
+
 .langList {
   list-style: none;
+  font-size: 1.3rem;
+  padding-inline-start: 0px;
+}
+
+.langListItem {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.02rem solid var(--secondary-bg-color);
 }

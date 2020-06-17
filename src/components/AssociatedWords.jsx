@@ -46,7 +46,6 @@ class AssociatedWords extends React.Component {
           englishAssociatedWords,
           translatedAssociatedWords
         );
-        console.log(pairedWords);
         this.setState({
           associatedPairWords: pairedWords,
           moreAssociatedWords: false,
@@ -79,10 +78,18 @@ class AssociatedWords extends React.Component {
       <section>
         <h4 className="associatedWordsTitle">Associated Words</h4>
         <div className="associatedMessageBackground">
-          <p className="associatedWordsMessage">
-            Click to learn more words related to '<em>{translatedWord}</em>' and
-            help to form sentences in {translationLanguage}.
-          </p>
+          {!moreAssociatedWords && associatedPairWords ? (
+            <p className="associatedWordsMessage">
+              Now keep translating words to find more{" "}
+              {translationLanguage + " "}
+              words!
+            </p>
+          ) : (
+            <p className="associatedWordsMessage">
+              Click to learn more words related to <em>'{translatedWord}'</em>{" "}
+              and help to form sentences in {translationLanguage}.
+            </p>
+          )}
         </div>
 
         {moreAssociatedWords && (
@@ -97,14 +104,10 @@ class AssociatedWords extends React.Component {
         )}
         {!moreAssociatedWords && associatedPairWords && (
           <>
-            <h4>
-              Now keep translating words to find more {translationLanguage}
-              words!
-            </h4>
-            <ul>
+            <ul className="langList">
               {associatedPairWords.map((pairObject, index) => {
                 return (
-                  <li key={index}>
+                  <li key={index} className="langListItem">
                     {`${Object.keys(pairObject)} - ${Object.values(
                       pairObject
                     )}`}
