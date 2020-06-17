@@ -56,7 +56,7 @@ export default class NavBar extends Component {
 
           {isLoggedIn && (
             <Link to="/game" onClick={() => this.closeMenu()}>
-              Test Yourself
+              Test
             </Link>
           )}
 

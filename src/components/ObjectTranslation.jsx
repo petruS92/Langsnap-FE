@@ -144,7 +144,9 @@ class ObjectTranslation extends Component {
             <p className="englishWord">
               {staticEnglishWord || "Press the button to see a..."}
             </p>
-            <p className="translation">{translatedWord || "translated word"}</p>
+
+            <p className="translation">{translatedWord || "translation"}</p>
+
             {!isLoggedIn && (
               <p className="homeMessage">
                 Sign up or log in to unlock more translations!
