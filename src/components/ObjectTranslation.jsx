@@ -127,7 +127,7 @@ class ObjectTranslation extends Component {
           ) : (
             <>
               <div className="translateButtonContainer">
-                <DropDown changeLanguage={this.changeLanguage} />
+                <DropDown changeLanguage={this.changeLanguage} className="translateDropDown"/>
                 <button
                   onClick={this.handleClickTranslate}
                   className="capture"

@@ -48,6 +48,13 @@
   height: 100%;
 }
 
+.translateDropDown {
+  -webkit-appearance: none;
+  border: none;
+  background-color: var(--third-bg-color);
+  color: var(--main-bg-color);
+}
+
 /* General sidebar styles */
 .bm-menu {
   background: var(--main-bg-color);
