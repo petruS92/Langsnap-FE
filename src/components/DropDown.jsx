@@ -24,6 +24,9 @@ const DropDown = (props) => {
           Spanish
         </option>
       </select>
+      <span role="img" aria-label="select-arrow" className="dropDownArrow">
+        ▼
+      </span>
     </>
   );
 };

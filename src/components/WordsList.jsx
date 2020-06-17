@@ -85,10 +85,10 @@ class WordsList extends React.Component {
         </div>
         <div className="contentBackground">
           <section className="contentContainer">
-            <div className="gameLabelContainer">
+            <div className="wordsLabelContainer">
               <select
                 onChange={this.handleLanguageChange}
-                className="gameLabel"
+                className="wordsLabel"
                 default={"German"}
               >
                 {/* <option>Choose language ...</option> */}
@@ -98,11 +98,20 @@ class WordsList extends React.Component {
                 <option value="French">French</option>
                 <option value="Spanish">Spanish</option>
               </select>
+              <span
+                role="img"
+                aria-label="select-arrow"
+                className="dropDownArrowWordList"
+              >
+                ▼
+              </span>
             </div>
             {selectedDisplayWords.length > 0 ? (
               <LanguageList selectedDisplayWords={selectedDisplayWords} />
             ) : (
-              <p>"Please translate words to view your words."</p>
+              <p className="wordsListMessage">
+                Please translate words to view your words.
+              </p>
             )}
           </section>
         </div>

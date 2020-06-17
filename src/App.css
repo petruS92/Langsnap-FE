@@ -1,3 +1,9 @@
+:root {
+  --main-bg-color: rgb(57, 57, 57);
+  --secondary-bg-color: rgb(231, 228, 136);
+  --third-bg-color: rgb(246, 246, 246);
+}
+
 body {
   font-family: "Radley", serif;
   background-color: rgb(57, 57, 57);
@@ -118,9 +124,11 @@ video {
   display: flex;
   flex-direction: row;
   background-color: rgb(246, 246, 246);
+  height: 3rem;
 }
 
 .capture {
+  -webkit-appearance: none;
   font-family: "Radley", serif;
   font-size: 1.2rem;
   padding-top: 0.25rem;
@@ -141,6 +149,7 @@ video {
 }
 
 .dropDownContainer {
+  -webkit-appearance: none;
   font-family: "Radley", serif;
   font-size: 1.2rem;
   flex: 1;
@@ -150,6 +159,15 @@ video {
   padding-bottom: 0.25rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  background-color: var(--third-bg-color);
+}
+
+.englishWord {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-block-start: 0.5rem;
+  margin-block-end: 0.5rem;
 }
 
 .associatedWords {
@@ -159,6 +177,11 @@ video {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+
+.dropDownArrow {
+  color: black;
+  margin: auto;
 }
 
 .wrapContainer {
