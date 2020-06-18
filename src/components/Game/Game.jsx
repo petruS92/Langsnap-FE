@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import GameStartComponent from "./GameStartComponent";
 import GameRunning from "./GameRunning";
-import * as api from "../../utils/api";
-import ErrorDisplay from "../ErrorDisplay";
-import { getRandomIndex } from "../../utils/getRandomIndex";
 import LoginAlert from "../LoginAlert";
+import * as api from "../../utils/api";
+import { getRandomIndex } from "../../utils/getRandomIndex";
 
 export default class Game extends Component {
   state = {
@@ -20,8 +19,56 @@ export default class Game extends Component {
     alertMessage: null,
   };
 
+  render() {
+    const { name, words, isLoggedIn } = this.props;
+    const {
+      word,
+      associatedWords,
+      transWord,
+      isLoading,
+      isStarted,
+      language,
+      openAlert,
+      alertMessage,
+    } = this.state;
+    const { playGame, changeIsStarted, handleSelectedLanguage } = this;
+
+    if (isLoggedIn === false) return <LoginAlert />;
+    let enoughWordsToPlay;
+    if (!words) {
+      enoughWordsToPlay = false;
+    } else {
+      enoughWordsToPlay = words[language].length >= 2;
+    }
+    return (
+      <div>
+        {isStarted ? (
+          <GameRunning
+            isLoading={isLoading}
+            transWord={transWord}
+            associatedWords={associatedWords}
+            word={word}
+            playGame={playGame}
+            resetIsStarted={changeIsStarted}
+            openAlert={openAlert}
+            alertMessage={alertMessage}
+          />
+        ) : (
+          <GameStartComponent
+            name={name}
+            language={language}
+            handleSelectedLanguage={handleSelectedLanguage}
+            handleStart={changeIsStarted}
+            enoughWordsToPlay={enoughWordsToPlay}
+          />
+        )}
+      </div>
+    );
+  }
+
   componentDidMount = () => {
     const { words } = this.props;
+
     if (words) {
       this.getWord();
     } else {
@@ -30,29 +77,20 @@ export default class Game extends Component {
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    if (prevState.word !== this.state.word) {
-      this.getAssociatedWords();
+    const { word, language, alertMessage } = this.state;
+    const { getAssociatedWords, getWord, onTimeout } = this;
+
+    if (prevState.word !== word) {
+      getAssociatedWords();
     }
 
-    if (prevState.language !== this.state.language) {
-      this.getWord();
+    if (prevState.language !== language) {
+      getWord();
     }
 
-    if (this.state.alertMessage !== null) {
-      this.onTimeout();
+    if (alertMessage !== null) {
+      onTimeout();
     }
-  };
-
-  onTimeout = () => {
-    setTimeout(() => {
-      this.getWord();
-    }, 2000);
-  };
-
-  callOnce = () => {
-    const { words } = this.props;
-    const { language, wordIndex } = this.state;
-    getRandomIndex(words, language, wordIndex);
   };
 
   getWord = () => {
@@ -61,7 +99,8 @@ export default class Game extends Component {
     const randomIndex = getRandomIndex(words, language, wordIndex);
     let word;
     let transWord;
-    if (words) {
+
+    if (words && words[language].length > 0) {
       word = `${Object.keys(words[language][randomIndex])}`;
       transWord = `${Object.values(words[language][randomIndex])}`;
     }
@@ -84,26 +123,33 @@ export default class Game extends Component {
       text: word,
       lang: "en",
     };
-    api
-      .fetchGameWords(body)
-      .then((wordsArray) => {
-        this.setState((currentState) => {
-          return {
-            associatedWords: [...wordsArray],
-            isLoading: !currentState.isLoading,
-          };
-        });
-      })
-      .catch((error) => {
-        console.dir(error);
 
-        const {
-          response: {
-            data: { message },
-          },
-        } = error;
-        this.setState({ errorMessage: message });
-      });
+    if (word) {
+      api
+        .fetchGameWords(body)
+        .then((wordsArray) => {
+          this.setState({
+            associatedWords: [...wordsArray],
+            isLoading: false,
+          });
+        })
+        .catch((error) => {
+          const {
+            response: {
+              data: { message },
+            },
+          } = error;
+          this.setState({ errorMessage: message });
+        });
+    }
+  };
+
+  onTimeout = () => {
+    const { getWord } = this;
+
+    setTimeout(() => {
+      getWord();
+    }, 2000);
   };
 
   handleSelectedLanguage = ({ target }) => {
@@ -112,8 +158,10 @@ export default class Game extends Component {
   };
 
   playGame = ({ target }) => {
+    const { word } = this.state;
     const idTarget = target.id.toLowerCase();
-    if (idTarget === this.state.word) {
+
+    if (idTarget === word) {
       this.setState({
         openAlert: true,
         alertMessage: `${idTarget} well done!`,
@@ -131,58 +179,4 @@ export default class Game extends Component {
       return { isStarted: !currentState.isStarted };
     });
   };
-
-  render() {
-    const { name } = this.props;
-    const {
-      word,
-      associatedWords,
-      transWord,
-      isLoading,
-      isStarted,
-      language,
-      openAlert,
-      alertMessage,
-      errorMessage,
-    } = this.state;
-    const { words, isLoggedIn } = this.props;
-    if (isLoggedIn === false) return <LoginAlert />;
-    let enoughWordsToPlay;
-    if (!words) {
-      enoughWordsToPlay = false;
-    } else {
-      enoughWordsToPlay = words[language].length >= 2;
-    }
-    return (
-      <div>
-        {errorMessage && <ErrorDisplay errorMessage={errorMessage} />}
-        {isStarted ? (
-          <GameRunning
-            isLoading={isLoading}
-            transWord={transWord}
-            associatedWords={associatedWords}
-            word={word}
-            playGame={this.playGame}
-            resetIsStarted={this.changeIsStarted}
-            openAlert={openAlert}
-            alertMessage={alertMessage}
-          />
-        ) : (
-          <GameStartComponent
-            name={name}
-            language={language}
-            handleSelectedLanguage={this.handleSelectedLanguage}
-            handleStart={this.changeIsStarted}
-            enoughWordsToPlay={enoughWordsToPlay}
-          />
-        )}
-      </div>
-    );
-  }
 }
-
-// displaying same word twice..
-// component updating errors mystery bug.
-
-//Refactor at some point.
-// sort array destructuring / data manipulation.
