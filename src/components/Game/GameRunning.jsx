@@ -36,7 +36,7 @@ export default function GameRunning({
                       id={wordObj}
                       name={wordObj}
                       value={wordObj}
-                      onClick={(e) => playGame(e)}
+                      onClick={(event) => playGame(event)}
                     />
                     <span>{wordObj}</span>
                   </div>
@@ -45,7 +45,9 @@ export default function GameRunning({
             </>
           )}
           <br />
-          <button onClick={(e) => resetIsStarted(e)}>Select Language</button>
+          <button onClick={(event) => resetIsStarted(event)}>
+            Select Language
+          </button>
         </div>
       </div>
     </div>

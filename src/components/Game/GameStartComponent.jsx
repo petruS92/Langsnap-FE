@@ -23,7 +23,7 @@ export default function GameStartComponent({
           <div className="gameLabelContainer">
             <select
               name="languages"
-              onChange={(e) => handleSelectedLanguage(e)}
+              onChange={(event) => handleSelectedLanguage(event)}
               default={"German"}
               className="gameLabel"
             >
@@ -33,6 +33,13 @@ export default function GameStartComponent({
               <option value="French">French</option>
               <option value="Spanish">Spanish</option>
             </select>
+            <span
+              role="img"
+              aria-label="select-arrow"
+              className="dropDownArrowTest"
+            >
+              ▼
+            </span>
           </div>
           {/* <br /> */}
           {!enoughWordsToPlay && (
@@ -42,7 +49,7 @@ export default function GameStartComponent({
           )}
           <div className="startButtonContainer">
             <button
-              onClick={(e) => handleStart(e)}
+              onClick={(event) => handleStart(event)}
               disabled={!enoughWordsToPlay}
               className="startButton"
             >
