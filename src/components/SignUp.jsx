@@ -58,7 +58,7 @@ class SignUp extends Component {
       <section className="loginBackground">
         <div className="loginContainer">
           <h3 className="signUpFormTitle">langsnap</h3>
-
+          {errorMessage && <ErrorDisplay errorMessage={errorMessage} />}
           <form className="signUpForm">
             <div className="formInputContainer">
               <label htmlFor="name"></label>
