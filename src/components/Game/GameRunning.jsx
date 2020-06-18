@@ -30,23 +30,24 @@ export default function GameRunning({
               {openAlert && <h3 className="alertPrimary">{alertMessage}</h3>}
               {associatedWords.map((wordObj) => {
                 return (
-                  <div key={wordObj}>
+                  <div key={wordObj} className="gameRunningContainer">
                     <input
                       type="radio"
                       id={wordObj}
                       name={wordObj}
                       value={wordObj}
                       onClick={(event) => playGame(event)}
+                      className="gameInputRadio"
                     />
-                    <span>{wordObj}</span>
+                    <span className="gameSpan">{wordObj}</span>
                   </div>
                 );
               })}
             </>
           )}
           <br />
-          <button onClick={(event) => resetIsStarted(event)}>
-            Select Language
+          <button onClick={(event) => resetIsStarted(event)} className="selectLanguageButton">
+          {`◀ Select Language`}
           </button>
         </div>
       </div>
