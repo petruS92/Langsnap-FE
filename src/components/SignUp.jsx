@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import * as api from "../utils/api";
-import Loading from "./Loading";
-import ErrorDisplay from "./ErrorDisplay";
 import { navigate } from "@reach/router";
+import ErrorDisplay from "./ErrorDisplay";
+import Loading from "./Loading";
+import * as api from "../utils/api";
 
 class SignUp extends Component {
   state = {
@@ -14,45 +14,12 @@ class SignUp extends Component {
     isLoading: true,
   };
 
-  componentDidMount() {
-    this.setState({ isLoading: false });
-  }
-
-  handleReSignUp = () => {
-    this.setState({ errorMessage: "" });
-  };
-
-  handleInputSignUpForm = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
-  handleSignUpSubmit = (event) => {
-    event.preventDefault();
-    const { name, email, password } = this.state;
-    api
-      .createUser(name, email, password)
-      .then((info) => {
-        this.props.loggingIn(info);
-        navigate(`/`);
-      })
-      .catch((error) => {
-        const {
-          response: {
-            data: { message },
-          },
-        } = error;
-        if (message === "The email address is badly formatted.") {
-          this.setState({ errorMessage: message });
-        } else {
-          this.setState({ errorMessage: message });
-        }
-      });
-  };
-
   render() {
-    const { isLoading, errorMessage } = this.state;
+    const { isLoading, errorMessage, name, email, password } = this.state;
+    const { handleInputSignUpForm, handleSignUpSubmit } = this;
+
     if (isLoading) return <Loading />;
+
     return (
       <section className="loginBackground">
         <div className="loginContainer">
@@ -66,9 +33,9 @@ class SignUp extends Component {
                 type="text"
                 name="name"
                 id="signup-name"
-                value={this.state.name}
+                value={name}
                 placeholder="Enter your name"
-                onChange={this.handleInputSignUpForm}
+                onChange={handleInputSignUpForm}
                 className="formInput"
                 required
               />
@@ -81,9 +48,9 @@ class SignUp extends Component {
                 type="text"
                 name="email"
                 id="signup-email"
-                value={this.state.email}
+                value={email}
                 placeholder="Enter your email"
-                onChange={this.handleInputSignUpForm}
+                onChange={handleInputSignUpForm}
                 className="formInput"
                 required
               />
@@ -96,9 +63,9 @@ class SignUp extends Component {
                 type="password"
                 name="password"
                 id="signup-password"
-                value={this.state.password}
+                value={password}
                 placeholder="Create a password"
-                onChange={this.handleInputSignUpForm}
+                onChange={handleInputSignUpForm}
                 className="formInput"
                 required
               />
@@ -112,7 +79,7 @@ class SignUp extends Component {
         <label className="loginLabel">
           <button
             type="submit"
-            onClick={this.handleSignUpSubmit}
+            onClick={handleSignUpSubmit}
             className="loginButton"
           >
             Sign up
@@ -121,6 +88,45 @@ class SignUp extends Component {
       </section>
     );
   }
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
+  handleInputSignUpForm = ({ target }) => {
+    const { name, value } = target;
+    this.setState({ [name]: value });
+  };
+
+  handleSignUpSubmit = (event) => {
+    event.preventDefault();
+    const { name, email, password } = this.state;
+    const { loggingIn } = this.props;
+
+    api
+      .createUser(name, email, password)
+      .then((info) => {
+        loggingIn(info);
+        navigate(`/`);
+      })
+      .catch(
+        ({
+          response: {
+            data: { message },
+          },
+        }) => {
+          if (message === "The email address is badly formatted.") {
+            this.setState({ errorMessage: message });
+          } else {
+            this.setState({ errorMessage: message });
+          }
+        }
+      );
+  };
+
+  handleReSignUp = () => {
+    this.setState({ errorMessage: "" });
+  };
 }
 
 export default SignUp;

@@ -58,7 +58,7 @@ export default class NavBar extends Component {
           )}
         </Menu>
         <Link to="/" className="appTitleLink">
-          <h3 className="appTitle">Langsnap</h3>
+          <h3 className="appTitle">langsnap</h3>
         </Link>
       </div>
     );

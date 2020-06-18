@@ -41,7 +41,7 @@ export default class Game extends Component {
       enoughWordsToPlay = words[language].length >= 2;
     }
     return (
-      <div>
+      <>
         {isStarted ? (
           <GameRunning
             isLoading={isLoading}
@@ -62,7 +62,7 @@ export default class Game extends Component {
             enoughWordsToPlay={enoughWordsToPlay}
           />
         )}
-      </div>
+      </>
     );
   }
 

@@ -24,26 +24,25 @@ const MyAccounts = ({ name, email, token, words }) => {
 
   return (
     <main className="pageContainer">
-      <div className="titleBackground">
+      <section className="titleBackground">
         <div className="titleContainer">
-          <h3 className="titleHeader">Account</h3>
+          <h1 className="titleHeader">Account</h1>
         </div>
-      </div>
-      <div className="contentBackground">
+      </section>
+      <section className="contentBackground">
         <div className="contentContainer">
-          <p className="accountName">{name}</p>
-          <p className="accountEmail">{email}</p>
-          <div className={"chartContainer"}>
-            <Chart
-              chartType="BarChart"
-              options={options}
-              data={data}
-              width="100%"
-              height="400px"
-            />
-          </div>
+          <h2 className="accountName">{name}</h2>
+          <h2 className="accountEmail">{email}</h2>
+
+          <Chart
+            chartType="BarChart"
+            options={options}
+            data={data}
+            width="100%"
+            height="400px"
+          />
         </div>
-      </div>
+      </section>
     </main>
   );
 };
