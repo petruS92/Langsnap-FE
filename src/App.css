@@ -175,7 +175,7 @@ video {
   padding-bottom: 0.25rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-
+  outline-style: none;
   background-color: var(--third-bg-color);
 }
 
@@ -344,6 +344,7 @@ dropDownArrowTest {
   color: var(--secondary-bg-color);
   font-family: "Radley", serif;
   font-size: 27px;
+  outline-style: none;
 }
 
 .gameInputContainer {
@@ -480,6 +481,7 @@ dropDownArrowTest {
   font-size: 27px;
   margin: auto;
   margin-right: 0rem;
+  outline-style: none;
 }
 
 .wordsListMessage {
@@ -585,6 +587,7 @@ dropDownArrowTest {
   border-radius: 2rem;
   padding: 0.35rem;
   margin: 0.5rem;
+  outline-style: none;
 }
 
 .loginLabel {
@@ -619,7 +622,8 @@ dropDownArrowTest {
   color: var(--third-bg-color);
   border: none;
   background-color: var(--error-primary);
-  padding: 0.5rem;
+  padding: 0.7rem;
+  border-radius: 2rem;
   margin: 1rem;
   text-align: center;
   font-weight: 600;

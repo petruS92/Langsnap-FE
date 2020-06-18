@@ -44,6 +44,7 @@ class UserWordsCard extends React.Component {
                 role="img"
                 aria-label="select-arrow"
                 className="dropDownArrowWordList"
+                onChange={handleLanguageChange}
               >
                 ▼
               </span>

@@ -72,15 +72,18 @@ describe("Testing getRandomIndex", () => {
       );
     }
   });
+
   test("Returns null if passed an empty array", () => {
     const language = "Spanish";
     expect(getRandomIndex(words, language, wordIndex)).toBe(null);
   });
+
   test("should not mutate orignal words list", () => {
     const language = "German";
     getRandomIndex(words, language, wordIndex);
     expect(words).toEqual(notMutatedWords);
   });
+
   test("should not mutate orignal words list", () => {
     const language = "German";
     getRandomIndex(words, language, wordIndex);
