@@ -117,26 +117,26 @@ describe("Tests for the filterDuplicatesOut function", () => {
     const inputWords = {
       French: [
         {
-          "the cheese": "la fromage",
+          cheese: "la fromage",
         },
         {
-          "the cat": "le chat",
+          cat: "le chat",
         },
         {
-          "the car": "la voiture",
+          car: "la voiture",
         },
       ],
       German: [
         {
-          "the cat": "die Katze",
+          cat: "die Katze",
         },
         {
-          "the car": "das Auto",
+          car: "das Auto",
         },
       ],
       Spanish: [
         {
-          "the car": "el coche",
+          car: "el coche",
         },
       ],
     };
@@ -146,24 +146,6 @@ describe("Tests for the filterDuplicatesOut function", () => {
     expect(
       wordsListFunctions.filterDuplicatesOut("French", "cheese", inputWords)
     ).toBe(true);
-  });
-});
-
-describe("Tests for the correctWord function", () => {
-  test("It appends the English article 'the' with a space after it to a given word", () => {
-    const input = "car";
-    const output = "the car";
-    expect(wordsListFunctions.correctWord(input)).toBe(output);
-  });
-  test("It removes spaces from within a given word", () => {
-    const input = "lab coat";
-    const output = "the labcoat";
-    expect(wordsListFunctions.correctWord(input)).toBe(output);
-  });
-  test("It removes hyphons or special characters from within a given word", () => {
-    const input = "lab-coat";
-    const output = "the labcoat";
-    expect(wordsListFunctions.correctWord(input)).toBe(output);
   });
 });
 
