@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ObjectTranslation from "./components/ObjectTranslation";
 import { Router } from "@reach/router";
-import "./StyleSheets/App.css";
+import "./App.css";
 import SignUp from "./components/SignUp";
 import NavBar from "./components/NavBar";
 import setAuthToken from "./utils/authentication";

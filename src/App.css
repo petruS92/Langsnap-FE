@@ -2,6 +2,7 @@
   --main-bg-color: rgb(57, 57, 57);
   --secondary-bg-color: rgb(231, 228, 136);
   --third-bg-color: rgb(246, 246, 246);
+  --error-primary: rgb(248, 181, 13);
 }
 
 body {
@@ -212,6 +213,485 @@ video {
   }
 }
 
+/*<------------- Associated Words CSS ------------->*/
+/* .chartContainer {
+  background-color: var(--third-bg-color);
+} */
+
+.associatedWordsTitle {
+  margin: 1rem;
+  text-align: center;
+  font-size: 7vw;
+  font-weight: 500;
+}
+
+.associatedMessageBackground {
+  background-color: var(--secondary-bg-color);
+  border-radius: 2rem;
+  padding: 0.6rem;
+}
+
+.associatedWordsMessage {
+  margin: 1rem;
+  margin-block-start: 0rem;
+  margin-block-end: 0rem;
+  font-size: 5.5vw;
+  /* text-align: center; */
+}
+.associatedButtonContainer {
+  display: flex;
+}
+.associatedWordsButton {
+  min-width: 15.63rem;
+  background-color: var(--main-bg-color);
+  border-radius: 2rem;
+  height: 2.5rem;
+  color: var(--secondary-bg-color);
+  text-align: center;
+  font-size: 5vw;
+  font-family: "Radley", serif;
+  margin: auto;
+  margin-top: 1.25rem;
+}
+
+/*<------------- Game CSS ------------->*/
+/* Reusable -------- */
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: -webkit-fill-available;
+}
+
+.titleBackground {
+  background-color: var(--secondary-bg-color);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  min-height: 12vh;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.titleContainer {
+  background-color: var(--third-bg-color);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  min-height: 10vh;
+}
+
+.titleHeader {
+  font-weight: 500;
+  font-size: 3rem;
+  color: var(--main-bg-color);
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  text-align: center;
+  padding-top: 0vh;
+}
+
+.contentBackground {
+  flex: 4;
+  margin: 0.5rem;
+  margin-bottom: 0rem;
+  padding: 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+  background-color: var(--secondary-bg-color);
+}
+
+.contentContainer {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  margin-bottom: 0rem;
+  background-color: var(--third-bg-color);
+  min-height: 90vh;
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+  color: var(--main-bg-color);
+}
+
+/* ---------------------------------- */
+
+.gameLabelContainer {
+  -webkit-appearance: none;
+  min-width: 250;
+  background-color: var(--main-bg-color);
+  border-radius: 2rem;
+  height: 2.5rem;
+  color: var(--secondary-bg-color);
+  text-align: center;
+  font-size: 27px;
+  margin: 1rem;
+  font-family: "Radley", serif;
+}
+
+.gameLabel {
+  -webkit-appearance: none;
+  border: none;
+  background-color: var(--main-bg-color);
+  color: var(--secondary-bg-color);
+  font-family: "Radley", serif;
+  font-size: 27px;
+}
+
+.gameInputContainer {
+  display: flex;
+  justify-content: center;
+  font-family: "Radley", serif;
+  color: var(--main-bg-color);
+  font-size: 25px;
+  flex: 1;
+  border-radius: 2rem;
+  border: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  margin-top: 2rem;
+}
+
+.startButtonContainer {
+  display: flex;
+}
+
+.startButton {
+  min-width: 15.63rem;
+  background-color: var(--secondary-bg-color);
+  border-radius: 2rem;
+  height: 2.5rem;
+  color: var(--main-bg-color);
+  text-align: center;
+  font-size: 27px;
+  font-family: "Radley", serif;
+  margin: auto;
+  margin-top: 8px;
+  border: none;
+}
+
+.startButton:disabled {
+  opacity: 0.5;
+}
+
+/*<------------- LanguageList CSS ------------->*/
+
+.langList {
+  list-style: none;
+  font-size: 1.3rem;
+  padding-inline-start: 0px;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+}
+
+.langListItem {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.02rem solid var(--secondary-bg-color);
+}
+
+.dropDownArrowWordList {
+  color: var(--secondary-bg-color);
+  margin: auto;
+  margin-left: 0.2rem;
+  margin-top: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.wordsLabelContainer {
+  -webkit-appearance: none;
+  min-width: 250;
+  background-color: var(--main-bg-color);
+  border-radius: 2rem;
+  height: 2.5rem;
+  color: var(--secondary-bg-color);
+  text-align: center;
+  font-size: 27px;
+  margin: 1rem;
+  font-family: "Radley", serif;
+  display: flex;
+}
+
+.wordsLabel {
+  -webkit-appearance: none;
+  border: none;
+  background-color: var(--main-bg-color);
+  color: var(--secondary-bg-color);
+  font-family: "Radley", serif;
+  font-size: 27px;
+  margin: auto;
+  margin-right: 0rem;
+}
+
+.wordsListMessage {
+  margin: 1rem;
+  margin-block-start: 0rem;
+  margin-block-end: 0rem;
+  font-size: 5.5vw;
+}
+
+/*<------------- Login CSS ------------->*/
+
+.loginBackground {
+  background-color: var(--secondary-bg-color);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  min-height: 80vh;
+}
+
+.loginContainer {
+  background-color: var(--third-bg-color);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  min-height: 70vh;
+}
+/* <-------------   Refactor the below into one component in future     ----------->*/
+.formTitle {
+  font-weight: 500;
+  font-size: 60px;
+  color: var(--main-bg-color);
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  text-align: center;
+  padding-top: 9vh;
+  padding-bottom: 2vh;
+}
+
+.signUpFormTitle {
+  font-weight: 500;
+  font-size: 60px;
+  color: var(--main-bg-color);
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  text-align: center;
+  padding-top: 3vh;
+  padding-bottom: 2vh;
+}
+/* <-------------   Refactor the Above into one component in future     ----------->*/
+.loginForm {
+  background-color: var(--secondary-bg-color);
+  border-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  height: 220px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.01rem;
+}
+
+.signUpForm {
+  background-color: var(--secondary-bg-color);
+  border-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  height: 350px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  padding: 0.01rem;
+}
+
+.formLabel {
+  width: 250;
+  background-color: var(--main-bg-color);
+  border-radius: 2rem;
+  height: 40px;
+  color: var(--secondary-bg-color);
+  text-align: center;
+  font-size: 27px;
+  margin: 0;
+}
+
+.formInputContainer {
+  width: 250px;
+  height: 100px;
+  margin: 0;
+  border: none;
+  background-color: var(--third-bg-color);
+  border-radius: 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.formInput {
+  text-align: center;
+  background-color: var(--third-bg-color);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.35rem;
+  margin: 0.5rem;
+}
+
+.loginLabel {
+  display: flex;
+}
+
+.loginButton {
+  min-width: 250px;
+  background-color: var(--main-bg-color);
+  border-radius: 2rem;
+  height: 40px;
+  color: var(--secondary-bg-color);
+  text-align: center;
+  font-size: 27px;
+  font-family: "Radley", serif;
+  margin: auto;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.loginNotes {
+  color: var(--main-bg-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+  max-width: 320px;
+  margin: auto;
+  text-align: center;
+  padding-top: 1.4rem;
+}
+
+.errorDisplay p {
+  color: var(--third-bg-color);
+  border: none;
+  background-color: var(--error-primary);
+  padding: 0.5rem;
+  margin: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/*<------------- Login CSS ------------->*/
+.loginAlertContainer {
+  display: block;
+}
+
+.loginAlertMessage {
+  color: var(--third-bg-color);
+  border: none;
+  background-color: var(--error-primary);
+  padding: 0.5rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/*<------------- My Account CSS ------------->*/
+.accountName {
+  font-size: 8vw;
+  text-align: center;
+  margin-block-start: 0.7em;
+  margin-block-end: 0.3em;
+}
+
+.accountEmail {
+  font-size: 5vw;
+  text-align: center;
+}
+
+.placeholderChart {
+  text-align: center;
+  font-size: 8vw;
+}
+
+/*<------------- NavBar CSS ------------->*/
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  left: 15px;
+  top: 12px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: var(--secondary-bg-color);
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: var(--third-bg-color);
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+  text-decoration-color: none;
+  outline-style: none;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: var(--secondary-bg-color);
+}
+
+/*Sidebar wrapper styles*/
+.bm-menu-wrap {
+  margin-left: -10px;
+  position: fixed;
+  height: 100%;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: var(--main-bg-color);
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+  text-align: center;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  display: inline-block;
+  font-size: 1.5rem;
+  color: var(--secondary-bg-color);
+  text-decoration: none;
+  border: none;
+  text-decoration-color: none;
+  outline-style: none;
+}
+
+.bm-item:hover {
+  color: var(--third-bg-color);
+}
+
+.bm-item:active {
+  color: var(--third-bg-color);
+}
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(100, 150, 100, 0.8);
+}
+
+/*<------------- Media Queries ------------->*/
+@media only screen and (max-height: 600px) {
+  .formTitle {
+    font-size: 50px;
+    padding-top: 7vh;
+    padding-bottom: 0vh;
+  }
+}
+
 @media only screen and (max-height: 700px) {
   video {
     max-height: 12rem;
@@ -225,5 +705,24 @@ video {
     border-radius: 50%;
     width: 40px;
     height: 40px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .loader {
+    border: 6px solid rgba(236, 236, 236, 0.842);
+    border-top: 6px solid rgba(0, 0, 0, 0.842);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  .contentContainer {
+    min-height: -webkit-fill-available;
+  }
+  .translation {
+    vertical-align: middle;
   }
 }
