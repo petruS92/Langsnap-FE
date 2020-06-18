@@ -23,7 +23,6 @@ class Login extends Component {
       <main className="loginBackground">
         <section className="loginContainer">
           <h1 className="formTitle">langsnap</h1>
-          {errorMessage && <ErrorDisplay errorMessage={errorMessage} />}
           <form className="loginForm">
             <p className="formInputContainer">
               <label htmlFor="email" className="formLabel">
@@ -59,6 +58,7 @@ class Login extends Component {
               />
             </p>
           </form>
+          {errorMessage && <ErrorDisplay errorMessage={errorMessage} />}
         </section>
         <label className="loginLabel">
           <button
@@ -97,6 +97,12 @@ class Login extends Component {
       .loginUser(email, password)
       .then((info) => {
         loggingIn(info);
+        this.setState({
+          email: "",
+          password: "",
+          isLoading: false,
+        });
+        navigate(`/`);
       })
       .catch((error) => {
         const {
@@ -104,14 +110,13 @@ class Login extends Component {
             data: { message },
           },
         } = error;
-        this.setState({ errorMessage: message });
+        this.setState({
+          email: "",
+          password: "",
+          errorMessage: message,
+          isLoading: false,
+        });
       });
-    this.setState({
-      email: "",
-      password: "",
-      isLoading: false,
-    });
-    navigate(`/`);
   };
 
   handleInputLogin = (event) => {

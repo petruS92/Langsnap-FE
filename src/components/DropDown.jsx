@@ -10,20 +10,26 @@ const DropDown = ({ changeLanguage }) => {
 
   return (
     <>
-      <select onChange={handleSelectedLanguage} className="dropDownContainer">
-        <option default value="" className="dropDownContainer">
-          Choose language...
-        </option>
-        <option default value="German" className="dropDownContainer">
-          German
-        </option>
-        <option value="French" className="dropDownContainer">
-          French
-        </option>
-        <option value="Spanish" className="dropDownContainer">
-          Spanish
-        </option>
-      </select>
+      <label for="languageDropDown">
+        <select
+          onChange={handleSelectedLanguage}
+          className="dropDownContainer"
+          name="languageDropDown"
+        >
+          <option default value="" className="dropDownContainer">
+            Choose language...
+          </option>
+          <option default value="German" className="dropDownContainer">
+            German
+          </option>
+          <option value="French" className="dropDownContainer">
+            French
+          </option>
+          <option value="Spanish" className="dropDownContainer">
+            Spanish
+          </option>
+        </select>
+      </label>
       <span role="img" aria-label="select-arrow" className="dropDownArrow">
         ▼
       </span>

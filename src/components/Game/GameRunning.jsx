@@ -31,14 +31,16 @@ export default function GameRunning({
               {associatedWords.map((wordObj) => {
                 return (
                   <div key={wordObj} className="gameRunningContainer">
-                    <input
-                      type="radio"
-                      id={wordObj}
-                      name={wordObj}
-                      value={wordObj}
-                      onClick={(event) => playGame(event)}
-                      className="gameInputRadio"
-                    />
+                    <label for={wordObj} className="gameInputRadio">
+                      <input
+                        type="radio"
+                        id={wordObj}
+                        name={wordObj}
+                        value={wordObj}
+                        onClick={(event) => playGame(event)}
+                        className="gameInputRadio"
+                      />
+                    </label>
                     <p className="gameSpan">{wordObj}</p>
                   </div>
                 );

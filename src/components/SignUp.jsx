@@ -23,8 +23,7 @@ class SignUp extends Component {
     return (
       <section className="loginBackground">
         <div className="loginContainer">
-          <h3 className="signUpFormTitle">langsnap</h3>
-          {errorMessage && <ErrorDisplay errorMessage={errorMessage} />}
+          <h1 className="signUpFormTitle">langsnap</h1>
           <form className="signUpForm">
             <div className="formInputContainer">
               <label htmlFor="name"></label>
@@ -75,6 +74,7 @@ class SignUp extends Component {
             Sign up to keep track of your progress and gain access to extra
             features
           </p>
+          {errorMessage && <ErrorDisplay errorMessage={errorMessage} />}
         </div>
         <label className="loginLabel">
           <button

@@ -391,7 +391,7 @@ dropDownArrowTest {
   border-radius: 2rem;
   margin: 2rem;
   background-color: var(--secondary-bg-color);
-  padding: 1rem;
+  padding: 0.5rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 1fr;
@@ -625,20 +625,54 @@ dropDownArrowTest {
   font-weight: 600;
 }
 
+/*<------------- Error CSS ------------->*/
+
+.errorAlertContainer {
+  display: block;
+  padding: 1rem;
+}
+
+.errorAlertMessage {
+  text-decoration: none;
+  border-radius: 2rem;
+  color: var(--third-bg-color);
+  border: none;
+  background-color: var(--error-primary);
+  padding: 0.7rem;
+  margin: auto;
+  /* margin-left: 4rem;
+  margin-right: 4rem; */
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/*<--------------------------------------->*/
+
 /*<------------- Login CSS ------------->*/
+.loginSignupMessage {
+  color: var(--third-bg-color);
+}
+
 .loginAlertContainer {
   display: block;
+  padding: 2rem;
+  padding-top: 5rem;
 }
 
 .loginAlertMessage {
+  text-decoration: none;
+  border-radius: 2rem;
   color: var(--third-bg-color);
   border: none;
   background-color: var(--error-primary);
   padding: 0.5rem;
+  margin: auto;
   margin-left: 4rem;
   margin-right: 4rem;
   text-align: center;
   font-weight: 600;
+  font-size: 1.2rem;
 }
 
 /*<------------- My Account CSS ------------->*/

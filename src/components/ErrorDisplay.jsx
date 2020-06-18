@@ -6,8 +6,8 @@ const ErrorDisplay = ({ errorMessage }) => {
     : `${"The requested resource or path was not found."}`;
 
   return (
-    <div className="errorDisplay">
-      <p>{error}</p>
+    <div className="errorAlertContainer">
+      <p className="errorAlertMessage">{error}</p>
     </div>
   );
 };
