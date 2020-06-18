@@ -7,11 +7,11 @@ import NavBar from "./components/NavBar";
 import setAuthToken from "./utils/authentication";
 import Login from "./components/Login";
 import MyAccount from "./components/MyAccounts";
-import WordsList from "./components/WordsList";
+import UserWordsCard from "./components/UserWordsCard";
 import Loading from "./components/Loading";
 import Game from "./components/Game/Game";
 import ErrorDisplay from "./components/ErrorDisplay";
-import * as wordsFunctions from "./utils/wordsListFunctions";
+import * as wordsListFunctions from "./utils/wordsListFunctions";
 
 class App extends Component {
   state = {
@@ -64,7 +64,11 @@ class App extends Component {
             token={token}
             words={words}
           />
-          <WordsList path="/wordslist" words={words} isLoggedIn={isLoggedIn} />
+          <UserWordsCard
+            path="/wordslist"
+            words={words}
+            isLoggedIn={isLoggedIn}
+          />
           <Game path="/game" words={words} name={name} />
           <ErrorDisplay isLoggedIn={isLoggedIn} default />
         </Router>
@@ -89,7 +93,7 @@ class App extends Component {
       token,
       user: { email, name, words },
     } = info;
-    const arrayOfWords = wordsFunctions.selectWords(words);
+    const arrayOfWords = wordsListFunctions.selectWords(words);
 
     this.setState({
       isLoggedIn: true,
@@ -111,7 +115,7 @@ class App extends Component {
   };
 
   addNewWordToState = (updatedWords) => {
-    const arrayUpdatedWords = wordsFunctions.selectWords(updatedWords);
+    const arrayUpdatedWords = wordsListFunctions.selectWords(updatedWords);
     this.setState({ words: arrayUpdatedWords });
   };
 }

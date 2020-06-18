@@ -1,10 +1,10 @@
 import React from "react";
 import Loading from "./Loading";
 
-import LanguageList from "../components/LanguageList";
+import LanguageList from "./LanguageList";
 import LoginAlert from "./LoginAlert";
 
-class WordsList extends React.Component {
+class UserWordsCard extends React.Component {
   state = {
     selectedDisplayLanguage: "",
     selectedDisplayWords: [],
@@ -117,4 +117,4 @@ class WordsList extends React.Component {
   }
 }
 
-export default WordsList;
+export default UserWordsCard;
