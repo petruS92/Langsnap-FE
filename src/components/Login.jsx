@@ -23,7 +23,7 @@ class Login extends Component {
       <main className="loginBackground">
         <section className="loginContainer">
           <h1 className="formTitle">langsnap</h1>
-          <form className="loginForm">
+          <form className="loginForm" autocomplete="on">
             <p className="formInputContainer">
               <label htmlFor="email" className="formLabel">
                 email
