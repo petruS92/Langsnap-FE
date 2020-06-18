@@ -26,7 +26,7 @@ export default class NavBar extends Component {
 
   render() {
     const { isLoggedIn } = this.props;
-    let linkToHome = <Link to="/">Langsnap</Link>;
+
     return (
       <div className="navContainer">
         <Menu
@@ -73,7 +73,9 @@ export default class NavBar extends Component {
             </Link>
           )}
         </Menu>
-        <h3 className="appTitle">{linkToHome}</h3>
+        <Link to="/" className="appTitleLink">
+          <h3 className="appTitle">Langsnap</h3>
+        </Link>
       </div>
     );
   }
