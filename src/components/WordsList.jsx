@@ -75,7 +75,7 @@ class WordsList extends React.Component {
       selectedDisplayWords,
       isLoading,
     } = this.state;
-    if (!isLoggedIn) return <LoginAlert />;
+    if (!isLoggedIn) return <LoginAlert />; // if not logged in, is user going to be able to see my words...? Conditionally rendered
     if (isLoading) return <Loading />;
     return (
       <div className="pageContainer">

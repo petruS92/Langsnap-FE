@@ -5,6 +5,7 @@ import * as wordsListFunctions from "../utils/wordsListFunctions";
 import AssociatedWords from "./AssociatedWords";
 import Loading from "./Loading";
 import ErrorDisplay from "./ErrorDisplay";
+import { Link } from "@reach/router";
 
 class ObjectTranslation extends Component {
   state = {
@@ -97,6 +98,8 @@ class ObjectTranslation extends Component {
   };
 
   render() {
+    let linkToSignUp = <Link to="/signup">Sign up</Link>;
+    let linkToLogIn = <Link to="/login">log in</Link>;
     const {
       englishWord,
       staticEnglishWord,
@@ -116,8 +119,8 @@ class ObjectTranslation extends Component {
             <video id="video" autoPlay muted playsInline></video>
             <canvas
               id="canvas"
-              width="300"
-              height="300"
+              // width="100"
+              // height="100"
               style={{ display: "none" }}
             ></canvas>
             <p className="sentence">{englishWord}</p>
@@ -149,7 +152,7 @@ class ObjectTranslation extends Component {
 
             {!isLoggedIn && (
               <p className="homeMessage">
-                Sign up or log in to unlock more translations!
+                {linkToSignUp} or {linkToLogIn} to unlock more translations!
               </p>
             )}
             {isLoggedIn && translatedWord && (
@@ -167,3 +170,5 @@ class ObjectTranslation extends Component {
 }
 
 export default ObjectTranslation;
+
+// GET RID OF LOG IN AND SIGN UP HYPERLINK PROBLEMS
