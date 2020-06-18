@@ -1,5 +1,4 @@
 import React from "react";
-import "../../StyleSheets/Game.css";
 
 export default function GameStartComponent({
   language,

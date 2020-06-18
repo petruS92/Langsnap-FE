@@ -69,12 +69,8 @@ class WordsList extends React.Component {
   };
 
   render() {
-    const { isLoggedIn, words } = this.props;
-    const {
-      selectedDisplayLanguage,
-      selectedDisplayWords,
-      isLoading,
-    } = this.state;
+    const { isLoggedIn } = this.props;
+    const { selectedDisplayWords, isLoading } = this.state;
     if (!isLoggedIn) return <LoginAlert />;
     if (isLoading) return <Loading />;
     return (

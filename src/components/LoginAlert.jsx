@@ -1,5 +1,4 @@
 import React from "react";
-import "../StyleSheets/LoginAlert.css";
 
 const LoginAlert = () => {
   return (

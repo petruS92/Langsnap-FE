@@ -25,7 +25,7 @@ export default class NavBar extends Component {
   };
 
   render() {
-    const { isLoggedIn, loggingOut } = this.props;
+    const { isLoggedIn } = this.props;
     return (
       <div className="navContainer">
         <Menu

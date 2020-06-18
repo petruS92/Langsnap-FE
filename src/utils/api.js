@@ -1,5 +1,4 @@
 import axios from "axios";
-import * as wordsListFunctions from "../utils/wordsListFunctions";
 
 const baseURL = "https://langsnap-be.herokuapp.com/api";
 
