@@ -7,30 +7,14 @@ export default class NavBar extends Component {
     menuOpen: false,
   };
 
-  handleStateChange(state) {
-    this.setState({ menuOpen: state.isOpen });
-  }
-
-  closeMenu() {
-    this.setState({ menuOpen: false });
-  }
-
-  showSettings(event) {
-    event.preventDefault();
-  }
-
-  handleLogout = (event) => {
-    this.props.loggingOut();
-    this.closeMenu();
-  };
-
   render() {
     const { isLoggedIn } = this.props;
+    const { menuOpen } = this.state;
 
     return (
       <div className="navContainer">
         <Menu
-          isOpen={this.state.menuOpen}
+          isOpen={menuOpen}
           onStateChange={(state) => this.handleStateChange(state)}
           width={"60%"}
         >
@@ -79,4 +63,23 @@ export default class NavBar extends Component {
       </div>
     );
   }
+
+  handleStateChange(state) {
+    this.setState({ menuOpen: state.isOpen });
+  }
+
+  closeMenu() {
+    this.setState({ menuOpen: false });
+  }
+
+  showSettings(event) {
+    event.preventDefault();
+  }
+
+  handleLogout = (event) => {
+    const { loggingOut } = this.props;
+    const { closeMenu } = this;
+    loggingOut();
+    closeMenu();
+  };
 }

@@ -71,13 +71,13 @@ class WordsList extends React.Component {
   render() {
     const { isLoggedIn } = this.props;
     const { selectedDisplayWords, isLoading } = this.state;
-    if (!isLoggedIn) return <LoginAlert />; // if not logged in, is user going to be able to see my words...? Conditionally rendered
+    if (!isLoggedIn) return <LoginAlert />;
     if (isLoading) return <Loading />;
     return (
-      <div className="pageContainer">
+      <main className="pageContainer">
         <div className="titleBackground">
           <div className="titleContainer">
-            <h3 className="titleHeader">Words</h3>
+            <h1 className="titleHeader">Words</h1>
           </div>
         </div>
         <div className="contentBackground">
@@ -112,7 +112,7 @@ class WordsList extends React.Component {
             )}
           </section>
         </div>
-      </div>
+      </main>
     );
   }
 }

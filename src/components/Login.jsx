@@ -20,9 +20,9 @@ class Login extends Component {
     if (isLoading) return <Loading />;
 
     return (
-      <div className="loginBackground">
-        <main className="loginContainer">
-          <h3 className="formTitle">langsnap</h3>
+      <main className="loginBackground">
+        <section className="loginContainer">
+          <h1 className="formTitle">langsnap</h1>
           {errorMessage && <ErrorDisplay errorMessage={errorMessage} />}
           <form className="loginForm">
             <p className="formInputContainer">
@@ -59,7 +59,7 @@ class Login extends Component {
               />
             </p>
           </form>
-        </main>
+        </section>
         <label className="loginLabel">
           <button
             type="submit"
@@ -69,7 +69,7 @@ class Login extends Component {
             Log in
           </button>
         </label>
-      </div>
+      </main>
     );
   }
 

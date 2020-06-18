@@ -55,19 +55,15 @@ class AssociatedWords extends React.Component {
           </label>
         )}
         {!moreAssociatedWords && associatedPairWords && (
-          <>
-            <ul className="langList">
-              {associatedPairWords.map((pairObject, index) => {
-                return (
-                  <li key={index} className="langListItem">
-                    {`${Object.keys(pairObject)} - ${Object.values(
-                      pairObject
-                    )}`}
-                  </li>
-                );
-              })}
-            </ul>
-          </>
+          <ul className="langList">
+            {associatedPairWords.map((pairObject, index) => {
+              return (
+                <li key={index} className="langListItem">
+                  {`${Object.keys(pairObject)} - ${Object.values(pairObject)}`}
+                </li>
+              );
+            })}
+          </ul>
         )}
       </>
     );

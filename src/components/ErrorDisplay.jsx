@@ -6,9 +6,9 @@ const ErrorDisplay = ({ errorMessage }) => {
     : `${"The requested resource or path was not found."}`;
 
   return (
-    <section className="errorDisplay">
+    <div className="errorDisplay">
       <p>{error}</p>
-    </section>
+    </div>
   );
 };
 

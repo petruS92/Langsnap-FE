@@ -1,16 +1,12 @@
 import React from "react";
-import { Chart } from "react-google-charts";
+import LoginAlert from "./LoginAlert";
 import { graphData } from "../utils/graphData";
 import { extractingNumbers } from "../utils/extractingNumbers";
-import LoginAlert from "./LoginAlert";
+import { Chart } from "react-google-charts";
 
-const MyAccounts = (props) => {
-  const { name, email, token, words } = props;
-  if (!token) return <LoginAlert />;
-
+const MyAccounts = ({ name, email, token, words }) => {
   const data = graphData(words);
   const maxGraphLength = extractingNumbers(data);
-
   const options = {
     title: "Words per languages",
     hAxis: {
@@ -24,8 +20,10 @@ const MyAccounts = (props) => {
     chartArea: { width: "50%" },
   };
 
+  if (!token) return <LoginAlert />;
+
   return (
-    <div className="pageContainer">
+    <main className="pageContainer">
       <div className="titleBackground">
         <div className="titleContainer">
           <h3 className="titleHeader">Account</h3>
@@ -46,7 +44,7 @@ const MyAccounts = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 
