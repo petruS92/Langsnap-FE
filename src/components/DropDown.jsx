@@ -1,11 +1,11 @@
 import React from "react";
 
-const DropDown = (props) => {
+const DropDown = ({ changeLanguage }) => {
   const handleSelectedLanguage = (event) => {
     const {
       target: { value },
     } = event;
-    props.changeLanguage(value);
+    changeLanguage(value);
   };
 
   return (

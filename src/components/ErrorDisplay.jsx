@@ -1,14 +1,14 @@
 import React from "react";
 
-const ErrorDisplay = (props) => {
-  const error = props.errorMessage
-    ? `${props.errorMessage}`
+const ErrorDisplay = ({ errorMessage }) => {
+  const error = errorMessage
+    ? `${errorMessage}`
     : `${"The requested resource or path was not found."}`;
 
   return (
-    <div className="errorDisplay">
+    <section className="errorDisplay">
       <p>{error}</p>
-    </div>
+    </section>
   );
 };
 
