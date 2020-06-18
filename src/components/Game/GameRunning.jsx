@@ -1,6 +1,5 @@
 import React from "react";
 import Loading from "../Loading";
-import "../../StyleSheets/Game.css";
 
 export default function GameRunning({
   isLoading,

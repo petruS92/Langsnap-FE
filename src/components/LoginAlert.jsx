@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "@reach/router";
-import "../StyleSheets/LoginAlert.css";
 
 const LoginAlert = () => {
   let linkToLogin = <Link to="/login">login</Link>;

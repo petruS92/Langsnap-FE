@@ -23,7 +23,6 @@ export default class Game extends Component {
   componentDidMount = () => {
     const { words } = this.props;
     if (words) {
-      console.dir(words);
       this.getWord();
     } else {
       this.setState({ isLoading: true });
@@ -88,7 +87,6 @@ export default class Game extends Component {
     api
       .fetchGameWords(body)
       .then((wordsArray) => {
-        console.log(wordsArray);
         this.setState((currentState) => {
           return {
             associatedWords: [...wordsArray],
