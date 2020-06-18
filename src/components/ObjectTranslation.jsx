@@ -111,18 +111,13 @@ class ObjectTranslation extends Component {
     const { isLoggedIn } = this.props;
     if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
     return (
-      <div className="pageContainer">
-        <div className="objectTranslationContainer">
+      <main className="pageContainer">
+        <section className="objectTranslationContainer">
           <div className="videoCanvas">
             {" "}
             <video id="video" autoPlay muted playsInline></video>
-            <canvas
-              id="canvas"
-              // width="100"
-              // height="100"
-              style={{ display: "none" }}
-            ></canvas>
-            <p className="sentence">{englishWord}</p>
+            <canvas id="canvas" style={{ display: "none" }}></canvas>
+            <h1 className="sentence">{englishWord}</h1>
           </div>
           {isLoading ? (
             <Loading />
@@ -140,7 +135,7 @@ class ObjectTranslation extends Component {
               </div>
             </>
           )}
-        </div>
+        </section>
         <section className="contentBackground">
           <div className="contentContainer">
             <p className="englishWord">
@@ -163,11 +158,9 @@ class ObjectTranslation extends Component {
             )}
           </div>
         </section>
-      </div>
+      </main>
     );
   }
 }
 
 export default ObjectTranslation;
-
-// GET RID OF LOG IN AND SIGN UP HYPERLINK PROBLEMS
