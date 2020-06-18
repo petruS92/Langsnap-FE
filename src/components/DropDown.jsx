@@ -10,7 +10,7 @@ const DropDown = ({ changeLanguage }) => {
 
   return (
     <>
-      <label for="languageDropDown">
+      <label htmlFor="languageDropDown">
         <select
           onChange={handleSelectedLanguage}
           className="dropDownContainer"
