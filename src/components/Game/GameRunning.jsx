@@ -11,14 +11,14 @@ export default function GameRunning({
   alertMessage,
 }) {
   return (
-    <div className="pageContainer">
-      <div className="titleBackground">
+    <main className="pageContainer">
+      <section className="titleBackground">
         <div className="titleContainer">
-          <h3 className="titleHeader">Test</h3>
+          <h1 className="titleHeader">Test</h1>
         </div>
-      </div>
+      </section>
 
-      <div className="contentBackground">
+      <section className="contentBackground">
         <div className="contentContainer">
           <div className="gameLabelContainer">
             <p>{transWord}</p>
@@ -39,18 +39,21 @@ export default function GameRunning({
                       onClick={(event) => playGame(event)}
                       className="gameInputRadio"
                     />
-                    <span className="gameSpan">{wordObj}</span>
+                    <p className="gameSpan">{wordObj}</p>
                   </div>
                 );
               })}
             </>
           )}
           <br />
-          <button onClick={(event) => resetIsStarted(event)} className="selectLanguageButton">
-          {`◀ Select Language`}
+          <button
+            onClick={(event) => resetIsStarted(event)}
+            className="selectLanguageButton"
+          >
+            {`◀ Select Language`}
           </button>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
