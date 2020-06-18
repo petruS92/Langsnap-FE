@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import SignUpThankYou from "./SignUpThankYou";
 import * as api from "../utils/api";
 import Loading from "./Loading";
 import ErrorDisplay from "./ErrorDisplay";
-import { Link, navigate } from "@reach/router";
+import { navigate } from "@reach/router";
 
 class SignUp extends Component {
   state = {
@@ -52,7 +51,7 @@ class SignUp extends Component {
   };
 
   render() {
-    const { userDidSignUp, isLoading, errorMessage } = this.state;
+    const { isLoading, errorMessage } = this.state;
     if (isLoading) return <Loading />;
     return (
       <section className="loginBackground">

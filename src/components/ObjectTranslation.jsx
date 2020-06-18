@@ -104,7 +104,6 @@ class ObjectTranslation extends Component {
       englishWord,
       staticEnglishWord,
       translatedWord,
-      isClicked,
       translationLanguage,
       isLoading,
       errorMessage,
