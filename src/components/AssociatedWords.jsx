@@ -24,12 +24,11 @@ class AssociatedWords extends React.Component {
     const { handleAssociatedWords } = this;
 
     if (isLoading && !errorMessage) return <Loading />;
-
     if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
 
     return (
       <>
-        <h4 className="associatedWordsTitle">Associated Words</h4>
+        <h1 className="associatedWordsTitle">Associated Words</h1>
         <section className="associatedMessageBackground">
           {!moreAssociatedWords && associatedPairWords ? (
             <p className="associatedWordsMessage">

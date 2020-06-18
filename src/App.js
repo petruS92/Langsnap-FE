@@ -65,12 +65,7 @@ class App extends Component {
             words={words}
           />
           <WordsList path="/wordslist" words={words} isLoggedIn={isLoggedIn} />
-          <Game
-            path="/game"
-            words={words}
-            name={name}
-            isLoggedIn={isLoggedIn}
-          />
+          <Game path="/game" words={words} name={name} />
           <ErrorDisplay isLoggedIn={isLoggedIn} default />
         </Router>
       </section>
