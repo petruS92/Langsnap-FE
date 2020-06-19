@@ -33,8 +33,6 @@ export default class Game extends Component {
     } = this.state;
     const { playGame, changeIsStarted, handleSelectedLanguage } = this;
 
-    console.log(isLoggedIn);
-
     if (isLoggedIn === false) return <LoginAlert />;
     let enoughWordsToPlay;
     if (!words) {

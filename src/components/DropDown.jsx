@@ -7,7 +7,6 @@ const DropDown = ({ changeLanguage }) => {
     } = event;
 
     changeLanguage(value);
-    console.log(changeLanguage(value));
   };
 
   return (

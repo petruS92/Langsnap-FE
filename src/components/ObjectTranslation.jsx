@@ -50,18 +50,18 @@ class ObjectTranslation extends Component {
             <canvas id="canvas" style={{ display: "none" }}></canvas>
             <h1 className="sentence">{englishWord}</h1>
           </div>
-          <>
-            <div className="translateButtonContainer">
-              <DropDown changeLanguage={changeLanguage} />
-              <button
-                onClick={handleClickTranslate}
-                className="capture"
-                disabled={translationLanguage === ""}
-              >
-                Translate!
-              </button>
-            </div>
-          </>
+
+          <div className="translateButtonContainer">
+            <DropDown changeLanguage={changeLanguage} />
+            <button
+              onClick={handleClickTranslate}
+              className="capture"
+              disabled={translationLanguage === "" || isLoading}
+            >
+              Translate!
+            </button>
+          </div>
+
           {isLoading && <Loading />}
         </section>
         <section className="contentBackground">

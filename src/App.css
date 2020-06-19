@@ -468,7 +468,7 @@ dropDownArrowTest {
 .langListItem {
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 0.02rem solid var(--secondary-bg-color);
+  word-wrap: break-word;
 }
 
 .dropDownArrowWordList {
