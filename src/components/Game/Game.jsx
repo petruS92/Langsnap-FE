@@ -100,7 +100,7 @@ export default class Game extends Component {
     let word;
     let transWord;
 
-    if (words && words[language].length > 0) {
+    if (words && randomIndex) {
       word = `${Object.keys(words[language][randomIndex])}`;
       transWord = `${Object.values(words[language][randomIndex])}`;
     }

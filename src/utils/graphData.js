@@ -9,6 +9,5 @@ export const graphData = (words) => {
   for (let i in words) {
     returnArray.push([i, words[i].length]);
   }
-  console.log(returnArray);
   return returnArray;
 };
