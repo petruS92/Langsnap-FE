@@ -21,16 +21,16 @@ export default function GameRunning({
       <section className="contentBackground">
         <div className="contentContainer">
           <div className="gameLabelContainer">
-            <p>{transWord}</p>
+            <p className="gameLabelWord">{transWord}</p>
           </div>
           {isLoading ? (
             <Loading />
           ) : (
             <>
               {openAlert && <h3 className="alertPrimary">{alertMessage}</h3>}
-              {associatedWords.map((wordObj) => {
+              {associatedWords.map((wordObj, index) => {
                 return (
-                  <div key={wordObj} className="gameRunningContainer">
+                  <div key={wordObj + index} className="gameRunningContainer">
                     <label for={wordObj} className="gameInputRadio">
                       <input
                         type="radio"

@@ -3,15 +3,14 @@ import LoginAlert from "./LoginAlert";
 import { graphData } from "../utils/graphData";
 import { extractingNumbers } from "../utils/extractingNumbers";
 import { Chart } from "react-google-charts";
-import Loading from "./Loading"
+import Loading from "./Loading";
 
 const MyAccounts = ({ name, email, token, words }) => {
- 
   const data = graphData(words);
 
   const maxGraphLength = extractingNumbers(data);
 
-     const options = {
+  const options = {
     title: "Words per languages",
     hAxis: {
       title: "Words Learnt",
@@ -34,15 +33,17 @@ const MyAccounts = ({ name, email, token, words }) => {
       </section>
       <section className="contentBackground">
         <div className="contentContainer">
-          <h2 className="accountName">{name}</h2>
-          <h2 className="accountEmail">{email}</h2>
+          <section className="accountContainer">
+            <h2 className="accountName">{name}</h2>
+            <h2 className="accountEmail">{email}</h2>
+          </section>
           <Chart
             chartType="BarChart"
             options={options}
             data={data}
             width="100%"
             height="400px"
-            loader={<Loading/>}
+            loader={<Loading />}
           />
         </div>
       </section>
