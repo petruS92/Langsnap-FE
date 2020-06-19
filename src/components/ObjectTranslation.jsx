@@ -96,7 +96,7 @@ class ObjectTranslation extends Component {
   handleClickTranslate = (event) => {
     const { englishWord, translationLanguage } = this.state;
     const { token, words, addNewWordToState } = this.props;
-    this.setState({ isClicked: true });
+    this.setState({ isClicked: true, isLoading: true });
 
     api
       .fetchTranslation(englishWord, translationLanguage)
@@ -106,6 +106,7 @@ class ObjectTranslation extends Component {
           staticEnglishWord: englishWord,
           translationLanguage: translationLanguage,
           isClicked: false,
+          isLoading: false,
         });
         if (token) {
           const Duplicates = wordsListFunctions.filterDuplicatesOut(
