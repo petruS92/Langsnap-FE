@@ -31,7 +31,7 @@ export default function GameRunning({
               {associatedWords.map((wordObj, index) => {
                 return (
                   <div key={wordObj + index} className="gameRunningContainer">
-                    <label for={wordObj} className="gameInputRadio">
+                    <label htmlFor={wordObj} className="gameInputRadio">
                       <input
                         type="radio"
                         id={wordObj}

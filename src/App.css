@@ -7,7 +7,7 @@
 
 body {
   font-family: "Radley", serif;
-  background-color: rgb(57, 57, 57);
+  background-color: var(--main-bg-color);
   -webkit-appearance: none;
 }
 
@@ -71,17 +71,16 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   justify-content: center;
-  background-color: rgb(57, 57, 57);
-  color: white;
+  background-color: var(--main-bg-color);
+  color: var(--third-bg-color);
 }
 .objectTranslationContainer {
   grid-template-columns: 1fr;
   grid-gap: 1rem;
   border-bottom-right-radius: 2rem;
   border-bottom-left-radius: 2rem;
-  background-color: rgb(231, 228, 136);
+  background-color: var(--secondary-bg-color);
   margin: 0rem;
-  /* padding-bottom: 1rem; */
   padding-bottom: 0rem;
   margin-bottom: 0.5rem;
 }
@@ -95,7 +94,7 @@ body {
 }
 
 .appTitle {
-  color: rgb(231, 228, 136);
+  color: var(--secondary-bg-color);
   padding: 0;
   margin: 0;
   font-size: 1.8rem;
@@ -108,7 +107,7 @@ body {
 }
 
 .videoCanvas {
-  background-color: rgb(246, 246, 246);
+  background-color: var(--third-bg-color);
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
   padding-bottom: 0rem;
@@ -137,28 +136,22 @@ video {
   border-radius: 2rem;
   display: flex;
   flex-direction: row;
-  background-color: rgb(246, 246, 246);
-  /* height: 3rem; */
+  background-color: var(--third-bg-color);
   height: 2rem;
   align-content: center;
 }
 
 .capture {
-  /* -webkit-appearance: none; */
   font-family: "Radley", serif;
   font-size: 1.2rem;
-  /* padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem; */
   flex: 1;
-  background-color: rgb(57, 57, 57);
-  color: rgb(246, 246, 246);
-  /* border: none; */
+  background-color: var(--main-bg-color);
+  color: var(--third-bg-color);
   align-self: center;
   border-radius: 2rem;
   margin-right: 0;
   z-index: 2;
+  outline-style: none;
 }
 
 .capture:disabled {
@@ -190,6 +183,25 @@ video {
   margin-block-end: 0.5rem;
 }
 
+.homeLink {
+  text-decoration: none;
+}
+
+.homeLinkWords {
+  color: var(--main-bg-color);
+  background-color: var(--secondary-bg-color);
+  text-decoration: none;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  display: inline;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0em;
+  margin-inline-end: 0em;
+}
+
 .associatedWords {
   margin: 0rem;
   padding: 0rem;
@@ -204,7 +216,7 @@ video {
 }
 
 dropDownArrowTest {
-  color: white;
+  color: var(--third-bg-color);
   margin: auto;
 }
 
@@ -385,7 +397,8 @@ dropDownArrowTest {
   font-family: "Radley", serif;
   margin: auto;
   margin-top: 0.5rem;
-  border: none;
+  /* border: none; */
+  outline-style: none;
 }
 
 .startButton:disabled {
@@ -880,54 +893,4 @@ dropDownArrowTest {
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(100, 150, 100, 0.8);
-}
-
-/*<------------- Media Queries ------------->*/
-@media only screen and (max-height: 600px) {
-  .formTitle {
-    font-size: 3.125rem;
-    padding-top: 7vh;
-    padding-bottom: 0vh;
-  }
-}
-
-@media only screen and (max-height: 700px) {
-  video {
-    max-height: 12rem;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .loader {
-    border: 0.375rem solid rgba(236, 236, 236, 0.842);
-    border-top: 0.375rem solid rgba(0, 0, 0, 0.842);
-    border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-}
-
-@media only screen and (min-width: 600px) {
-  .loader {
-    border: 0.375rem solid rgba(236, 236, 236, 0.842);
-    border-top: 0.375rem solid rgba(0, 0, 0, 0.842);
-    border-radius: 50%;
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-}
-
-@supports (-webkit-touch-callout: none) {
-  .contentContainer {
-    min-height: -webkit-fill-available;
-  }
-  .translation {
-    vertical-align: middle;
-  }
-  .videoCanvas {
-    padding: 4rem;
-  }
-  .appTitle {
-    color: red;
-  }
 }

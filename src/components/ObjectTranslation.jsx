@@ -29,8 +29,16 @@ class ObjectTranslation extends Component {
     } = this.state;
     const { isLoggedIn } = this.props;
     const { changeLanguage, handleClickTranslate } = this;
-    const linkToSignUp = <Link to="/signup">Sign up</Link>;
-    const linkToLogIn = <Link to="/login">log in</Link>;
+    const linkToSignUp = (
+      <Link to="/signup" className="homeLink">
+        <p className="homeLinkWords">Sign up</p>
+      </Link>
+    );
+    const linkToLogIn = (
+      <Link to="/login" className="homeLink">
+        <p className="homeLinkWords">log in</p>
+      </Link>
+    );
 
     if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
     return (
