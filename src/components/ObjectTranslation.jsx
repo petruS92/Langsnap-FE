@@ -33,8 +33,6 @@ class ObjectTranslation extends Component {
     const linkToLogIn = <Link to="/login">log in</Link>;
 
     if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
-    console.log("objectTranslation rendered");
-    console.log(this.state.translationLanguage);
     return (
       <main className="pageContainer">
         <section className="objectTranslationContainer">
