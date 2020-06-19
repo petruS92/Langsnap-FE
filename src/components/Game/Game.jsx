@@ -104,6 +104,7 @@ export default class Game extends Component {
       word = `${Object.keys(words[language][randomIndex])}`;
       transWord = `${Object.values(words[language][randomIndex])}`;
     }
+  console.log(randomIndex, 'getWord');
 
     this.setState((currentState) => {
       return {
