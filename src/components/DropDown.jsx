@@ -5,7 +5,9 @@ const DropDown = ({ changeLanguage }) => {
     const {
       target: { value },
     } = event;
+
     changeLanguage(value);
+    console.log(changeLanguage(value));
   };
 
   return (
@@ -16,10 +18,10 @@ const DropDown = ({ changeLanguage }) => {
           className="dropDownContainer"
           name="languageDropDown"
         >
-          <option default value="" className="dropDownContainer">
-            Choose language...
+          <option value="" className="dropDownContainer">
+            Choose a language...
           </option>
-          <option default value="German" className="dropDownContainer">
+          <option value="German" className="dropDownContainer">
             German
           </option>
           <option value="French" className="dropDownContainer">

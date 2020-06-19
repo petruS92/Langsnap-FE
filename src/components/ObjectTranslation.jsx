@@ -33,7 +33,8 @@ class ObjectTranslation extends Component {
     const linkToLogIn = <Link to="/login">log in</Link>;
 
     if (errorMessage) return <ErrorDisplay errorMessage={errorMessage} />;
-
+    console.log("objectTranslation rendered");
+    console.log(this.state.translationLanguage);
     return (
       <main className="pageContainer">
         <section className="objectTranslationContainer">
@@ -43,23 +44,19 @@ class ObjectTranslation extends Component {
             <canvas id="canvas" style={{ display: "none" }}></canvas>
             <h1 className="sentence">{englishWord}</h1>
           </div>
-
-          {isLoading ? (
-            <Loading />
-          ) : (
-            <>
-              <div className="translateButtonContainer">
-                <DropDown changeLanguage={changeLanguage} />
-                <button
-                  onClick={handleClickTranslate}
-                  className="capture"
-                  disabled={translationLanguage === ""}
-                >
-                  Translate!
-                </button>
-              </div>
-            </>
-          )}
+          <>
+            <div className="translateButtonContainer">
+              <DropDown changeLanguage={changeLanguage} />
+              <button
+                onClick={handleClickTranslate}
+                className="capture"
+                disabled={translationLanguage === ""}
+              >
+                Translate!
+              </button>
+            </div>
+          </>
+          {isLoading && <Loading />}
         </section>
         <section className="contentBackground">
           <div className="contentContainer">
