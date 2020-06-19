@@ -145,7 +145,7 @@ class ObjectTranslation extends Component {
     });
     video.srcObject = videoStream;
     const aiDetection = async () => {
-      context.drawImage(video, 0, 0, 500, 500);
+      context.drawImage(video, 0, 0, 300, 300);
       const classification = await mobileNetModel.classify(canvas);
       this.setState({
         englishWord: classification[0].className.split(",")[0],
