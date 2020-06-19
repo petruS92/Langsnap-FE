@@ -73,9 +73,9 @@ class ObjectTranslation extends Component {
             <p className="translation">{translatedWord || "translation"}</p>
 
             {!isLoggedIn && (
-              <p className="homeMessage">
+              <div className="homeMessage">
                 {linkToSignUp} or {linkToLogIn} to unlock more translations!
-              </p>
+              </div>
             )}
             {isLoggedIn && translatedWord && (
               <AssociatedWords
