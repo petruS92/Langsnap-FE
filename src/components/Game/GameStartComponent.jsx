@@ -56,6 +56,9 @@ export default function GameStartComponent({
               Start
             </button>
           </div>
+            <p className="gameplayMessage">
+            Pick the english word from the choices and match the random translated word from your learned words!
+              </p>
         </div>
       </div>
     </div>

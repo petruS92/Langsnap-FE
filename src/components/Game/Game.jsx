@@ -38,7 +38,7 @@ export default class Game extends Component {
     if (!words) {
       enoughWordsToPlay = false;
     } else {
-      enoughWordsToPlay = words[language].length >= 2;
+      enoughWordsToPlay = words[language].length >= 3;
     }
     return (
       <>
@@ -68,7 +68,6 @@ export default class Game extends Component {
 
   componentDidMount = () => {
     const { words } = this.props;
-
     if (words) {
       this.getWord();
     } else {
@@ -81,30 +80,36 @@ export default class Game extends Component {
     const { getAssociatedWords, getWord, onTimeout } = this;
 
     if (prevState.word !== word) {
+
+      
       getAssociatedWords();
     }
 
     if (prevState.language !== language) {
+
       getWord();
     }
 
     if (alertMessage !== null) {
+    
       onTimeout();
     }
   };
 
-  getWord = () => {
+  getWord = async() => {
     const { words } = this.props;
     const { language, wordIndex } = this.state;
-    const randomIndex = getRandomIndex(words, language, wordIndex);
+    const randomIndex = await getRandomIndex(words, language, wordIndex);
     let word;
     let transWord;
 
-    if (words && randomIndex) {
+    if (words && randomIndex !== 'no words') {
+
       word = `${Object.keys(words[language][randomIndex])}`;
       transWord = `${Object.values(words[language][randomIndex])}`;
     }
-  console.log(randomIndex, 'getWord');
+
+  
 
     this.setState((currentState) => {
       return {
@@ -158,9 +163,10 @@ export default class Game extends Component {
     this.setState({ language: value });
   };
 
-  playGame = ({ target }) => {
+  playGame = ({ target }) => { 
     const { word } = this.state;
     const idTarget = target.id.toLowerCase();
+console.log('play game');
 
     if (idTarget === word) {
       this.setState({
@@ -177,11 +183,14 @@ export default class Game extends Component {
 
   changeIsStarted = (reset) => {
     if (reset) {
+ 
+      
       this.setState((currentState) => {
         return { language: "German", isStarted: !currentState.isStarted };
       });
     } else {
       this.setState((currentState) => {
+      
         return { isStarted: !currentState.isStarted };
       });
     }
