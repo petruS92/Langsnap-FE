@@ -5,14 +5,10 @@ exports.getRandomIndex = (words, language, wordIndex) => {
   }
 
   if (wordsLength === 0) return null;
-  
+
   let randomListItem = Math.floor(Math.random() * wordsLength);
   if (randomListItem === wordIndex) {
-    if (randomListItem === wordsLength) {
-      randomListItem--;
-    } else {
-      randomListItem++;
-    }
+    randomListItem === wordsLength ? randomListItem-- : randomListItem++;
   }
   if (wordsLength <= 1) {
     randomListItem = 0;

@@ -42,7 +42,7 @@ const notMutatedWords = {
 
 let wordIndex = null;
 
-describe("Testing getRandomIndex", () => {
+describe.only("Testing getRandomIndex", () => {
   test("Returns a number", () => {
     const language = "German";
     expect(typeof getRandomIndex(words, language, wordIndex)).toBe("number");
