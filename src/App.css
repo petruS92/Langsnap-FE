@@ -660,6 +660,45 @@ dropDownArrowTest {
   font-size: 1.2rem;
 }
 
+.alertBackground {
+  background-color: var(--secondary-bg-color);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  min-height: 80vh;
+}
+
+.alertContainer {
+  background-color: var(--third-bg-color);
+  border-bottom-right-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  padding-bottom: 0rem;
+  margin: auto;
+  min-height: 70vh;
+}
+
+.errorPageContainer {
+  display: block;
+  padding: 2rem;
+  padding-top: 5rem;
+}
+
+.errorPageMessage {
+  text-decoration: none;
+  border-radius: 2rem;
+  color: var(--third-bg-color);
+  border: none;
+  background-color: var(--error-primary);
+  padding: 0.5rem;
+  margin: auto;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
 /*<--------------------------------------->*/
 
 /*<------------- Login CSS ------------->*/

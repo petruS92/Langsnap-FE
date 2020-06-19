@@ -8,8 +8,8 @@ const LoginAlert = () => {
     </Link>
   );
   return (
-    <section className="loginBackground">
-      <div className="loginContainer">
+    <section className="alertBackground">
+      <div className="alertContainer">
         <section className="loginAlertContainer">
           <h1 className="loginAlertMessage">Please {linkToLogin}</h1>
         </section>

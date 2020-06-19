@@ -10,7 +10,7 @@ import MyAccount from "./components/MyAccounts";
 import UserWordsCard from "./components/UserWordsCard";
 import Loading from "./components/Loading";
 import Game from "./components/Game/Game";
-import ErrorDisplay from "./components/ErrorDisplay";
+import ErrorDisplayPage from "./components/ErrorDisplayPage";
 import * as wordsListFunctions from "./utils/wordsListFunctions";
 
 class App extends Component {
@@ -75,7 +75,7 @@ class App extends Component {
             name={name}
             isLoggedIn={isLoggedIn}
           />
-          <ErrorDisplay isLoggedIn={isLoggedIn} default />
+          <ErrorDisplayPage isLoggedIn={isLoggedIn} default />
         </Router>
       </section>
     );
