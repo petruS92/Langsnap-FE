@@ -49,7 +49,7 @@ export default function GameRunning({
           )}
           <br />
           <button
-            onClick={(event) => resetIsStarted(event)}
+            onClick={() => resetIsStarted("reset")}
             className="selectLanguageButton"
           >
             {`◀ Select Language`}

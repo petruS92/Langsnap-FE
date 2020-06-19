@@ -49,7 +49,7 @@ export default function GameStartComponent({
           )}
           <div className="startButtonContainer">
             <button
-              onClick={(event) => handleStart(event)}
+              onClick={() => handleStart()}
               disabled={!enoughWordsToPlay}
               className="startButton"
             >

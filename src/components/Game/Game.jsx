@@ -175,9 +175,15 @@ export default class Game extends Component {
     }
   };
 
-  changeIsStarted = () => {
-    this.setState((currentState) => {
-      return { isStarted: !currentState.isStarted };
-    });
+  changeIsStarted = (reset) => {
+    if (reset) {
+      this.setState((currentState) => {
+        return { language: "German", isStarted: !currentState.isStarted };
+      });
+    } else {
+      this.setState((currentState) => {
+        return { isStarted: !currentState.isStarted };
+      });
+    }
   };
 }
