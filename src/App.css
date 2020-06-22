@@ -447,6 +447,15 @@ dropDownArrowTest {
   opacity: 0.5;
 }
 
+.gameplayMessage {
+  margin: auto;
+  margin-block-start: 0rem;
+  margin-block-end: 0rem;
+  font-size: 1rem;
+  text-align: center;
+  padding-top: 2rem;
+}
+
 /*<-----------  Game Running  ----------->*/
 
 .gameRunningContainer {
@@ -596,7 +605,7 @@ dropDownArrowTest {
   padding-top: 3vh;
   padding-bottom: 2vh;
 }
-/* <-------------   Refactor the Above into one component in future     ----------->*/
+/* <------------------------>*/
 .loginForm {
   background-color: var(--secondary-bg-color);
   border-radius: 2rem;

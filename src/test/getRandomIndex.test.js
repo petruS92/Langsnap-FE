@@ -42,7 +42,7 @@ const notMutatedWords = {
 
 let wordIndex = null;
 
-describe.only("Testing getRandomIndex", () => {
+describe("Testing getRandomIndex", () => {
   test("Returns a number", () => {
     const language = "German";
     expect(typeof getRandomIndex(words, language, wordIndex)).toBe("number");
@@ -64,12 +64,12 @@ describe.only("Testing getRandomIndex", () => {
     expect(bool).toBe(false);
   });
 
-  test("should not return a number longer than the array length", () => {
-    const language = "German";
+  test.only("should not return a number longer than the array length", () => {
+    const language = "French";
     for (let i = 0; i < 1000; i++) {
-      expect(getRandomIndex(words, language, wordIndex)).not.toBeGreaterThan(
-        words[language].length
-      );
+      wordIndex = getRandomIndex(words, language, wordIndex)
+      expect(wordIndex).not.toBeGreaterThan(
+        words[language].length -1);
     }
   });
 
