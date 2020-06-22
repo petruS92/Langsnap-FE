@@ -6,7 +6,7 @@ Say hello to the world with Langsnap! Our easy to use app will help improve your
 
 ## Motivation
 
-This application was built by Alexander Carrie, Ethan Moss, Petru Stanescu and Timothy Doolan, as part of the group project phase of the Northcoders software developer course.
+This application was built by Alex Carrie, Ethan Moss, Petru Stanescu and Timothy Doolan, as part of the group project phase of the Northcoders software developer course.
 
 ## Requirements
 
