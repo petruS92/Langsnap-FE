@@ -12,6 +12,7 @@ import Loading from "./components/Loading";
 import Game from "./components/Game/Game";
 import ErrorDisplayPage from "./components/ErrorDisplayPage";
 import * as wordsListFunctions from "./utils/wordsListFunctions";
+import StartPage from "./components/StartPage";
 
 class App extends Component {
   state = {
@@ -22,7 +23,14 @@ class App extends Component {
     isLoggedIn: false,
     isLoggedOut: false,
     isLoading: true,
+    startPage: true,
   };
+
+  // componentWillMount() {
+  //   setTimeout(() => {
+  //     this.setState({ startPage: false, isLoading: false });
+  //   }, 2000);
+  // }
 
   render() {
     const {
@@ -33,11 +41,12 @@ class App extends Component {
       token,
       isLoggedOut,
       isLoading,
+      startPage,
     } = this.state;
     const { loggingIn, loggingOut, addNewWordToState } = this;
 
     if (isLoading) return <Loading />;
-
+    if (startPage) return <StartPage />;
     return (
       <section className="appHomeContainer">
         <NavBar isLoggedIn={isLoggedIn} loggingOut={loggingOut} />
@@ -83,6 +92,9 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({ isLoading: false });
+    setTimeout(() => {
+      this.setState({ startPage: false });
+    }, 2000);
   }
 
   componentDidUpdate(previousProps, previousState) {
