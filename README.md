@@ -1,69 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Langsnap
 
-## Available Scripts
+## Introduction
 
-In the project directory, you can run:
+Say hello to the world with Langsnap! Our easy to use app will help improve your language skills in a fun and easy way. By registering your details with us you will gain access to tools that help track your progress, save the words which you have learned and test the level of your understanding. Langsnap is optimised to run on all major mobile devices, making it accessible to all. Go to https://langsnap.netlify.app/ and learn a new skill today!
 
-### `npm start`
+## Motivation
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This application was built by Alexander Carrie, Ethan Moss, Petru Stanescu and Timothy Doolan, as part of the group project phase of the Northcoders software developer course.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Requirements
 
-### `npm test`
+In order to run this application from your terminal on your local machine, please ensure that you have installed the latest version of Node.js (version 12.16 or higher).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Running the project on your local machine
 
-### `npm run build`
+Firstly, please clone this project by using the command `git clone https://github.com/petruS92/Langsnap-FE`. You must then access the folder, using the command `cd Langsnap-FE` and install the required dependencies for the applciation to work using the command `npm install`. To launch the project itself use `npm start` which will then open in your browser.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If you wish to visit the deployed version of this website, please visit: https://langsnap.netlify.app/.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Langsnap API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A hosted version of the back-end API which works with this front-end project, can be found at https://langsnap-be.herokuapp.com/api. This will also display all the available endpoints which the API can serve as well as the format of the requests. The repo for the code of the back-end API is found at https://github.com/tim0git/proj-backend.git.
 
-### `npm run eject`
+## Frameworks used in the project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The following frameworks and libraries were used in this project:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# Langsnap-FE
+- [Axios](https://www.npmjs.com/package/axios) - HTTP client;
+- [React.js](https://reactjs.org/) - library used to build the web interface;
+- [Jest.js](https://jestjs.io/) - testing framework used for front-end development;
+- [TensorFlow.js](https://www.tensorflow.org/js) - machine learning library;
+- [MobileNetV2](https://github.com/tensorflow/tfjs-models/tree/master/mobilenet) - pre-trained model used in conjuction with TensorFlow.js to detect and classify objects;
+- [Express.js](https://expressjs.com/) - web framework for Node.js;
+- [Firebase](https://firebase.google.com/) - database and authentication services;
+- [Mocha](https://mochajs.org/) - Javascript test used for back-end code;
+- [Chai.js](www.chaijs.com) - TDD assertion library used in conjunction with Mocha for back-end development;
