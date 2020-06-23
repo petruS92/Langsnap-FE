@@ -20,7 +20,7 @@ If you wish to visit the deployed version of this website, please visit: https:/
 
 ## Langsnap API
 
-A hosted version of the back-end API which works with this front-end project, can be found at https://langsnap-be.herokuapp.com/api. This will also display all the available endpoints which the API can serve as well as the format of the requests. The repo for the code of the back-end API is found at https://github.com/tim0git/proj-backend.git.
+A hosted version of the back-end API which works with this front-end project, can be found at https://langsnap-be.herokuapp.com/api. This will also display all the available endpoints which the API can serve as well as the format of the requests. The repo for the code of the back-end API is found at https://github.com/tim0git/Langsnap-BE.git.
 
 ## Frameworks used in the project
 
